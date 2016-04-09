@@ -38,7 +38,7 @@ class UserController extends Controller
 	 */
 	public function store()
 	{
-		return "good";
+		return "hi tavo";
 
 	}
 
