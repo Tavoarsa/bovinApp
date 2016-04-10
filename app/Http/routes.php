@@ -15,9 +15,17 @@ Route::get('/','FrontController@index');
 Route::get('admin', 'FrontController@admin');
 
 Route::resource('user','UserController');
-
-
 Route::get('cotacto', 'FrontController@cotacto');
+
+Route::get('store',[
+	'as'=>'store',
+	'uses'=>'StoreController@index'
+	]);
+
+Route::get('product/{slug}',[
+	'as'=>'product-detail',
+	'uses'=>'StoreController@show'
+	]);
 
 
 /*

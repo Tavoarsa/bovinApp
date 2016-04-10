@@ -6,7 +6,7 @@
 <div class="banner">
     <div id="content">
         <div id="slider">
-            <img src="images/banner1.jpg" alt="We Bring" data-url="#1">
+            <img src="images/banner1.jpg" alt="Finca" data-url="#1">
             <img src="images/banner2.jpg" alt="The Good" data-url="#2">
             <img src="images/banner3.jpg" alt="Vegetable Farm" data-url="#3">
             <img src="images/banner4.jpg" alt="To Life" data-url="#4">
