@@ -30,7 +30,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
 <!-- Fixed navbar -->
     <nav class="navbar navbar-default navbar-fixed-top">
-      <div class="container">
+      <div class="container-fluid">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
@@ -40,15 +40,19 @@ License URL: http://creativecommons.org/licenses/by/3.0/
           </button>
           <a class="navbar-brand" href="index.html">Trazabilidad Animal</a>
         </div>
-        <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav navbar-right">
-                <li class="active"><a href="{{ url('/') }}">Home</a></li>
-                <li><a href="#about">Acerca de BovinApp</a></li>
-                <li><a href="#services">Servicios</a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
-                <li><a href="#contact">Contacto</a></li>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <p class="navbar-text"></p>
+          
+          <ul class="nav navbar-nav navbar-right">
+             <li class="active"><a href="{{ url('/') }}">Home</a></li>
+             <li><a href="#about">Acerca de BovinApp</a></li>
+             <li><a href="#services">Servicios</a></li>
+             <li><a href="#portfolio">Noticias</a></li>
+             <li><a href="#contact">Contacto</a></li>   
+             <li><a href="{{ route('store')}}">Comprar<i class="fa fa-shopping-cart"></i></a></li>
+             @include('layouts.partials.menu-user')
           </ul>
-        </div><!--/.nav-collapse -->
+         </div>       
       </div>
     </nav>
 

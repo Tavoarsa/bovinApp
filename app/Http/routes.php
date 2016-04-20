@@ -39,6 +39,7 @@ Route::get('admin', 'FrontController@admin');
 Route::resource('user','UserController');
 Route::get('cotacto', 'FrontController@cotacto');
 
+
 Route::get('store',[
 	'as'=>'store',
 	'uses'=>'StoreController@index'
@@ -73,5 +74,29 @@ Route::get('cart/update/{product}/{quantity}',[
 	'as'=>'cart-update',
 	'uses'=>'CartController@update'
 	]);
+
+
+// Authentication routes...
+Route::get('auth/login', [
+	'as' => 'login-get',
+	'uses' => 'Auth\AuthController@getLogin'
+]);
+Route::post('auth/login', [
+	'as' => 'login-post',
+	'uses' => 'Auth\AuthController@postLogin'
+]);
+Route::get('auth/logout', [
+	'as' => 'logout',
+	'uses' => 'Auth\AuthController@getLogout'
+]);
+// Registration routes...
+Route::get('auth/register', [
+	'as' => 'register-get',
+	'uses' => 'Auth\AuthController@getRegister'
+]);
+Route::post('auth/register', [
+	'as' => 'register-post',
+	'uses' => 'Auth\AuthController@postRegister'
+]);
     
 });
