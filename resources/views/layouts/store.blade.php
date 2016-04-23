@@ -21,6 +21,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 </head>
 
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+
+@if(\Session::has('message'))
+        @include('store.partials.message')
+ @endif
 <!-- Fixed navbar -->
     <nav class="navbar navbar-default">
       <div class="container-fluid">

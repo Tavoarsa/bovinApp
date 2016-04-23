@@ -13,7 +13,8 @@ class CartController extends Controller
 
 	public function __construct()
 	{
-			if(!\Session::has('cart')) \Session::put('cart',array());//si no existe "cart" la crea, guardamos un array vacio
+	
+		if(!\Session::has('cart')) \Session::put('cart',array());//si no existe "cart" la crea, guardamos un array vacio
 	}
 	//show cart
 	public function show(Request $request)
@@ -78,5 +79,16 @@ class CartController extends Controller
     		$total += $item->price * $item->quantity;
     	}
     	return $total;
+    }
+
+    //Producto Detail
+    public function orderDetail()
+    {
+    	/*Validamos  si hay item o no se ha iniciado seccion.*/
+     if(count(\Session::get('cart')) <= 0) return redirect()->route('store');
+        $cart = \Session::get('cart');
+        $total = $this->total();
+        return view('store.order-detail', compact('cart', 'total'));
+       
     }
 }

@@ -29,32 +29,35 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
 <!-- Fixed navbar -->
-    <nav class="navbar navbar-default navbar-fixed-top">
+    <nav class="navbar navbar-default">
       <div class="container-fluid">
         <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="index.html">Trazabilidad Animal</a>
+          <a class="navbar-brand main-title"  href="#">Trazabilidad Animal</a>
         </div>
+
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <p class="navbar-text"></p>
           
-          <ul class="nav navbar-nav navbar-right">
+           <ul class="nav navbar-nav navbar-right">
              <li class="active"><a href="{{ url('/') }}">Home</a></li>
              <li><a href="#about">Acerca de BovinApp</a></li>
              <li><a href="#services">Servicios</a></li>
              <li><a href="#portfolio">Noticias</a></li>
              <li><a href="#contact">Contacto</a></li>   
              <li><a href="{{ route('store')}}">Comprar<i class="fa fa-shopping-cart"></i></a></li>
-             @include('layouts.partials.menu-user')
+            @include('layouts.partials.menu-user')
           </ul>
-         </div>       
+        </div>
       </div>
     </nav>
+
+
 
 
 @yield('content')
@@ -68,11 +71,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         <div class="container">
             <div class="row">
                 <div class="footer-col col-md-4">
-                    <h4>Location</h4>
-                    <p>3481 Melrose Place<br>Beverly Hills, Chicago 90210</p>
+                    <h4>San Carlos</h4>
+                    <p>Cuidad Quesada<br>Dulce Nombre</p>
                 </div>
                 <div class="footer-col col-md-4">
-                    <h4>Around the Web</h4>
+                    <h4>En la Web</h4>
                     <ul class="list-inline">
                         <li>
                             <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-facebook"></i></a>
@@ -91,10 +94,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         </li>
                     </ul>
                 </div>
-                <div class="footer-col col-md-4">
-                    <h4>About Vegetable Farm</h4>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-                </div>
+                
             </div>
         </div>
     </div>
@@ -102,7 +102,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <p>© 2016 Vegetable Farm. All Rights Reserved | Design by <a href="https://w3layouts.com/" target="_blank">W3layouts</a></p>
+                    <p>© 2016 BobinApp.</p>
                 </div>
             </div>
         </div>
@@ -118,6 +118,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <script src="js/TweenMax.min.js"></script>
 <script src="js/index.js"></script>
 <script src="js/index2.js"></script>
+
 <script>
 $(document).ready(function(){
   // Add smooth scrolling to all links in navbar + footer link

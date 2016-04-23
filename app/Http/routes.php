@@ -28,7 +28,7 @@
 
 Route::group(['middleware' => ['web']], function () {
 //Inyeccion de dependencia
-	Route::bind('product',function($slug){
+Route::bind('product',function($slug){
 
 	return BovinApp\Product::where('slug',$slug)->first();
 });
@@ -75,6 +75,16 @@ Route::get('cart/update/{product}/{quantity}',[
 	'uses'=>'CartController@update'
 	]);
 
+//Validamos  si el usuario inicio sesion
+//Petición detalle del pedido.
+Route::get('order-detail', [
+	'middleware'=>'auth',
+	'as' => 'order-detail',
+	'uses' => 'CartController@orderDetail'
+]);
+
+
+
 
 // Authentication routes...
 Route::get('auth/login', [
@@ -98,5 +108,17 @@ Route::post('auth/register', [
 	'as' => 'register-post',
 	'uses' => 'Auth\AuthController@postRegister'
 ]);
+
+// Paypal
+// Enviamos nuestro pedido a PayPal
+Route::get('payment', array(
+	'as' => 'payment',
+	'uses' => 'PaypalController@postPayment',
+));
+// Después de realizar el pago Paypal redirecciona a esta ruta
+Route::get('payment/status', array(
+	'as' => 'payment.status',
+	'uses' => 'PaypalController@getPaymentStatus',
+));
     
 });
