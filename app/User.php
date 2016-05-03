@@ -21,4 +21,9 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+    // Relation with Orders: Cada usuario puede tener dos o mas pedidos.
+    public function orders()
+    {
+        return $this->hasMany('BovinApp\Order');
+    }
 }

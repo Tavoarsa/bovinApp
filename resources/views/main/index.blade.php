@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.main')
 @section('content')
 
 <!-- /Fixed navbar -->  
@@ -6,7 +6,7 @@
 <div class="banner">
     <div id="content">
         <div id="slider">
-            <img src="images/banner1.jpg" alt="We Bring" data-url="#1">
+            <img src="images/banner1.jpg" alt="Finca" data-url="#1">
             <img src="images/banner2.jpg" alt="The Good" data-url="#2">
             <img src="images/banner3.jpg" alt="Vegetable Farm" data-url="#3">
             <img src="images/banner4.jpg" alt="To Life" data-url="#4">
@@ -16,7 +16,7 @@
 <!-- /Banner -->
 <!-- About -->
 <section class="about-us" id="about">
-    <h3 class="text-center slideanim">About Us</h3>
+    <h3 class="text-center slideanim">Acerca de Nosotros</h3>
     <div class="container">
         <div class="row">
             <div class="col-lg-4 col-lg-offset-2 slideanim">
@@ -112,7 +112,7 @@
 <!-- /About -->
 <!-- /Services -->
 <section class="our-services" id="services">
-    <h3 class="text-center slideanim">Our Services</h3>
+    <h3 class="text-center slideanim">Nuestros Servicios</h3>
     <ul class="ch-grid">
         <li>
             <div class="ch-item ch-img-1 slideanim">                

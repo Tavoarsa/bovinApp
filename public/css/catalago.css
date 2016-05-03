@@ -1,6 +1,6 @@
-/*--- Catalago ---*/
 
-#products{
+/* Catalogo -------------*/
+#products {
 position: relative;
 max-width: 100%;
 width: 100%;
@@ -31,33 +31,39 @@ margin-top: -5px;
 transition: all 0.3s ease-in-out;
 }
 
-/*---Detalle Producto---*/
-
+/* Detalle producto ---------*/
 .product-block
 {
 	background: #fff;
 	border-radius: 1em;
 	padding: 1em;
-
 }
 
-/*Slider...*/
+/* Slider ----------*/
 .navbar
 {
 	margin-bottom: 0;
 }
 
-/*Carro*/
+/* Carrito -----------*/
 .table-cart
 {
 	background: #fff;
-	border-radius:1em;
+	border-radius: 1em;
 	margin-bottom: 30px;
 	padding: 1em;
-
 }
 
 .table-cart img
 {
 	width: 50px;
+}
+
+/* Detalle del pedido ------------*/
+.page
+{
+	background: #fff;
+	border-radius: 1em;
+	margin-bottom: 30px;
+	padding: 1em;
 }

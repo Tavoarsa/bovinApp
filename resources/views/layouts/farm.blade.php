@@ -6,7 +6,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE html>
 <html>
 <head>
-<title>BovinApp</title>
+<title>Mi finca</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="BovinApp,agropecuaria,trazabilidad,san carlos, dos pinos, rastreabilidad" />
@@ -21,9 +21,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 </head>
 
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
-
 @if(\Session::has('message'))
-        @include('store.partials.message')
+        @include('admin.partials.message')
  @endif
 <!-- Fixed navbar -->
     <nav class="navbar navbar-default">
@@ -35,16 +34,23 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand main-title"  href="#">Tienda De Equipos para su Finca</a>
+          <a class="navbar-brand main-title">Administración</a>
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <p class="navbar-text"></p>
+          
           
           <ul class="nav navbar-nav navbar-right">
             <li class="active"><a href="{{ url('/') }}">Home</a></li>
-            <li><a href="{{ route('cart-show')}}"><i class="fa fa-shopping-cart"></i></a></li>
-             @include('layouts.partials.menu-user')
+             <li class="dropdown"><a href="{{ url('/admin') }}"><i class="fa fa-dashboard"></i>Dashboard</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                  <i class="fa fa-user"></i> {{ Auth::user()->user }} <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu" role="menu">
+                  <li><a href="{{ route('logout') }}">Finalizar sesión</a></li>
+                </ul>
+              </li>            
           </ul>
         </div>
       </div>
@@ -58,13 +64,15 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!-- /Contact-Form -->
 <!-- Footer -->
 <footer class="text-center slideanim slide">
-    @include('layouts.partials.footer') 
+  @include('layouts.partials.footer') 
 </footer>
 <!-- js files -->
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="{{ asset('/js/detalle-pedido.js') }}"></script>
 <script src="/js/bootstrap.min.js"></script>
-<script src={{asset('js/pinterest_grid.js')}}></script>
-<script src="/js/catalogo.js"></script>
+
+
 
 </body>
 </html>

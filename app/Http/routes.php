@@ -10,10 +10,6 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-//Vincula
-//FUNCIÓN ANONIMA:Busca el producto mediante el slug la URl queda vinculada a los metodos.
-
-
 
 /*
 |--------------------------------------------------------------------------
@@ -27,18 +23,32 @@
 */
 
 Route::group(['middleware' => ['web']], function () {
+
+Route::resource('farm','FarmController');
+
+
+
+Route::get('/','FrontController@index');
+Route::resource('user','UserController');
+Route::get('cotacto', 'FrontController@cotacto');
+
+
+												/*Rutas Store*/
+
+/*---------------------------------------------------------------------------
+*/
 //Inyeccion de dependencia
+//Vincula
+//FUNCIÓN ANONIMA:Busca el producto mediante el slug la URl queda vinculada a los metodos.
 Route::bind('product',function($slug){
 
 	return BovinApp\Product::where('slug',$slug)->first();
 });
 
-Route::get('/','FrontController@index');
-Route::get('admin', 'FrontController@admin');
-
-Route::resource('user','UserController');
-Route::get('cotacto', 'FrontController@cotacto');
-
+// Category dependency injection, function anonima
+Route::bind('category', function($category){
+    return BovinApp\Category::find($category);
+});
 
 Route::get('store',[
 	'as'=>'store',
@@ -84,6 +94,9 @@ Route::get('order-detail', [
 ]);
 
 
+/*Auntenticación
+-----------------------------------------------------------------------------------
+*/
 
 
 // Authentication routes...
@@ -120,5 +133,37 @@ Route::get('payment/status', array(
 	'as' => 'payment.status',
 	'uses' => 'PaypalController@getPaymentStatus',
 ));
+
+//Admin
+//-----------------------------------------------------------------------------------------
+Route::get('admin',['middleware' => 'auth',function(){
+	return view('admin.home');
+}]);
+
+
+Route::group(['middleware' => ['auth']], function () {
+   
+  Route::resource('admin/category','Admin\CategoryController');
+	Route::resource('admin/product','Admin\ProductController');	
+Route::resource('admin/user','Admin\UserController');
+});
+
+
+Route::get('orders',[
+
+	  'as'=>'admin.order.index',
+	  'uses'=>'Admin\OrderController@index'
+	]);
+Route::post('order/get-items', [
+	    'as' => 'admin.order.getItems',
+	    'uses' => 'Admin\OrderController@getItems'
+	]);
+	Route::get('order/{id}', [
+	    'as' => 'admin.order.destroy',
+	    'uses' => 'Admin\OrderController@destroy'
+	]);
+
+
+
     
 });

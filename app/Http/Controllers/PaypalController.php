@@ -148,4 +148,33 @@ class PaypalController extends Controller
 		return \Redirect::route('store')
 			->with('message', 'La compra fue cancelada');
 	}
+
+	private function saveOrder($cart)
+	{
+	    $subtotal = 0;
+
+	    foreach($cart as $item){
+	        $subtotal += $item->price * $item->quantity;
+	    }
+	    
+	    $order = Order::create([
+	        'subtotal' => $subtotal,
+	        'shipping' => 100,
+	        'user_id' => \Auth::user()->id
+	    ]);
+	    //recorre mi carrito y lo guardo en la tabla orderItem
+	    foreach($cart as $item){
+	        $this->saveOrderItem($item, $order->id);
+	    }
+	}
+	
+	private function saveOrderItem($item, $order_id)
+	{
+		OrderItem::create([
+			'quantity' => $item->quantity,
+			'price' => $item->price,
+			'product_id' => $item->id,
+			'order_id' => $order_id
+		]);
+	}
 }
