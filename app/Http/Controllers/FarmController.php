@@ -22,7 +22,7 @@ class FarmCOntroller extends Controller
     public function index()    
     {
         $farms = Farm::where('idUser',Auth::id())
-                -> paginate(2);
+                -> paginate(3);
         return view('farm.index', compact('farms'));
         
     }
@@ -58,22 +58,27 @@ class FarmCOntroller extends Controller
 
         $id_users= Auth::id(); 
         $farm->idUser = $id_users;
-        if($request->patent=""){
-            $default ='farm.jpg';
-            $farm->patent = $default;       
+        $message = $farm ? 'Finca agregada correctamente!' : 'La finca NO pudo agregarse!'; 
+
+        if($request->patent=""){     dd($request->patent); 
+
+            $farm->patent = 'farm.jpg'; 
+            
             $farm->save();
-            return redirect() -> route('farm.index'); 
+            return redirect() -> route('farm.index')->with('message', $message); 
         }
             $file = Input::file('patent');//Creamos una instancia de la libreria instalada
+
             $patent = \Image::make(\Input::file('patent'));//Ruta donde queremos guardar las imagenes
-            $path = 'img/patent/';          
+            $path = 'img/farm/';          
                 // Cambiar de tamaño
-            $patent -> resize(450, 450);
+            $patent -> resize(358, 141);
             $patent -> save($path . $file -> getClientOriginalName());  
             $farm->patent = $file -> getClientOriginalName();;
-            $farm->save(); 
+            $farm->save();
 
-            return redirect() -> route('farm.index');
+
+            return redirect() -> route('farm.index')->with('message', $message);
     }
 
     
@@ -83,9 +88,9 @@ class FarmCOntroller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Farm $farm)
     {
-        //
+        return $farm;
     }
 
     /**

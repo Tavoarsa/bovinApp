@@ -3,7 +3,7 @@
 <div class="container text-center">
 		<div class="page-header">
 			<h1>				
-			<a href="{{ route('farm.create') }}" class="btn btn-warning"><i class="fa fa-plus-circle"></i> Finca</a>
+			<a href="{{ route('farm.create') }}" class="btn btn-warning"><i class="fa fa-plus-circle"></i> Agregar</a>
 			</h1>
 		</div>
 		<div class="page">

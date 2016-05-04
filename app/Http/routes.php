@@ -28,7 +28,12 @@ Route::resource('farm','FarmController');
 
 
 
-Route::get('/','FrontController@index');
+Route::get('/',[
+	
+	'as'=>'home',
+	'uses'=>'FrontController@index'
+	]);
+
 Route::resource('user','UserController');
 Route::get('cotacto', 'FrontController@cotacto');
 

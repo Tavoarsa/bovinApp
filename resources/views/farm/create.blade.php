@@ -18,8 +18,13 @@
                         @include('admin.partials.errors')
                     @endif
                     
-                    {!! Form::open(['route'=>'farm.store']) !!}
-                    
+                    {!! Form::open(
+                         array(
+                            'route' => 'farm.store', 
+                            'class' => 'form', 
+                            'novalidate' => 'novalidate', 
+                            'files' => true)) !!}
+                        
                          <div class="form-group">
                             <label for="name">Nombre:</label>
                             
