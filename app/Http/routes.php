@@ -24,12 +24,12 @@
 
 Route::group(['middleware' => ['web']], function () {
 
-Route::resource('farm','FarmController');
+
 
 
 
 Route::get('/',[
-	
+
 	'as'=>'home',
 	'uses'=>'FrontController@index'
 	]);
@@ -148,9 +148,23 @@ Route::get('admin',['middleware' => 'auth',function(){
 
 Route::group(['middleware' => ['auth']], function () {
    
-  Route::resource('admin/category','Admin\CategoryController');
+  	Route::resource('admin/category','Admin\CategoryController');
 	Route::resource('admin/product','Admin\ProductController');	
-Route::resource('admin/user','Admin\UserController');
+	Route::resource('admin/user','Admin\UserController');
+	Route::resource('farm','FarmController');
+
+	Route::get('dashboard/{id}',[
+	  'as'=>'dashboard-farm',
+	  'uses'=>'DashboardController@get_farm'
+	]);
+
+	Route::get('farm/info',[
+	  'as'=>'farm-info',
+	  'uses'=>'FarmController@show'
+	]);
+
+	
+
 });
 
 

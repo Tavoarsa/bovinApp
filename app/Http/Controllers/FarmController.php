@@ -9,6 +9,7 @@ use BovinApp\Farm;
 
 use Auth;
 use Input;
+use Session;
 
 
 
@@ -34,6 +35,7 @@ class FarmCOntroller extends Controller
      */
     public function create()
     {
+
         return view("farm.create");
     }
 
@@ -45,11 +47,14 @@ class FarmCOntroller extends Controller
      */
     public function store(Request $request)
     {
-        $rules =array(
-            'name'                  => 'required',  
-            'agent'                 => 'required',
-            'operationCertificate'  => 'required',          
-            'address'               => 'required'
+        $id_farm=Session::get('farm');        
+      
+        $rules =array
+            (
+                'name'                  => 'required',  
+                'agent'                 => 'required',
+                'operationCertificate'  => 'required',          
+                'address'               => 'required'
             );
 
         $this->validate($request,$rules);    
@@ -60,13 +65,8 @@ class FarmCOntroller extends Controller
         $farm->idUser = $id_users;
         $message = $farm ? 'Finca agregada correctamente!' : 'La finca NO pudo agregarse!'; 
 
-        if($request->patent=""){     dd($request->patent); 
+        if(Input::hasFile('patent')){     dd($request->patent); 
 
-            $farm->patent = 'farm.jpg'; 
-            
-            $farm->save();
-            return redirect() -> route('farm.index')->with('message', $message); 
-        }
             $file = Input::file('patent');//Creamos una instancia de la libreria instalada
 
             $patent = \Image::make(\Input::file('patent'));//Ruta donde queremos guardar las imagenes
@@ -79,6 +79,14 @@ class FarmCOntroller extends Controller
 
 
             return redirect() -> route('farm.index')->with('message', $message);
+        }
+        $default ='farm.jpg';
+        $farm->patent = $default;
+        //dd($farm->patent);
+        
+        $farm->save();
+        return redirect() -> route('farm.index'); 
+            
     }
 
     
@@ -88,9 +96,10 @@ class FarmCOntroller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Farm $farm)
+    public function show()
     {
-        return $farm;
+       $farms = Farm::where('idUser',Auth::id())-> get();
+        return view('farm.show', compact('farms'));
     }
 
     /**
@@ -101,7 +110,7 @@ class FarmCOntroller extends Controller
      */
     public function edit($id)
     {
-        //
+        
     }
 
     /**
