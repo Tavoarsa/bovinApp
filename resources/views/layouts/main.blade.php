@@ -38,14 +38,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand main-title"  href="#">Trazabilidad Animal</a>
+          <a class="navbar-brand main-title"  href="#">Bovinapp</a>
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <p class="navbar-text"></p>
           
            <ul class="nav navbar-nav navbar-right">
-             <li class="active"><a href="{{ url('/') }}">Home</a></li>
+             <li class="active"><a href="{{ url('farm') }}">Mi Finca</a></li>
              <li><a href="#about">Acerca de BovinApp</a></li>
              <li><a href="#services">Servicios</a></li>
              <li><a href="#portfolio">Noticias</a></li>

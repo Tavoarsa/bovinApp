@@ -111,6 +111,8 @@ return [
     'attributes'           => [
         'name'                  => 'nombre',
         'username'              => 'usuario',
+        'birthdate'             => 'Fecha de nacimiento',
+        'feature'               => 'Catacteristicas',
         'email'                 => 'correo electrónico',
         'first_name'            => 'nombre',
         'last_name'             => 'apellido',

@@ -12,6 +12,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <meta name="keywords" content="BovinApp,agropecuaria,trazabilidad,san carlos, dos pinos, rastreabilidad" />
 <!-- css links -->
  <link href="{{ asset('/css/catalago.css') }}" rel="stylesheet">
+ <link href="{{ asset('/css/create-animal.css') }}" rel="stylesheet">
+ <!--Datepicker Files -->
+ <link href="{{asset('datePicker/css/bootstrap-datepicker3.css') }}" rel="stylesheet">
+ <!--<link href="{{asset('datePicker/css/bootstrap-standalone.css')}}" rel="stylesheet">-->
 
 <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.6/lumen/bootstrap.min.css" rel="stylesheet">
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
@@ -34,7 +38,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand main-title">Administración</a>
+          <a class="navbar-brand main-title">Bovinapp.com</a>
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -64,16 +68,30 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!-- /Contact-Form -->
 <!-- Footer -->
 <footer class="text-center slideanim slide">
-  @include('layouts.partials.footer') 
+  @include('layouts.partials.footer')
+
+
 </footer>
 <!-- js files -->
 
+
+
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src="{{ asset('/js/detalle-pedido.js') }}"></script>
-<script src="/js/bootstrap.min.js"></script>
+<!--Create new animal-->
+<script src="{{ asset('/js/create-animal.js') }}"></script>
+<script src="{{ asset('/js/create-animal-ia.js') }}"></script>
+<script src="{{ asset('/js/create-animal-fi.js') }}"></script>
+<script src="{{ asset('/js/create-animal-te.js') }}"></script>
+<script src="{{ asset('/js/create-animal-mt.js') }}"></script>
+<!--Datepicker Files -->
+<script src="{{asset('datePicker/js/bootstrap-datepicker.js')}}"></script>
+<script src="{{asset('datePicker/locales/bootstrap-datepicker.es.min.js')}}"></script> 
 
 
 
-</body>
+
+
 </html>
 

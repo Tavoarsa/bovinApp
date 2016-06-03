@@ -91,7 +91,7 @@
                         </div>                        
                            
                         <div class="form-group">
-                            <label for="exploitation">Explotación:</label>
+                            <label for="exploitation">Tipo Explotación:</label>
                             
                             {!! Form::select(
                                     'exploitation', 
@@ -113,7 +113,7 @@
                         
                         <div class="form-group">
                             {!! Form::submit('Guardar', array('class'=>'btn btn-primary')) !!}
-                            <a href="{{ route('farm.index') }}" class="btn btn-warning">Cancelar</a>
+                            <a href="{{ route('farm-index') }}" class="btn btn-warning">Cancelar</a>
                         </div>
                     
                     {!! Form::close() !!}

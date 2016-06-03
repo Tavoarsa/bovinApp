@@ -14,6 +14,75 @@
     </div>  
 </div>
 <!-- /Banner -->
+<!-- /Services -->
+<section class="our-services" id="services">
+    <h3 class="text-center slideanim">Nuestros Servicios</h3>
+    <ul class="ch-grid">
+        <li>
+            <div class="ch-item ch-img-1 slideanim">                
+                <div class="ch-info-wrap">
+                    <div class="ch-info">
+                     
+            
+                        <div class="ch-info-front ch-img-1"></div>
+                        <div class="ch-info-back">
+                            <h5>Busquedad</h5>
+                            <a href="{{ route('search') }}" >Información de Fincas y Animales</a>
+                        </div>  
+                    </div>
+                </div>
+            </div>
+            <h4 class="slideanim">Rastreabilidad</h4>
+            <p class="slideanim">Busquedad de Fincas y Animales</p>
+        </li>
+        <li>
+            <div class="ch-item ch-img-2 slideanim">
+                <div class="ch-info-wrap">
+                    <div class="ch-info">
+                        <div class="ch-info-front ch-img-2"></div>
+                        <div class="ch-info-back">
+                            <h5>Irrigation</h5>
+                            <p>Advanced Irrigation Techniques</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h4 class="slideanim">Irrigation</h4>
+            <p class="slideanim">Using Advanced Irrigation Techniques</p>
+        </li>
+        <li>
+            <div class="ch-item ch-img-3 slideanim">
+                <div class="ch-info-wrap">
+                    <div class="ch-info">
+                        <div class="ch-info-front ch-img-3"></div>
+                        <div class="ch-info-back">
+                            <h5>Tools-Machinery</h5>
+                            <p>Using Advanced Tools & Machinery</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h4 class="slideanim">Tools-Machinery</h4>
+            <p class="slideanim">Using Advanced Tools & Machinery</p>
+        </li>
+        <li>
+            <div class="ch-item ch-img-4 slideanim">
+                <div class="ch-info-wrap">
+                    <div class="ch-info">
+                        <div class="ch-info-front ch-img-4"></div>
+                        <div class="ch-info-back">
+                            <h5>End Of Harvest</h5>
+                            <p>Advanced Harvesting Techniques</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h4 class="slideanim">End Of Harvest</h4>
+            <p class="slideanim">Using Advanced Harvesting Techniques</p>
+        </li>
+    </ul>
+</section>
+<!-- /Services -->
 <!-- About -->
 <section class="about-us" id="about">
     <h3 class="text-center slideanim">Acerca de Nosotros</h3>
@@ -110,73 +179,7 @@
     </div>
 </div>
 <!-- /About -->
-<!-- /Services -->
-<section class="our-services" id="services">
-    <h3 class="text-center slideanim">Nuestros Servicios</h3>
-    <ul class="ch-grid">
-        <li>
-            <div class="ch-item ch-img-1 slideanim">                
-                <div class="ch-info-wrap">
-                    <div class="ch-info">
-                        <div class="ch-info-front ch-img-1"></div>
-                        <div class="ch-info-back">
-                            <h5>Vegetative Propagation</h5>
-                            <p>Using Advanced Scientific Techniques</p>
-                        </div>  
-                    </div>
-                </div>
-            </div>
-            <h4 class="slideanim">Vegetative Propagation</h4>
-            <p class="slideanim">Using Advanced Scientific Techniques</p>
-        </li>
-        <li>
-            <div class="ch-item ch-img-2 slideanim">
-                <div class="ch-info-wrap">
-                    <div class="ch-info">
-                        <div class="ch-info-front ch-img-2"></div>
-                        <div class="ch-info-back">
-                            <h5>Irrigation</h5>
-                            <p>Advanced Irrigation Techniques</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <h4 class="slideanim">Irrigation</h4>
-            <p class="slideanim">Using Advanced Irrigation Techniques</p>
-        </li>
-        <li>
-            <div class="ch-item ch-img-3 slideanim">
-                <div class="ch-info-wrap">
-                    <div class="ch-info">
-                        <div class="ch-info-front ch-img-3"></div>
-                        <div class="ch-info-back">
-                            <h5>Tools-Machinery</h5>
-                            <p>Using Advanced Tools & Machinery</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <h4 class="slideanim">Tools-Machinery</h4>
-            <p class="slideanim">Using Advanced Tools & Machinery</p>
-        </li>
-        <li>
-            <div class="ch-item ch-img-4 slideanim">
-                <div class="ch-info-wrap">
-                    <div class="ch-info">
-                        <div class="ch-info-front ch-img-4"></div>
-                        <div class="ch-info-back">
-                            <h5>End Of Harvest</h5>
-                            <p>Advanced Harvesting Techniques</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <h4 class="slideanim">End Of Harvest</h4>
-            <p class="slideanim">Using Advanced Harvesting Techniques</p>
-        </li>
-    </ul>
-</section>
-<!-- /Services -->
+
 <!-- Portfolio Grid Section -->
 <section id="portfolio">
     <h3 class="text-center slideanim">Our Portfolio</h3>

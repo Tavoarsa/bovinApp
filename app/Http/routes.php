@@ -34,14 +34,24 @@ Route::get('/',[
 	'uses'=>'FrontController@index'
 	]);
 
+Route::get('search',[
+	'as'=>'search',
+	'uses'=>'FrontController@search'
+	]);
+
+Route::get('farm_info/{id}',[
+	'as'=>'info-farm',
+	'uses'=>'FrontController@info_farm'
+	]);
+
 Route::resource('user','UserController');
 Route::get('cotacto', 'FrontController@cotacto');
 
 
-												/*Rutas Store*/
 
-/*---------------------------------------------------------------------------
-*/
+
+
+
 //Inyeccion de dependencia
 //Vincula
 //FUNCIÓN ANONIMA:Busca el producto mediante el slug la URl queda vinculada a los metodos.
@@ -55,6 +65,13 @@ Route::bind('category', function($category){
     return BovinApp\Category::find($category);
 });
 
+
+
+
+												/*Rutas Store*/
+
+/*---------------------------------------------------------------------------
+*/
 Route::get('store',[
 	'as'=>'store',
 	'uses'=>'StoreController@index'
@@ -151,21 +168,61 @@ Route::group(['middleware' => ['auth']], function () {
   	Route::resource('admin/category','Admin\CategoryController');
 	Route::resource('admin/product','Admin\ProductController');	
 	Route::resource('admin/user','Admin\UserController');
-	Route::resource('farm','FarmController');
+	
 
-	Route::get('dashboard/{id}',[
+	Route::get('dashboard/{slug}',[
 	  'as'=>'dashboard-farm',
 	  'uses'=>'DashboardController@get_farm'
 	]);
+
+//Farm
+	/*-------------------------------------------*/
+
+	Route::resource('farm','FarmController');
 
 	Route::get('farm/info',[
 	  'as'=>'farm-info',
 	  'uses'=>'FarmController@show'
 	]);
+	
+	Route::get('farm',[
+	  'as'=>'farm-index',
+	  'uses'=>'FarmController@index'
+	]);
+
+	Route::get('farm/create',[
+	  'as'=>'farm-create',
+	  'uses'=>'FarmController@create'
+	]);
+
+//Animal
+	/*-------------------------------------------*/
+
+	Route::resource('animal','AnimalController');
+
+	Route::get('animal','AnimalController@index');
+
+	Route::get('animal/{slug}',[
+		'as'=>'dashboard-animal',
+		'uses'=>'AnimalController@show'
+		]);
+
+	Route::get('animal',[
+	  'as'=>'animal-index',
+	  'uses'=>'AnimalController@index'
+	]);
+
+	Route::get('animal/create',[
+	  'as'=>'animal-create',
+	  'uses'=>'AnimalController@create'
+	]);
 
 	
 
 });
+
+	
+
 
 
 Route::get('orders',[

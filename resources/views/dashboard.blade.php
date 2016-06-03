@@ -8,6 +8,7 @@
         </div>
         
         <h2>Bienvenido(a) {{ Auth::user()->user }} al Panel Principal.</h2><hr>
+     
         
         <div class="row">
             
@@ -21,7 +22,7 @@
             <div class="col-md-6">
                 <div class="panel">
                     <i class="fa fa-shopping-cart  icon-home"></i>
-                    <a href="{{ route('farm-info') }}" class="btn btn-warning btn-block btn-home-admin">FINCA</a>
+                    <a href="{{route('farm-index') }}" class="btn btn-warning btn-block btn-home-admin">FINCA</a>
                 </div>
             </div>
 
@@ -42,6 +43,7 @@
             </div>
                     
         </div>
+       
         
         <div class="row">
             

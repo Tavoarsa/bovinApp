@@ -14,6 +14,7 @@
             </h1>
         </div>
         <div class="page">
+        @if(count($products))
             
             <div class="table-responsive">
                 <table class="table table-striped table-bordered table-hover">
@@ -47,7 +48,7 @@
                                 </td>
                                 <td><img src="{{ $product->image }}"></td>
                                 <td>{{ $product->name }}</td>
-                                <td>{{ $product->category->name }}</td>
+                                
                                 <td>{{ $product->extract }}</td>
                                 <td>${{ number_format($product->price,2) }}</td>
                                 <td>{{ $product->visible == 1 ? "Si" : "No" }}</td>
@@ -56,10 +57,15 @@
                     </tbody>
                 </table>
             </div>
+
             
             <hr>
             
             <?php echo $products->render(); ?>
+
+             @else
+             <h3><span class="label label-warning">Noy hay productos</span></h3>
+            @endif
             
         </div>
 

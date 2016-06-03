@@ -15,9 +15,10 @@ class Farm extends Model
      * @var array
      */
     protected $dates = ['deleted_at'];
-
     
 	protected $table ='farms';
-	protected $fillable=['idUser','name','address','agent','operationCertificate','exploitation','patent'];
+	protected $fillable=['idUser','name','slug','address','agent','operationCertificate','exploitation','patent'];
 	protected $guarded = ['id'];
+
+	
 }

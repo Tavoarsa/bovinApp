@@ -5,6 +5,7 @@ namespace BovinApp\Http\Controllers;
 use Illuminate\Http\Request;
 
 use BovinApp\Http\Requests;
+use BovinApp\Http\Requests\SaveFarmRequest;
 use BovinApp\Farm;
 
 use Auth;
@@ -24,6 +25,7 @@ class FarmCOntroller extends Controller
     {
         $farms = Farm::where('idUser',Auth::id())
                 -> paginate(3);
+
         return view('farm.index', compact('farms'));
         
     }
@@ -63,9 +65,11 @@ class FarmCOntroller extends Controller
 
         $id_users= Auth::id(); 
         $farm->idUser = $id_users;
+        $farm->slug= str_slug($request->get('name'));
+
         $message = $farm ? 'Finca agregada correctamente!' : 'La finca NO pudo agregarse!'; 
 
-        if(Input::hasFile('patent')){     dd($request->patent); 
+        if(Input::hasFile('patent')){    
 
             $file = Input::file('patent');//Creamos una instancia de la libreria instalada
 
@@ -78,14 +82,14 @@ class FarmCOntroller extends Controller
             $farm->save();
 
 
-            return redirect() -> route('farm.index')->with('message', $message);
+            return redirect() -> route('farm-index')->with('message', $message);
         }
         $default ='farm.jpg';
         $farm->patent = $default;
         //dd($farm->patent);
         
         $farm->save();
-        return redirect() -> route('farm.index'); 
+        return redirect() -> route('farm-index'); 
             
     }
 
@@ -110,7 +114,8 @@ class FarmCOntroller extends Controller
      */
     public function edit($id)
     {
-        
+        $farm = Farm::findOrFail($id);        
+        return view('farm.edit', compact('farm'));       
     }
 
     /**
@@ -120,9 +125,17 @@ class FarmCOntroller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(SaveFarmRequest $request, Farm $farm)
     {
-        //
+        
+
+        $farm->fill($request->all());
+        $farm->slug = str_slug($request->get('name'));        
+        $updated = $farm->save();
+        
+        $message = $updated ? 'Finca actualizado correctamente!' : 'La fincaNO pudo actualizarse!';
+        
+        return redirect()->route('farm-index')->with('message', $message);
     }
 
     /**
@@ -133,6 +146,9 @@ class FarmCOntroller extends Controller
      */
     public function destroy($id)
     {
-        //
+        $farm=Farm::find($id);
+        $farm->delete();       
+        $message = 'Producto eliminado correctamente!';        
+        return redirect()->route('farm-index')->with('message', $message);
     }
 }

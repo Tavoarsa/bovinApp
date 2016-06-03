@@ -6,14 +6,16 @@ use Illuminate\Http\Request;
 
 use BovinApp\Http\Requests;
 use Session;
+use BovinApp\Farm;
 
 class DashboardController extends Controller
 {
   
 
-	public function get_farm(Request $request, $id)
+	public function get_farm($id)
 	{
-		Session::put('farm',$id);
+		//INSERCCIÓN DE SLUG DE LA FINCA SELECCIONADA 		
+		Session::put('farm',$id);		
 		return	view('dashboard');
 	}
 }

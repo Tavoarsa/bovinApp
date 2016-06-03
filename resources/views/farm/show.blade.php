@@ -3,7 +3,11 @@
 
     <div class="container text-center">
     	<div class="page-header">
-    		 <h1><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Editar Fincas</h1>	
+    		 <h1><i class="fa fa-info-circle" aria-hidden="true"></i>Fincas</h1>
+
+    		 <h1>				
+			<a href="{{ route('farm-create') }}" class="btn btn-warning"><i class="fa fa-plus-circle"></i> Agregar</a>            
+			</h1>	
     	</div>
     	<div class="table-cart">
     		@if(count($farms))
@@ -26,15 +30,19 @@
 	    						<td>{{$farm->operationCertificate}}</td>
 	    						<td>{{$farm->exploitation}}</td>	    						
 	    						<td>
-                                    <a href="#" class="btn btn-primary">
+
+                                    <a href="{{ route('farm.edit', $farm->id) }}" class="btn btn-primary">
                                         <i class="fa fa-pencil-square-o"></i>
                                     </a>
                                 </td>   						
-	    						<td>
-	    							<a href="#" class="btn btn-danger">
-	    								<i class="fa fa-remove"></i>
-	    							</a>
-	    						</td>
+	    						 <td>
+                                    {!! Form::open(['route' => ['farm.destroy', $farm->id]]) !!}
+                                        <input type="hidden" name="_method" value="DELETE">
+                                        <button onClick="return confirm('Eliminar registro?')" class="btn btn-danger">
+                                            <i class="fa fa-trash-o"></i>
+                                        </button>
+                                    {!! Form::close() !!}
+                                </td>
 	    					</tr>
 	    				@endforeach
 	    			</tbody>	    			
@@ -46,7 +54,8 @@
 	    	@endif
 	    	<hr>
 	    	<p>
-	    		<a class="btn btn-primary" href="#"><i class="fa fa-chevron-circle-left"></i>REGRESAR</a>
+	    		<a class="btn btn-primary" href="{{route('farm-index')}}"><i class="fa fa-chevron-circle-left"></i>REGRESAR</a>
+	    		<a class="btn btn-primary" href="{{route('dashboard-farm',$farm->id)}}"><i class="fa fa-chevron-circle-right"></i>INGRESAR</a>
 
 
 	    		
