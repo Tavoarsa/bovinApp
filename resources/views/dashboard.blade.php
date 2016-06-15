@@ -29,7 +29,7 @@
             <div class="col-md-6">
                 <div class="panel">
                     <i class="fa fa-shopping-cart  icon-home"></i>
-                    <a href="{{ route('admin.product.index') }}" class="btn btn-warning btn-block btn-home-admin">NOTICIAS</a>
+                    <a href="{{ route('admin.product.index') }}" class="btn btn-warning btn-block btn-home-admin">VENTA DE ANIMALES</a>
                 </div>
             </div>
 
@@ -38,7 +38,7 @@
             <div class="col-md-6">
                 <div class="panel">
                     <i class="fa fa-shopping-cart  icon-home"></i>
-                    <a href="{{ route('admin.product.index') }}" class="btn btn-warning btn-block btn-home-admin">VETERINARIA</a>
+                    <a href="{{ route('badamecum-farm') }}" class="btn btn-warning btn-block btn-home-admin">BADAMECUM</a>
                 </div>
             </div>
                     

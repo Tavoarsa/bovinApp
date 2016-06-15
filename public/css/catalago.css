@@ -10,6 +10,13 @@ width: 100%;
 max-width: 100%;
 height: auto;
 }
+
+.img-index{
+	width: 20%;
+max-width: 20%;
+height: auto;
+
+}
 .white-panel {
 position: absolute;
 background: white;

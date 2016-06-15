@@ -53,11 +53,18 @@
                     <i class="fa fa-users  icon-home"></i>
                     <a href="#" class="btn btn-warning btn-block btn-home-admin">REGISTRO DE CELOS</a>
                 </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="panel">
+                    <i class="fa fa-users  icon-home"></i>
+                    <a href="{{route('create-sale',$animal->slug)}}" class="btn btn-warning btn-block btn-home-admin">VENTA</a>
+                </div>
             </div>                     
         </div>
         <hr>
          <p>
-         <a class="btn btn-primary"  href="{{url('animal/') }}""><i class="fa fa-chevron-circle-left"></i>REGRESAR</a>          
+         <a class="btn btn-primary"  href="{{url('animal/') }}"<i class="fa fa-chevron-circle-left"></i>REGRESAR</a>          
     </p>
                   
     </div>

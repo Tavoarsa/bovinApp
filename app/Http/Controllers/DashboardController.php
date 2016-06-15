@@ -8,6 +8,7 @@ use BovinApp\Http\Requests;
 use Session;
 use BovinApp\Farm;
 
+
 class DashboardController extends Controller
 {
   
@@ -19,3 +20,5 @@ class DashboardController extends Controller
 		return	view('dashboard');
 	}
 }
+
+	

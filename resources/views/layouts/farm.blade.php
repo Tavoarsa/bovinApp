@@ -85,6 +85,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <script src="{{ asset('/js/create-animal-fi.js') }}"></script>
 <script src="{{ asset('/js/create-animal-te.js') }}"></script>
 <script src="{{ asset('/js/create-animal-mt.js') }}"></script>
+<script src="{{ asset('/js/create-badamecum.js') }}"></script>
 <!--Datepicker Files -->
 <script src="{{asset('datePicker/js/bootstrap-datepicker.js')}}"></script>
 <script src="{{asset('datePicker/locales/bootstrap-datepicker.es.min.js')}}"></script> 

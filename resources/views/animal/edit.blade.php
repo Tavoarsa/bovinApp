@@ -83,7 +83,7 @@
             <div class="col-md-6">
                 <div class="product-block">
               
-                     <h1><i class="fa fa-info-circle"></i>Detalle del Origin del Animal</h1>            
+                     <h1><i class="fa fa-info-circle"></i>Animal</h1>            
                 
                 </div>                
             </div>           

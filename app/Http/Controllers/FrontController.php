@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use BovinApp\Http\Requests;
 
 use BovinApp\Farm;
+use BovinApp\Badamecum;
+use BovinApp\SaleAnimal;
 
 class FrontController extends Controller
 {
@@ -40,7 +42,32 @@ class FrontController extends Controller
         //dd($farms);
 
         return view('main.info_farm',compact('farms'));   
+    } 
+
+    public function show_bademecum()
+    {        
+        $badamecums = Badamecum::orderBy('id', 'desc')->paginate(6);
+        return view('main.show_badamecum', compact('badamecums'));
     }
+     public function detail_badamecum($slug)
+    {
+        
+        $badamecum= Badamecum::where('slug',$slug)->first();
+        return view('main.detail-badamecum',compact('badamecum'));
+
+    }
+
+     public function sale_animal()
+    {
+       $sales = SaleAnimal::orderBy('id','desc')->paginate(6);//dd($sales);
+       return view('main.sale_animal',compact('sales'));
+    }
+      public function info_sale($slug)
+    {
+       $sale = SaleAnimal::where('slug',$slug)->first();//dd($sale);
+       return view('main.info_sale',compact('sale'));
+    }
+
 }
  
  

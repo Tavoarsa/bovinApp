@@ -39,10 +39,32 @@ Route::get('search',[
 	'uses'=>'FrontController@search'
 	]);
 
+Route::get('badamecumm',[
+	'as'=>'badamecum-index',
+	'uses'=>'FrontController@show_bademecum'
+	]);
+
+Route::get('badamecumm/{slug}',[
+	'as'=>'detail-badamecum',
+	'uses'=>'FrontController@detail_badamecum'
+	]);
+
 Route::get('farm_info/{id}',[
 	'as'=>'info-farm',
 	'uses'=>'FrontController@info_farm'
 	]);
+
+Route::get('sale_animal',[
+	'as'=>'sale-animal',
+	'uses'=>'FrontController@sale_animal'
+	]);
+//Información del animal y del dueño
+Route::get('sale_animal/{slug}',[
+	'as'=>'info_sale',
+	'uses'=>'FrontController@info_sale'
+	]);
+
+
 
 Route::resource('user','UserController');
 Route::get('cotacto', 'FrontController@cotacto');
@@ -57,13 +79,25 @@ Route::get('cotacto', 'FrontController@cotacto');
 //FUNCIÓN ANONIMA:Busca el producto mediante el slug la URl queda vinculada a los metodos.
 Route::bind('product',function($slug){
 
-	return BovinApp\Product::where('slug',$slug)->first();
+	 BovinApp\Product::where('slug',$slug)->first();
+});
+
+Route::bind('badamecum',function($slug){
+
+	 return BovinApp\Badamecum::where('slug',$slug)->first();
 });
 
 // Category dependency injection, function anonima
 Route::bind('category', function($category){
     return BovinApp\Category::find($category);
 });
+
+
+//FUNCIÓN ANONIMA:Busca el producto mediante el slug la URl queda vinculada a los metodos.
+/*Route::bind('veterinary',function($slug){
+
+	return BovinApp\Badamecum::find('slug',$slug)->first();
+});*/
 
 
 
@@ -168,6 +202,8 @@ Route::group(['middleware' => ['auth']], function () {
   	Route::resource('admin/category','Admin\CategoryController');
 	Route::resource('admin/product','Admin\ProductController');	
 	Route::resource('admin/user','Admin\UserController');
+	Route::resource('admin/badamecum','Admin\BadamecumController');
+	
 	
 
 	Route::get('dashboard/{slug}',[
@@ -216,6 +252,45 @@ Route::group(['middleware' => ['auth']], function () {
 	  'as'=>'animal-create',
 	  'uses'=>'AnimalController@create'
 	]);
+//Bademecum
+
+	/*-------------------------------------------*/
+	Route::resource('badamecum','Veterinary\BadamecumController');
+
+
+	Route::get('badamecum',[
+	  'as'=>'badamecum-farm',
+	  'uses'=>'Veterinary\BadamecumController@index'
+	]);
+
+	Route::get('badamecum/{slug}',[
+	'as'=>'badamecum-detail',
+	'uses'=>'Veterinary\BadamecumController@show'
+	]);
+
+//Sale Animal.
+
+	Route::resource('sale','SaleAnimalController');
+
+	Route::get('sale/{slug}',[
+	'as'=>'create-sale',
+	'uses'=>'SaleAnimalController@show'
+	]);
+
+	Route::get('sale',[
+	'as'=>'to-sale',
+	'uses'=>'SaleAnimalController@show'
+	]);
+
+	Route::get('sale/info/{slug}',[
+	'as'=>'info-sale',
+	'uses'=>'SaleAnimalController@index'
+	]);
+
+
+	
+
+	
 
 	
 

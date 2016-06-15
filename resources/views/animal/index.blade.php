@@ -17,6 +17,9 @@
                                 </a>                                
                             <div class="caption">                                        
                                 <h3 >{{$animal->name}}</h3>
+                                @if($animal->status==1)
+                                <a href="{{route('info-sale',$animal->slug)}}"><i class="fa fa-info"   aria-hidden="true"></i>En venta</a>
+                                @endif
                             </div>
                             </div>
                         </div>

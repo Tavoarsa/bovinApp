@@ -27,13 +27,13 @@
                         <div class="ch-info-front ch-img-1"></div>
                         <div class="ch-info-back">
                             <h5>Busquedad</h5>
-                            <a href="{{ route('search') }}" >Información de Fincas y Animales</a>
+                            <a href="{{ route('search') }}" >Información de Fincas </a>
                         </div>  
                     </div>
                 </div>
             </div>
             <h4 class="slideanim">Rastreabilidad</h4>
-            <p class="slideanim">Busquedad de Fincas y Animales</p>
+            <p class="slideanim">Busquedad de Fincas</p>
         </li>
         <li>
             <div class="ch-item ch-img-2 slideanim">
@@ -41,14 +41,14 @@
                     <div class="ch-info">
                         <div class="ch-info-front ch-img-2"></div>
                         <div class="ch-info-back">
-                            <h5>Irrigation</h5>
-                            <p>Advanced Irrigation Techniques</p>
+                            <h5>Badamecum</h5>
+                            <a href="{{ route('badamecum-index') }}" >Catalago de Productos veterinarios</a>
                         </div>
                     </div>
                 </div>
             </div>
-            <h4 class="slideanim">Irrigation</h4>
-            <p class="slideanim">Using Advanced Irrigation Techniques</p>
+            <h4 class="slideanim">Productos Veterinarios</h4>
+            <p class="slideanim">Badamecum</p>
         </li>
         <li>
             <div class="ch-item ch-img-3 slideanim">
@@ -56,14 +56,14 @@
                     <div class="ch-info">
                         <div class="ch-info-front ch-img-3"></div>
                         <div class="ch-info-back">
-                            <h5>Tools-Machinery</h5>
-                            <p>Using Advanced Tools & Machinery</p>
+                            <h5>Venta de Animlaes</h5>
+                            <a href="{{ route('sale-animal') }}" >Comprar Animales</a>
                         </div>
                     </div>
                 </div>
             </div>
-            <h4 class="slideanim">Tools-Machinery</h4>
-            <p class="slideanim">Using Advanced Tools & Machinery</p>
+            <h4 class="slideanim">Venta de Animlaes</h4>
+            <p class="slideanim">Información de animales en venta</p>
         </li>
         <li>
             <div class="ch-item ch-img-4 slideanim">

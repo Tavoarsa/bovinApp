@@ -11,7 +11,7 @@
                 <div class="product-block">
                 <img src="/img/farm/{{$farm->patent}}" width="300">
                   <p>Certificado de Operación: {{$farm->operationCertificate}}</p>    
-            </div>
+        </div>
                 
             </div>
             <div class="col-md-6">

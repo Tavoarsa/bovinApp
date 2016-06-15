@@ -6,15 +6,15 @@
     <div class="container" text-center>
         <div class="page-header">
             <h1>
-                <i class="fa fa-shopping-cart"></i>
-                PRODUCTOS 
-                <a href="{{ route('admin.product.create') }}" class="btn btn-warning">
+                <i class="fa fa-info"></i>
+                PRODUCTOS VETERINARIOS
+                <a href="{{ route('admin.badamecum.create') }}" class="btn btn-warning">
                     <i class="fa fa-plus-circle"></i> Producto
                 </a>
             </h1>
         </div>
         <div class="page">
-        @if(count($products))
+        @if(count($badamecums))
             
             <div class="table-responsive">
                 <table class="table table-striped table-bordered table-hover">
@@ -23,31 +23,32 @@
                             <th>Editar</th>
                             <th>Eliminar</th>
                             <th>Imagen</th>
-                            <th>Nombre</th>                                                       
+                            <th>Nombre</th>                           
                             <th>Precio</th>
                             <th>Visible</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($products as $product)
+                        @foreach($badamecums as $badamecum)
                             <tr>
                                 <td>
-                                    <a href="{{ route('admin.product.edit', $product->slug) }}" class="btn btn-primary">
+                                    <a href="{{ route('admin.badamecum.edit', $badamecum->slug) }}" class="btn btn-primary">
                                         <i class="fa fa-pencil-square-o"></i>
                                     </a>
                                 </td>
                                 <td>
-                                    {!! Form::open(['route' => ['admin.product.destroy', $product->slug]]) !!}
+                                    {!! Form::open(['route' => ['admin.badamecum.destroy', $badamecum->slug]]) !!}
                                         <input type="hidden" name="_method" value="DELETE">
                                         <button onClick="return confirm('Eliminar registro?')" class="btn btn-danger">
                                             <i class="fa fa-trash-o"></i>
                                         </button>
                                     {!! Form::close() !!}
                                 </td>
-                                <td><img class="img-index" src="{{ $product->image }}"></td>
-                                <td>{{ $product->name }}</td>                           
-                                <td>${{ number_format($product->price,2) }}</td>
-                                <td>{{$product->visible == 1 ? "Si" : "No" }}</td>
+                                <td><img class="img-index" src="/img/badamecum/{{$badamecum->image}}"></td>
+                                <td>{{ $badamecum->name }}</td>                           
+                               
+                                <td>${{ number_format($badamecum->price,2) }}</td>
+                                <td>{{ $badamecum->visible == 1 ? "Si" : "No" }}</td>
                             </tr>
                         @endforeach
                     </tbody>
@@ -57,7 +58,7 @@
             
             <hr>
             
-            <?php echo $products->render(); ?>
+            <?php echo $badamecums->render(); ?>
 
              @else
              <h3><span class="label label-warning">Noy hay productos</span></h3>
