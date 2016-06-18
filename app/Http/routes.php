@@ -287,6 +287,33 @@ Route::group(['middleware' => ['auth']], function () {
 	'uses'=>'SaleAnimalController@index'
 	]);
 
+//Calendar Event
+	Route::get('/calendar', function () {
+
+	$data = [
+		'page_title' => 'Home',
+	];
+	    return view('event/index', $data);
+	});
+
+	Route::resource('events', 'EventController');
+	
+	Route::get('calendar/api', function () {
+		$events = DB::table('events')->select('id', 'name', 'title', 'start_time as start', 'end_time as end')->get();
+		foreach($events as $event)
+		{
+			$event->title = $event->title . ' - ' .$event->name;
+			$event->url = url('events/' . $event->id);
+		}
+		return $events;
+	});
+
+	/*/Route::get('calendar',[
+	'as'=>'calendar',
+	'uses'=>'CalendarEventController@calendar'
+	]);*/
+
+
 
 	
 
