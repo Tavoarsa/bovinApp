@@ -19,9 +19,10 @@ class EventController extends Controller
     public function index()
     {
         $data = [
-            'page_title' => 'Events',
+            'page_title' => 'Eventos',
             'events'     => Event::orderBy('start_time')->get(),
         ];
+        $path = public_path();dd($path);
         
         return view('event/list', $data);
     }
@@ -34,7 +35,7 @@ class EventController extends Controller
     {
         
         $data = [
-            'page_title' => 'Add new event',
+            'page_title' => 'Agregar Nuevo evento',
         ];
         
         return view('event/create', $data);
@@ -86,6 +87,7 @@ class EventController extends Controller
     public function show($id)
     {
         $event = Event::findOrFail($id);
+
         
         $first_date = new DateTime($event->start_time);
         $second_date = new DateTime($event->end_time);

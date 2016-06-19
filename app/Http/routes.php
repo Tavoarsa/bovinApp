@@ -231,7 +231,7 @@ Route::group(['middleware' => ['auth']], function () {
 	  'uses'=>'FarmController@create'
 	]);
 
-//Animal
+//Animal 1-5310883786
 	/*-------------------------------------------*/
 
 	Route::resource('animal','AnimalController');

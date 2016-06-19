@@ -149,7 +149,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
-        MaddHatter\LaravelFullcalendar\ServiceProvider::class,
+       
 
 
         /*
@@ -209,7 +209,7 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
         'Input' => Illuminate\Support\Facades\Input::class,
         'Image' => Intervention\Image\Facades\Image::class,
-        'Calendar' =>MaddHatter\LaravelFullcalendar\Facades\Calendar::class,
+       
         
 
     ],

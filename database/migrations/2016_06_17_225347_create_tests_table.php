@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateEventModelsTable extends Migration
+class CreateTestsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,13 +12,9 @@ class CreateEventModelsTable extends Migration
      */
     public function up()
     {
-        Schema::create('event_models', function (Blueprint $table) {
+        Schema::create('tests', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('title');
-            $table->boolean('allDay');
-             $table->date('start');
-            $table->date('end');
-            $table->string('properties');
+            $table->string('name');
             $table->timestamps();
         });
     }
@@ -30,6 +26,6 @@ class CreateEventModelsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('event_models');
+        Schema::drop('tests');
     }
 }
