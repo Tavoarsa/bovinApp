@@ -55,7 +55,7 @@ class AnimalController extends Controller
                         'name'               => 'required',                       
                         'breed'              => 'required',                      
                         'gender'             => 'required',
-                        'birthdate'          => 'required',
+                        'date'               => 'required',
                         'feature'            => 'required'  
                       );
         $this->validate($request,$rules);
@@ -68,7 +68,7 @@ class AnimalController extends Controller
         $animal->breed=$request->breed;
         $animal->gender=$request->gender;
         $animal->feature=$request->feature;
-        $animal->birthdate=$request->birthdate; 
+        $animal->birthdate=$request->date; 
         $animal->status=$request->status;
 
 

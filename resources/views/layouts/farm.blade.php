@@ -16,8 +16,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
  <!--Datepicker Files -->
  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
 
- <!--<link href="{{asset('datePicker/css/bootstrap-datepicker3.css') }}" rel="stylesheet">-->
- <!--<link href="{{asset('datePicker/css/bootstrap-standalone.css')}}" rel="stylesheet">-->
+
 
 <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.6/lumen/bootstrap.min.css" rel="stylesheet">
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
@@ -82,11 +81,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src="{{ asset('/js/detalle-pedido.js') }}"></script>
 <!--Datepicker Files -->
- <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-  <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
-  <script>
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+<script>
   $(function() {
-    $( "#datepicker" ).datepicker();
+    $( ".date" ).datepicker();
   });
   </script>
 

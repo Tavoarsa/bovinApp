@@ -77,7 +77,7 @@
                          <div class="form-group">
                             <label for="birthdate">Fecha De Nacimiento</label>
                             <div class="input-group">
-                                <input type="text" class="form-control datepicker" name="birthdate">
+                                {!! Form::text('date', null, array("class" => "date")) !!}
                                 <div class="input-group-addon">
                                     <span class="glyphicon glyphicon-th"></span>
                                 </div>
@@ -169,7 +169,7 @@
                              <div class="form-group">
                                 <label for="birthdate">Fecha Nacimiento</label>
                                 <div class="input-group">
-                                    <input type="text" class="form-control datepicker" name="birthdate">
+                                    {!! Form::text('date', null, array("class" => "date")) !!}
                                     <div class="input-group-addon">
                                         <span class="glyphicon glyphicon-th"></span>
                                     </div>
@@ -256,7 +256,7 @@
                              <div class="form-group">
                                 <label for="birthdate">Fecha Nacimiento</label>
                                 <div class="input-group">
-                                    <input type="text" class="form-control datepicker" name="birthdate">
+                                   {!! Form::text('date', null, array("class" => "date")) !!}
                                     <div class="input-group-addon">
                                         <span class="glyphicon glyphicon-th"></span>
                                     </div>
@@ -338,7 +338,7 @@
                                 <label for="birthdate">Fecha Nacimiento</label>
                                 <div class="input-group">
                                   
-                                   {!! Form::text('date', null, array("id" => "datepicker")) !!}
+                                   {!! Form::text('date', null, array("class" => "date")) !!}
                                     <div class="input-group-addon">
                                         <span class="glyphicon glyphicon-th"></span>
                                     </div>
