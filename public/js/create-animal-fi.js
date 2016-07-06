@@ -21,4 +21,4 @@ function archivo(evt) {
                   }
               }
              
-   document.getElementById('files_fi').addEventListener('change', archivo, false);
+ document.getElementById('files_fi').addEventListener('change', archivo, false);

@@ -12,5 +12,10 @@ function ia(){
 document.getElementById('hidden-ia').style.display = 'block';
 }
 
+function add(){
+document.getElementById('add').style.display = 'block';
+}
+
+
 
 

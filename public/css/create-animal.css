@@ -10,6 +10,9 @@ display:none;
 #hidden-ia {
 display:none;
 }
+#add{
+display:none;
+}
 .thumb{
      height: 100px;
      width: 100px;

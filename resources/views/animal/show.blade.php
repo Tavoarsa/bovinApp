@@ -10,27 +10,26 @@
         <h2> {{ $animal->name}}</h2><a href="{{ route('animal.edit', $animal->slug) }}" class="btn btn-primary">
                                         <i class="fa fa-pencil-square-o"></i> Editar</a> <hr>
      
-        
         <div class="row">
             
             <div class="col-md-6">
                 <div class="panel">
                     <i class="fa fa-user icon-home"></i>
-                     <a href="{{url('#') }}"  class="btn btn-warning btn-block btn-home-admin">VACUNAS</a> 
+                     <a href="{{url('vaccine') }}"  class="btn btn-warning btn-block btn-home-admin">VACUNAS</a> 
                 </div>
             </div>
             
             <div class="col-md-6">
                 <div class="panel">
                     <i class="fa fa-shopping-cart  icon-home"></i>
-                    <a href="#" class="btn btn-warning btn-block btn-home-admin">INYECCIONES</a>
+                    <a href="{{url('injecction') }}" class="btn btn-warning btn-block btn-home-admin">INYECCIONES</a>
                 </div>
             </div>
 
              <div class="col-md-6">
                 <div class="panel">
                     <i class="fa fa-shopping-cart  icon-home"></i>
-                    <a href="#" class="btn btn-warning btn-block btn-home-admin">ALIMENTACIÓN</a>
+                    <a  href="{{url('aliment') }}" class="btn btn-warning btn-block btn-home-admin">ALIMENTACIÓN</a>
                 </div>
             </div>
 
@@ -40,6 +39,8 @@
                     <a href="#" class="btn btn-warning btn-block btn-home-admin">PESO</a>
                 </div>
             </div>
+
+            @if($animal->gender=='hembra')
 
             <div class="col-md-6">
                 <div class="panel">
@@ -51,9 +52,11 @@
             <div class="col-md-6">
                 <div class="panel">
                     <i class="fa fa-users  icon-home"></i>
-                    <a href="#" class="btn btn-warning btn-block btn-home-admin">REGISTRO DE CELOS</a>
+                    <a href="{{route('reproduction-index')}}" class="btn btn-warning btn-block btn-home-admin">REGISTRO REPRODUCTIVO</a>
                 </div>
             </div>
+
+            @endif
 
             <div class="col-md-6">
                 <div class="panel">

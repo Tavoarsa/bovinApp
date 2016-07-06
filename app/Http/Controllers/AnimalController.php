@@ -14,8 +14,11 @@ use Auth;
 use Session;
 use Input;
 
+
+
 class AnimalController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -23,9 +26,9 @@ class AnimalController extends Controller
      */
     public function index()
     {
-        $animals= Animal::where('idUser',Auth::id())
+       $animals= Animal::where('idUser',Auth::id())
                 -> paginate(8);
-        return view('animal.index',compact('animals'));
+        return view('animal.index',compact('animals'));    
        
     }
 
@@ -140,6 +143,8 @@ class AnimalController extends Controller
     public function show($slug)
     {
         $animal=Animal::where('slug',$slug)->first();
+        Session::put('animal',$slug); 
+        Session::put('idAnimal',$animal->id);//get idAnimal for store new production register 
         return view('animal.show',compact('animal'));
         
     }

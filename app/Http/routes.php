@@ -77,10 +77,13 @@ Route::get('cotacto', 'FrontController@cotacto');
 //Inyeccion de dependencia
 //Vincula
 //FUNCIÓN ANONIMA:Busca el producto mediante el slug la URl queda vinculada a los metodos.
+
+
 Route::bind('product',function($slug){
 
 	 BovinApp\Product::where('slug',$slug)->first();
 });
+
 
 Route::bind('badamecum',function($slug){
 
@@ -287,6 +290,42 @@ Route::group(['middleware' => ['auth']], function () {
 	'uses'=>'SaleAnimalController@index'
 	]);
 
+//Reproduction
+
+	Route::resource('reproduction','ReproductionController');
+
+	Route::get('reproduction',[
+	  'as'=>'reproduction-index',
+	  'uses'=>'ReproductionController@index'
+	]);
+
+//Vaccines
+	Route::resource('vaccine','VaccineController');
+
+	Route::get('vaccine',[
+	  'as'=>'vaccine-index',
+	  'uses'=>'VaccineController@index'
+	]);	
+
+//Injections
+
+	Route::resource('injecction','InjecctionController');
+
+	Route::get('injecction',[
+	  'as'=>'injecction-index',
+	  'uses'=>'InjecctionController@index'
+	]);
+//Aliment
+
+	Route::resource('aliment','AlimentController');
+
+	Route::get('aliment',[
+	  'as'=>'aliment-index',
+	  'uses'=>'AlimentController@index'
+	]);
+
+
+
 //Calendar Event
 	Route::get('/calendar', function () {
 
@@ -308,11 +347,7 @@ Route::group(['middleware' => ['auth']], function () {
 		return $events;
 	});
 
-	/*/Route::get('calendar',[
-	'as'=>'calendar',
-	'uses'=>'CalendarEventController@calendar'
-	]);*/
-
+	
 
 
 	

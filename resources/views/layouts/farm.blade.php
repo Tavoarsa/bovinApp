@@ -14,7 +14,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
  <link href="{{ asset('/css/catalago.css') }}" rel="stylesheet">
  <link href="{{ asset('/css/create-animal.css') }}" rel="stylesheet">
  <!--Datepicker Files -->
- <link href="{{asset('datePicker/css/bootstrap-datepicker3.css') }}" rel="stylesheet">
+ <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+
+ <!--<link href="{{asset('datePicker/css/bootstrap-datepicker3.css') }}" rel="stylesheet">-->
  <!--<link href="{{asset('datePicker/css/bootstrap-standalone.css')}}" rel="stylesheet">-->
 
 <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.6/lumen/bootstrap.min.css" rel="stylesheet">
@@ -79,16 +81,28 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src="{{ asset('/js/detalle-pedido.js') }}"></script>
-<!--Create new animal-->
+<!--Datepicker Files -->
+ <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+  <script>
+  $(function() {
+    $( "#datepicker" ).datepicker();
+  });
+  </script>
+
+<!--<script src="{{asset('datePicker/js/bootstrap-datepicker.js')}}"></script>-->
+
+<!--<script src="{{asset('datePicker/locales/bootstrap-datepicker.es.min.js')}}"></script>-->
+
 <script src="{{ asset('/js/create-animal.js') }}"></script>
 <script src="{{ asset('/js/create-animal-ia.js') }}"></script>
 <script src="{{ asset('/js/create-animal-fi.js') }}"></script>
 <script src="{{ asset('/js/create-animal-te.js') }}"></script>
-<script src="{{ asset('/js/create-animal-mt.js') }}"></script>
+<script src="{{ asset('/js/create-animal-mt.js') }}"></script> 
+
+
 <script src="{{ asset('/js/create-badamecum.js') }}"></script>
-<!--Datepicker Files -->
-<script src="{{asset('datePicker/js/bootstrap-datepicker.js')}}"></script>
-<script src="{{asset('datePicker/locales/bootstrap-datepicker.es.min.js')}}"></script> 
+
 
 
 

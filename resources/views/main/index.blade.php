@@ -89,14 +89,15 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-4 col-lg-offset-2 slideanim">
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                <p>BovinApp es la aplicación en linea ideal para llevar el registro de las actividades diarias de la finca ganadera. </p>
             </div>
             <div class="col-lg-4 slideanim">
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                <p>LEs una herramienta eficaz para la toma de desiciones en el momento, brindado   al productor soluciones para el mejoramiento productivo de sus animales y su finca.</p>
             </div>
         </div>
     </div>
 </section>
+<!--
 <div class="content-section-a">
     <div class="container">
         <div class="row">
@@ -178,11 +179,12 @@
         </div>
     </div>
 </div>
+-->
 <!-- /About -->
 
 <!-- Portfolio Grid Section -->
 <section id="portfolio">
-    <h3 class="text-center slideanim">Our Portfolio</h3>
+    <h3 class="text-center slideanim">Noticias</h3>
     <div class="container">
         <div class="row">
             <div class="col-md-4 col-sm-6 col-xs-12 portfolio-item slideanim">
@@ -383,7 +385,7 @@
     </div>
 </div>
 <!-- /Portfolio Modals -->
-<!-- Blog -->
+<!-- Blog
 <section class="our-blog" id="blog">
     <h3 class="text-center slideanim">Our Blog</h3>
     <div class="container">
@@ -454,17 +456,17 @@
 <!-- /Blog -->
 <!-- Contact-Us -->
 <section class="contact-us" id="contact">
-    <h3 class="text-center slideanim">Contact Us</h2>
+    <h3 class="text-center slideanim">Contactanos</h2>
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-xs-12 slideanim">
-                <iframe class="googlemaps" src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d380510.6741687111!2d-88.01234121699822!3d41.83390417061058!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1455598377120" frameborder="0" style="border:0" allowfullscreen></iframe>
+                <iframe class="googlemaps" src="https://www.google.com/maps/embed/v1/search?key=AIzaSyDM7jn6qkBe3IjJPK1KzSV0hWitcFv7pMU&q=record+stores+in+Seattle" frameborder="0" style="border:0" allowfullscreen></iframe>
             </div>
             <div class="col-md-4 col-xs-12 slideanim">
-                <h4>Our Contacts :</h4>
-                <p>Phone:123.456.7890</p>
-                <p>Email:<a href="mailto:name@example.com">name@example.com</a></p>
-                <p>Address:3481 Melrose Place,Beverly Hills, Chicago 90210.</p>
+                <h4>Nuestros contactos :</h4>
+                <p>Telefono: 86415183</p>
+                <p>Email:<a href="mailto:name@example.com">tavo.cr23@gmial.com</a></p>
+                <p>Dirección:San Carlos, Costa Rica</p>
             </div>
             <div class="clearfix"></div>
         </div>

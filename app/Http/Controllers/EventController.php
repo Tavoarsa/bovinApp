@@ -22,7 +22,7 @@ class EventController extends Controller
             'page_title' => 'Eventos',
             'events'     => Event::orderBy('start_time')->get(),
         ];
-        $path = public_path();dd($path);
+       
         
         return view('event/list', $data);
     }
