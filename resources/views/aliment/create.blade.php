@@ -37,7 +37,7 @@
                          <div class="form-group">
                             <label for="dateApplication">Fecha De aplicación</label>
                             <div class="input-group">
-                                <input type="text" class="form-control datepicker" name="dateApplication">
+                                {!! Form::text('dateApplication', null, array("class" => "date")) !!}
                                 <div class="input-group-addon">
                                     <span class="glyphicon glyphicon-th"></span>
                                 </div>

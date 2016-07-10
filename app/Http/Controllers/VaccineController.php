@@ -36,7 +36,7 @@ class VaccineController extends Controller
      */
     public function create()
     {
-        $badamecums = Badamecum::all()->pluck('name');
+        $badamecums = Badamecum::all()->lists('name','name'); 
         return view('vaccine.create',compact('badamecums'));
     }
 

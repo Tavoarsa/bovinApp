@@ -23,19 +23,8 @@
                         
         
                         <div class="form-group">
-                            <label for="heat_date">Fecha de Celo:</label>
-                            
-                            {!! 
-                                Form::text(
-                                    'heat_date', 
-                                    null, 
-                                    array(
-                                        'class'=>'form-control',
-                                        'placeholder' => 'Ingresa el nombre...',
-                                        'autofocus' => 'autofocus'
-                                    )
-                                ) 
-                            !!}
+                            <label for="heat_date">Fecha de Celo:</label>                            
+                            {!! Form::text('heat_date', null, array("class" => "date")) !!}
                         </div>
 
                         <div class="form-group">
@@ -44,36 +33,16 @@
                         </div>
                         <div class="form-group">
                             <label for="likely_date">Fecha aproximada de parto :</label>
-                            
-                            {!! 
-                                Form::text(
-                                    'likely_date', 
-                                    null, 
-                                    array(
-                                        'class'=>'form-control',
-                                        'placeholder' => 'Ingresa el numero de certificado...',
-                                    )
-                                ) 
-                            !!}
+                           {!! Form::text('likely_date', null, array("class" => "date")) !!}
                         </div>
                         
                         <div class="form-group">
-                            <label for="palpation_date">Fecha de palpación:</label>
-                            
-                            {!! 
-                                Form::text(
-                                    'palpation_date', 
-                                    null, 
-                                    array(
-                                        'class'=>'form-control',
-                                         'placeholder' => 'Ingresa el tipo de explotación de la finca ..',
-                                    )
-                                ) 
-                            !!}
+                            <label for="palpation_date">Fecha de palpación:</label>                            
+                            {!! Form::text('palpation_date', null, array("class" => "date")) !!}
                         </div>
                         
                         <div class="form-group">
-                            <label for="parturition">TIpo de parto:</label>
+                            <label for="parturition">Tipo de parto:</label>
                             
                             {!! 
                                 Form::text(
@@ -81,7 +50,7 @@
                                     null, 
                                     array(
                                         'class'=>'form-control',
-                                        'placeholder' => 'Ingresa la dirección...',
+                                        'placeholder' => 'Ingresa el tipo de parto.',
                                     )
                                 ) 
                             !!}
@@ -96,7 +65,7 @@
                                     null, 
                                     array(
                                         'class'=>'form-control',
-                                        'placeholder' => 'Ingresa la url de la imagen...',
+                                        'placeholder' => 'Ingresa el sexo del becerro..',
                                     )
                                 ) 
                             !!}
@@ -111,7 +80,7 @@
                                     null, 
                                     array(
                                         'class'=>'form-control',
-                                        'placeholder' => 'Ingresa la url de la imagen...',
+                                        'placeholder' => 'Intervalo entre partos',
                                     )
                                 ) 
                             !!}
@@ -120,16 +89,7 @@
                          <div class="form-group">
                             <label for="abortion_date">Fecha de Aborto:</label>
                             
-                            {!! 
-                                Form::text(
-                                    'abortion_date', 
-                                    null, 
-                                    array(
-                                        'class'=>'form-control',
-                                        'placeholder' => 'Ingresa la url de la imagen...',
-                                    )
-                                ) 
-                            !!}
+                          {!! Form::text('abortion_date', null, array("class" => "date")) !!}
                         </div> 
                          <div class="form-group">
                             <label for="months_gestation">Meses de gestación:</label>
@@ -140,7 +100,7 @@
                                     null, 
                                     array(
                                         'class'=>'form-control',
-                                        'placeholder' => 'Ingresa la url de la imagen...',
+                                        'placeholder' => 'Meses degestación',
                                     )
                                 ) 
                             !!}
@@ -155,7 +115,7 @@
                                     null, 
                                     array(
                                         'class'=>'form-control',
-                                        'placeholder' => 'Ingresa la url de la imagen...',
+                                        'placeholder' => 'Periodo Abierto.',
                                     )
                                 ) 
                             !!}

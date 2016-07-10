@@ -299,6 +299,42 @@ Route::group(['middleware' => ['auth']], function () {
 	  'uses'=>'ReproductionController@index'
 	]);
 
+//price_weight
+	Route::resource('price_weight','Price_WeightController');
+
+	Route::get('price_weight',[
+	  'as'=>'price_weight-index',
+	  'uses'=>'Price_WeightController@index'
+	]);
+
+//Weight
+
+
+	Route::resource('weight','WeightController');
+
+	Route::get('weight',[
+	  'as'=>'weight-index',
+	  'uses'=>'WeightController@index'
+	]);
+
+
+//Production
+
+	Route::resource('production','ProductionController');
+
+	Route::get('production',[
+	  'as'=>'production-index',
+	  'uses'=>'ProductionController@index'
+	]);
+//price_milk
+
+	Route::resource('price_milk','price_MilkController');
+
+	Route::get('price_milk',[
+	  'as'=>'price_milk-index',
+	  'uses'=>'price_MilkController@index'
+	]);
+
 //Vaccines
 	Route::resource('vaccine','VaccineController');
 
@@ -323,6 +359,32 @@ Route::group(['middleware' => ['auth']], function () {
 	  'as'=>'aliment-index',
 	  'uses'=>'AlimentController@index'
 	]);
+
+//Report
+
+	Route::get('report/reproduction',[
+		'as'=>'report-reproduction',
+		'uses'=>'ReportController@report_reproduction'
+
+		]);
+
+	Route::get('report/production',[
+		'as'=>'report-production',
+		'uses'=>'ReportController@report_production'
+
+		]);
+
+	Route::get('report/weight',[
+		'as'=>'report-weight',
+		'uses'=>'ReportController@report_weight'
+
+		]);
+	
+	
+	
+
+	
+
 
 
 

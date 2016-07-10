@@ -5,10 +5,8 @@
 <div class="container text-center">
         <div class="page-header">           
             <h1>
-                Registro Reproductivo: {{$animals->name}}<br>
-
-
-                <a  value="Mostrar" onclick="add()" class="btn btn-warning"><i class="fa fa-plus-circle"></i> Agregar</a>
+                <a  value="Mostrar" onclick="add()" class="btn btn-warning"> <i class="fa fa-plus-circle"></i> Agregar</a>
+                <a href="{{ route('report-reproduction') }}" class="btn btn-warning"><i class="fa fa-list-alt"></i>Reporte</a>
             </h1>        
         </div>
 
@@ -30,9 +28,9 @@
                             'files' => true)) !!}
                         
                         <div class="form-group">
-                            <label for="birthdate">Fecha Del Celo</label>
+                            <label for="heat_date">Fecha Del Celo</label>
                             <div class="input-group">
-                                <input type="text" class="form-control datepicker" name="birthdate">
+                                {!! Form::text('heat_date', null, array("class" => "date")) !!}
                                 <div class="input-group-addon">
                                     <span class="glyphicon glyphicon-th"></span>
                                 </div>
@@ -40,7 +38,7 @@
                         </div>                   
                         <div class="form-group">
                             {!! Form::submit('Guardar', array('class'=>'btn btn-primary')) !!}
-                            <a href="{{route('reproduction-index',$animals->slug)}}" class="btn btn-warning">Cancelar</a>
+                            <a href="#" class="btn btn-warning">Cancelar</a>
                         </div>                    
                     {!! Form::close() !!}                    
                 </div>

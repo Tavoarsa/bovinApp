@@ -32,7 +32,8 @@
                         </div>
                         
                         <div class="form-group">
-                            <label for="vaccineName">Vacuna:</label>                            
+                            <label for="vaccineName">Vacuna:</label>
+                                                        
                              {!!Form::select('vaccineName',$badamecums,["class" => "form-control"])!!}
                               <a href="#"><i class="fa fa-info"   aria-hidden="true"></i>Detalle</a>
                         </div>
@@ -42,7 +43,7 @@
                          <div class="form-group">
                             <label for="dateApplication">Fecha De aplicación</label>
                             <div class="input-group">
-                                <input type="text" class="form-control datepicker" name="dateApplication">
+                               {!! Form::text('dateApplication', null, array("class" => "date")) !!}
                                 <div class="input-group-addon">
                                     <span class="glyphicon glyphicon-th"></span>
                                 </div>
@@ -52,7 +53,7 @@
                           <div class="form-group">
                             <label for="boosterInjection">Fecha proxima aplicación</label>
                             <div class="input-group">
-                                <input type="text" class="form-control datepicker" name="boosterInjection">
+                               {!! Form::text('boosterInjection', null, array("class" => "date")) !!}
                                 <div class="input-group-addon">
                                     <span class="glyphicon glyphicon-th"></span>
                                 </div>

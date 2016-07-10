@@ -41,6 +41,8 @@ $app->singleton(
     BovinApp\Exceptions\Handler::class
 );
 
+
+
 /*
 |--------------------------------------------------------------------------
 | Return The Application

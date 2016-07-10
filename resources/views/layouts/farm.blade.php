@@ -7,12 +7,16 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <html>
 <head>
 <title>Mi finca</title>
+
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="BovinApp,agropecuaria,trazabilidad,san carlos, dos pinos, rastreabilidad" />
 <!-- css links -->
  <link href="{{ asset('/css/catalago.css') }}" rel="stylesheet">
  <link href="{{ asset('/css/create-animal.css') }}" rel="stylesheet">
+
+
  <!--Datepicker Files -->
  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
 

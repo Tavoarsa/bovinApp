@@ -16,6 +16,10 @@ function add(){
 document.getElementById('add').style.display = 'block';
 }
 
+function price(){
+document.getElementById('price').style.display = 'block';
+}
+
 
 
 

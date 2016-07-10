@@ -38,13 +38,13 @@ class ReproductionController extends Controller
               //Validaciones
         $rules =array(         
                         
-                        'birthdate'          => 'required'                         
+                        'heat_date'          => 'required'                         
                       );
         $this->validate($request,$rules);
         
         $production= new Reproduction();
         $production->idAnimal=Session::get('idAnimal');
-        $production->heat_date=$request->birthdate;
+        $production->heat_date=$request->heat_date;
         $production->save();
 
        

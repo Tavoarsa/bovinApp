@@ -4,7 +4,7 @@
    <div class="page-header">
 			<h1>
 				<i class="fa fa-pencil-square-o"></i>
-				Alimentos<small>[Editar Alimento]</small>
+				REGISTRO LECHERO<small>[Editar Registro]</small>
 			</h1>
 		</div>
 
@@ -17,64 +17,59 @@
                         @include('admin.partials.errors')
                     @endif
                     
-                    {!! Form::model($aliment, array('route' => array('aliment.update', $aliment->id))) !!}
+                    {!! Form::model($production, array('route' => array('production.update', $production->id))) !!}
                     
                         <input type="hidden" name="_method" value="PUT">                    
                         
         
-                        
-                        
                         <div class="form-group">
-                            <label for="alimentName">Alimento:</label>
+                            <label for="date">Fecha:</label>                            
+                            {!! Form::text('date', null, array("class" => "date")) !!}
+                        </div>
+                        <div class="form-group">
+                            <label for="morning_production">Mañana:</label>
                             
-                             {!! Form::select('alimentName', array('Concetrado' => 'Concetrado', 'Silo' => 'Silo','Sal' => 'Sal'), 'Sal',["class" => "form-control"])!!}
+                            {!! 
+                                Form::text(
+                                    'morning_production', 
+                                    null, 
+                                    array(
+                                        'class'=>'form-control',                                       
+                                        'autofocus' => 'autofocus',
+                                        'placeholder' => 'Ingresa la cantidad de leche...'
+                                    )
+                                ) 
+                            !!}
+
+                            <label for="mastitis"> Mastitis: </label>
+
+                            {!!Form::checkbox('mastitis_morning',1)!!}
+                            
+                            
                         </div>
                         
-                       
-                     
-                         <div class="form-group">
-                            <label for="dateApplication">Fecha De aplicación</label>
-                            <div class="input-group">
-                                {!! Form::text('dateApplication', null, array("class" => "date")) !!}
-                                <div class="input-group-addon">
-                                    <span class="glyphicon glyphicon-th"></span>
-                                </div>
-                            </div>
-                        </div>
-
 
                          <div class="form-group">
-                            <label for="dose">Dosis:</label>
+                            <label for="later_production">Tarde</label>
                             
                             {!! 
                                 Form::text(
-                                    'dose', 
+                                    'later_production', 
                                     null, 
                                     array(
                                         'class'=>'form-control',
-                                        'placeholder' => 'Ingresa la dosis aplicada...',
+                                        'placeholder' => 'Ingresa la cantidad de leche...',
                                         'autofocus' => 'autofocus',
-                                        'required' => 'required'
+                                        'value'=>0
                                     )
                                 ) 
                             !!}
-                        </div>
-                         <div class="form-group">
-                            <label for="responsible">Responsable:</label>
+
+                             <label for="mastitis"> Mastitis: </label>
                             
-                            {!! 
-                                Form::text(
-                                    'responsible', 
-                                    null, 
-                                    array(
-                                        'class'=>'form-control',
-                                        'placeholder' => 'Ingresa el nombre del responsable...',
-                                        'autofocus' => 'autofocus',
-                                        'required' => 'required'
-                                    )
-                                ) 
-                            !!}
-                        </div>                        
+                            {!!Form::checkbox('mastitis_later',1)!!}
+                        </div> 
+                      
                 
                         
                         

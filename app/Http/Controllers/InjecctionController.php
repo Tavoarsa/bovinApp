@@ -36,8 +36,8 @@ class InjecctionController extends Controller
      */
     public function create()
     {
-        
-        return view('injecction.create');
+         $badamecums = Badamecum::all()->lists('name','name'); 
+        return view('injecction.create',compact('badamecums'));
     }
 
     /**
