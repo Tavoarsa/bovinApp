@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use BovinApp\Http\Requests;
 
 use BovinApp\Event;
+use Auth;
 use DateTime;
 
 class EventController extends Controller
@@ -47,8 +48,8 @@ class EventController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-       
+    { 
+
 
         $rules= array(
 
@@ -67,15 +68,20 @@ class EventController extends Controller
         ]);*/
         
         $time = explode(" - ", $request->input('time'));
+        //dd($this->change_date_format($time[0]));
+       
         
         $event                  = new Event;
+        $event->idUser =        Auth::id();
+        //$event->allDay =    $request->has('visible') ? 1 : 0,
         $event->name            = $request->input('name');
-        $event->title           = $request->input('title');
+        $event->title           = $request->input('name');
+        $event->properties      = $request->input('title');
         $event->start_time      = $this->change_date_format($time[0]);
         $event->end_time        = $this->change_date_format($time[1]);
         $event->save();
        
-        $request->session()->flash('success', 'The event was successfully saved!');
+        $request->session()->flash('Bien!!', 'El evento se guardo existosamente');
         return redirect('events/create');
     }
     /**
@@ -133,6 +139,8 @@ class EventController extends Controller
             'title' => 'required|min:5|max:100',
             'time'  => 'required'
         ]);
+
+
         
         $time = explode(" - ", $request->input('time'));
         
@@ -161,8 +169,8 @@ class EventController extends Controller
     
     public function change_date_format($date)
     {
-        $time = DateTime::createFromFormat('d/m/Y H:i:s', $date);
-        return $time->format('Y-m-d H:i:s');
+        $time = DateTime::createFromFormat('d/m/Y', $date);
+        return $time->format('Y-m-d ');
     }
     
     public function change_date_format_fullcalendar($date)

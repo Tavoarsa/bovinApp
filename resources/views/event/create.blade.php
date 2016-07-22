@@ -22,7 +22,7 @@
 
 			<div class="form-group @if($errors->has('name')) has-error has-feedback @endif">
 				<label for="name">Your Name</label>
-				<input type="text" class="form-control" name="name" placeholder="E.g. Pisyek" value="{{ old('name') }}">
+				<input type="text" class="form-control" name="name" placeholder="Ej: Gustavo" value="{{ old('name') }}">
 				@if ($errors->has('name'))
 					<p class="help-block"><span class="glyphicon glyphicon-exclamation-sign"></span> 
 					{{ $errors->first('name') }}
@@ -31,7 +31,7 @@
 			</div>
 			<div class="form-group @if($errors->has('title')) has-error has-feedback @endif">
 				<label for="title">Title</label>
-				<input type="text" class="form-control" name="title" placeholder="E.g. Meeting with CEO Kicap Tawar Hebey" value="{{ old('title') }}">
+				<input type="text" class="form-control" name="title" placeholder="Ej: Vacunación" value="{{ old('title') }}">
 				@if ($errors->has('title'))
 					<p class="help-block"><span class="glyphicon glyphicon-exclamation-sign"></span> 
 					{{ $errors->first('title') }}
@@ -70,7 +70,7 @@ $(function () {
 		"timePickerIncrement": 15,
 		"autoApply": true,
 		"locale": {
-			"format": "DD/MM/YYYY HH:mm:ss",
+			"format": "DD/MM/YYYY",
 			"separator": " - ",
 		}
 	});

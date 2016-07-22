@@ -50,7 +50,7 @@
             <div class="col-md-6">
                 <div class="panel">
                     <i class="fa fa-cc-paypal  icon-home"></i>
-                    <a href="{{ route('admin.order.index') }}" class="btn btn-warning btn-block btn-home-admin">REPORTES</a>
+                    <a href="{{ route('report-weight') }}" class="btn btn-warning btn-block btn-home-admin">REPORTES</a>
                 </div>
             </div> 
             
@@ -64,23 +64,10 @@
             <div class="col-md-6">
                 <div class="panel">
                     <i class="fa fa-users  icon-home"></i>
-                    <a href="{{ route('admin.user.index') }}" class="btn btn-warning btn-block btn-home-admin">CALENDARIO</a>
+                    <a href="{{url('calendar/') }}" class="btn btn-warning btn-block btn-home-admin">CALENDARIO</a>
                 </div>
             </div>
 
-            <div class="col-md-6">
-                <div class="panel">
-                    <i class="fa fa-users  icon-home"></i>
-                    <a href="{{ route('admin.user.index') }}" class="btn btn-warning btn-block btn-home-admin">ALIMENTACION</a>
-                </div>
-            </div>
-
-             <div class="col-md-6">
-                <div class="panel">
-                    <i class="fa fa-users  icon-home"></i>
-                    <a href="{{ route('admin.user.index') }}" class="btn btn-warning btn-block btn-home-admin">SOCIAL</a>
-                </div>
-            </div>
                     
         </div>
         

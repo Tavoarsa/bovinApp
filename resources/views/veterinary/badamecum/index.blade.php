@@ -35,8 +35,7 @@
             @endunless
             <p>
                 <a class="btn btn-primary" href="{{route('dashboard-farm',$farm)}}"><i class="fa fa-rocket"></i>MI FINCA- DASHBOARD</a>          
-            </p>
-            
+            </p>           
                    
        </div>
 

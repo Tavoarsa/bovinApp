@@ -6,7 +6,7 @@
         <div class="page-header">           
             <h1>
                 <a  value="Mostrar" onclick="add()" class="btn btn-warning"> <i class="fa fa-plus-circle"></i> Agregar</a>
-                <a href="{{ route('report-production') }}" class="btn btn-warning"><i class="fa fa-list-alt"></i>  Reporte</a>
+                <a href="{{ route('report-production_mastitis') }}" class="btn btn-warning"><i class="fa fa-list-alt"></i>  Reporte</a>
             </h1>        
             <h3>
                 Precio por kilo: {{$price_milk}}
@@ -145,7 +145,9 @@
                                 <th>Editar</th>                            
                                 <th>Fecha</th>                         
                                 <th>Mañana</th>
+                                <th>Mastitis</th>
                                 <th>Tarde</th>
+                                <th>Mastitis</th>
                                 <th>Total</th>                                
                             </tr>
                         </thead>
@@ -159,8 +161,11 @@
                                 </td>                                
                                 <td>{{ $production->date }}</td>
                                 <td>{{ $production->morning_production }}</td>
+                                 <td>{{ $production->mastitis_morning == 1 ? "Si" : "No" }}</td>
                                 <td>{{ $production->later_production }}</td>
+                                 <td>{{ $production->mastitis_later == 1 ? "Si" : "No" }}</td>
                                 <td>{{ $production->total_production }}</td>
+
                                 
                                 
                             </tr>

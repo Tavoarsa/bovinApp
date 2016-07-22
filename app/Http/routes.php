@@ -1,5 +1,7 @@
 <?php
 
+
+
 /*
 |--------------------------------------------------------------------------
 | Routes File
@@ -23,6 +25,20 @@
 */
 
 Route::group(['middleware' => ['web']], function () {
+
+
+	/*Route::get('mail/queue',function(){
+
+		  Mail::later(5,'email.queued_email',["name"=>"TAVO"],function ($m) {           
+
+            $m->to('tavo.cr23@gmail.com', 'TAVO')->subject('Good!');
+        });
+
+		  return "Email 5 seconds";
+
+
+
+	});*/
 
 
 
@@ -371,6 +387,11 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::get('report/production',[
 		'as'=>'report-production',
 		'uses'=>'ReportController@report_production'
+
+		]);
+	Route::get('report/production_mastitis',[
+		'as'=>'report-production_mastitis',
+		'uses'=>'ReportController@mastitis_milk'
 
 		]);
 

@@ -2,10 +2,12 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Registro Productivo del aimal: {{$animals->name}}</title>
+	<title>Registro Productivo del aimal: </title>
 	<link rel="stylesheet" type="text/css" href="css/report/table.css">
 </head>
 <body>
+
+
 
 <div >
     <table >
@@ -30,7 +32,9 @@
             </tr>
         @endforeach
         </tbody>                    
-   </table><hr>                
+   </table><hr> 
+
+              
 </div>
 	
 </body>
