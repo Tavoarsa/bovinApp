@@ -6,7 +6,7 @@
         <div class="page-header">           
             <h1>
                 <a  value="Mostrar" onclick="add()" class="btn btn-warning"> <i class="fa fa-plus-circle"></i> Agregar</a>
-                <a href="{{ route('report-production_mastitis') }}" class="btn btn-warning"><i class="fa fa-list-alt"></i>  Reporte</a>
+                <a href="{{ route('report-production') }}" class="btn btn-warning"><i class="fa fa-list-alt"></i>  Reporte Productivo</a>
             </h1>        
             <h3>
                 Precio por kilo: {{$price_milk}}
@@ -171,7 +171,8 @@
                             </tr>
                         @endforeach
                     </tbody>                    
-                    </table><hr>                
+                    </table><hr> 
+                      <a type="button"  href="{{ route('report-production') }}"  class="btn btn-secondary"><i class="fa fa-thumbs-down" aria-hidden="true"></i>REPORTE MASTITIS</a>               
                 </div>
                 
             </div>

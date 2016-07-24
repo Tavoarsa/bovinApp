@@ -378,6 +378,14 @@ Route::group(['middleware' => ['auth']], function () {
 
 //Report
 
+	//Route::resource('report','ReportController');
+
+
+	Route::get('report',[
+	  'as'=>'dashboard-report',
+	  'uses'=>'ReportController@index'
+	]);
+
 	Route::get('report/reproduction',[
 		'as'=>'report-reproduction',
 		'uses'=>'ReportController@report_reproduction'
@@ -389,9 +397,31 @@ Route::group(['middleware' => ['auth']], function () {
 		'uses'=>'ReportController@report_production'
 
 		]);
+
+	Route::get('report/veterinary',[
+		'as'=>'report-veterinary',
+		'uses'=>'ReportController@report_veterinary'
+
+		]);
+
+	Route::get('report/vaccine',[
+		'as'=>'report-vaccine',
+		'uses'=>'ReportController@report_vaccine'
+
+		]);
+	Route::get('report/injecction',[
+		'as'=>'report-injecction',
+		'uses'=>'ReportController@report_injecction'
+
+		]);
 	Route::get('report/production_mastitis',[
 		'as'=>'report-production_mastitis',
 		'uses'=>'ReportController@mastitis_milk'
+
+		]);
+	Route::get('report/mastitis',[
+		'as'=>'report-animals_mastitis',
+		'uses'=>'ReportController@animals_mastitis'
 
 		]);
 

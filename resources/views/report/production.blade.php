@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>Registro Productivo del aimal: </title>
-	<link rel="stylesheet" type="text/css" href="css/report/table.css">
+  <meta charset="UTF-8">
+  <title>Reporte Producción Lechera</title>
+  <link rel="stylesheet" type="text/css" href="css/report/table.css">
 </head>
 <body>
+  <h1>Registro Productivo</h1>
+  <h2>Animal:{{$animals->slug}} </h2>
+  <h3>Fecha de Emisión: </h3>
 
-
-
-<div >
+<div class="table-cart">  
     <table >
         <thead>
-            <tr>
-                                        
+            <tr>                                        
                 <th>Fecha</th>                         
                 <th>Mañana</th>
                 <th>Tarde</th>
@@ -32,10 +32,10 @@
             </tr>
         @endforeach
         </tbody>                    
-   </table><hr> 
+   </table><hr>              
 
-              
-</div>
-	
+ </div>    
+        
+  
 </body>
 </html>

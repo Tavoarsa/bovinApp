@@ -6,9 +6,11 @@
   <link rel="stylesheet" type="text/css" href="css/report/table.css">
 </head>
 <body>
-  <h1>Registro Reproductivo del animal: {{$animals->name}}</h1>
+  <h1>Registro Reproductivo</h1>
+  <h2>Animal:{{$animals->slug}} </h2>
   <h3>Fecha de Emisión: </h3>
-   <div class="table-responsive">
+
+ <div class="table-responsive">
         <table class="table table-striped table-hover table-bordered">
             <thead>
                 <tr>
@@ -36,10 +38,16 @@
             @endforeach
             </tbody>                    
         </table><hr>                            
-     </div>
+     
+ </div>         
   
 </body>
 </html>
+
+
+
+
+
 
 
 

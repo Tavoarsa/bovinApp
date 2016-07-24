@@ -33,6 +33,13 @@
                 </div>
             </div>
 
+            <div class="col-md-6">
+                <div class="panel">
+                    <i class="fa fa-users  icon-home"></i>
+                    <a href="{{ route('report-animals_mastitis') }}" class="btn btn-warning btn-block btn-home-admin">MASTITIS</a>
+                </div>
+            </div>
+
           
 
             <div class="col-md-6">
@@ -45,14 +52,8 @@
         </div>
        
         
-        <div class="row">
-            
-            <div class="col-md-6">
-                <div class="panel">
-                    <i class="fa fa-cc-paypal  icon-home"></i>
-                    <a href="{{ route('report-weight') }}" class="btn btn-warning btn-block btn-home-admin">REPORTES</a>
-                </div>
-            </div> 
+        
+           
             
             <div class="col-md-6">
                 <div class="panel">
@@ -69,7 +70,7 @@
             </div>
 
                     
-        </div>
+        
         
     </div>
     <hr>
