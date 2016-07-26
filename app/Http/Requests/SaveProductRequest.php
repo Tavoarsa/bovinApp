@@ -27,8 +27,7 @@ class SaveProductRequest extends Request
             'name'          => 'required',
             'description'   => 'required',
             'extract'       => 'required',
-            'price'         => 'required',
-            'image'         => 'required',
+            'price'         => 'required',            
             'category_id'   => 'required'
         ];
     }

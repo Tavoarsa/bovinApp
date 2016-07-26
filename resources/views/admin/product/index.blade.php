@@ -44,7 +44,7 @@
                                         </button>
                                     {!! Form::close() !!}
                                 </td>
-                                <td><img class="img-index" src="{{ $product->image }}"></td>
+                                <td>  <img class="img-index" src="/img/product/{{$product->image}}" ></td>
                                 <td>{{ $product->name }}</td>                           
                                 <td>${{ number_format($product->price,2) }}</td>
                                 <td>{{$product->visible == 1 ? "Si" : "No" }}</td>
@@ -64,6 +64,10 @@
             @endif
             
         </div>
+        <div align="center">
+         <a class="btn btn-primary" href="{{url('admin')}}"><i class="fa fa-chevron-circle-left"></i>REGRESAR</a>      
+        </div>
+         
 
     </div>
 </div>

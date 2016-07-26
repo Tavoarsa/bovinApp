@@ -86,20 +86,15 @@
                             !!}
                         </div>
                         
-                        <div class="form-group">
-                            <label for="image">Imagen:</label>
-                            
-                            {!! 
-                                Form::text(
-                                    'image', 
-                                    null, 
-                                    array(
-                                        'class'=>'form-control',
-                                        'placeholder' => 'Ingresa la url de la imagen...',
-                                    )
-                                ) 
-                            !!}
-                        </div>
+                       <div class="controls">
+                                {!!Form::label('image', 'Foto')!!}
+                                
+                                <input id="files" type="file" name="image" />
+                                <br />
+                                <output  class="img-index" id="list"></output> 
+                                                            
+                             </div>
+                             <hr>
                         
                         <div class="form-group">
                             <label for="visible">Visible:</label>
@@ -125,9 +120,10 @@
                 </div>
                 
             </div>
-        </div>
-        
+        </div>        
 
 	</div>
+
+<script src="{{ asset('/js/preview_createProduct.js') }}"></script>
 
 @stop

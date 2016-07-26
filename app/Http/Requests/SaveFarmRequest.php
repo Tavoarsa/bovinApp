@@ -29,7 +29,7 @@ class SaveFarmRequest extends Request
             'agent'                  => 'required',
             'operationCertificate'   => 'required',
             'exploitation'           => 'required',
-            'patent'                 => 'required'
+            
         ];
     }
 }

@@ -374,6 +374,17 @@
 	</div>
 </div>
 
+
+
+
+<script src="{{ asset('/js/create-animal.js') }}"></script>
+<script src="{{ asset('/js/create-animal-ia.js') }}"></script>
+<script src="{{ asset('/js/create-animal-fi.js') }}"></script>
+<script src="{{ asset('/js/create-animal-te.js') }}"></script>
+<script src="{{ asset('/js/create-animal-mt.js') }}"></script>
+
+
+
 @stop
 
 

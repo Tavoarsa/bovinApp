@@ -13,12 +13,23 @@ class DashboardController extends Controller
 {
   
 
-	public function get_farm($id)
+	public function get_farm($slug)
 	{
+		$farm = Farm::where('slug',$slug)->first(); 
 		//INSERCCIÓN DE SLUG DE LA FINCA SELECCIONADA 		
-		Session::put('farm',$id);		
+		Session::put('farm',$slug);
+		Session::put('idfarm',$farm->id);			
 		return	view('dashboard');
 	}
+
+
+	public function get_id_farm($id)
+	{
+		//INSERCCIÓN DE SLUG DE LA FINCA SELECCIONADA 		
+			
+		return	view('dashboard');
+	}
+
 }
 
 	

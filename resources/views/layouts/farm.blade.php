@@ -29,6 +29,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 </head>
 
+
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
 @if(\Session::has('message'))
         @include('admin.partials.message')
@@ -43,7 +44,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand main-title">Bovinapp.com</a>
+          <a class="navbar-brand main-title">Administración</a>
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -64,7 +65,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         </div>
       </div>
     </nav>
-
 
 @yield('content')
 
@@ -97,14 +97,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 <!--<script src="{{asset('datePicker/locales/bootstrap-datepicker.es.min.js')}}"></script>-->
 
-<script src="{{ asset('/js/create-animal.js') }}"></script>
-<script src="{{ asset('/js/create-animal-ia.js') }}"></script>
-<script src="{{ asset('/js/create-animal-fi.js') }}"></script>
-<script src="{{ asset('/js/create-animal-te.js') }}"></script>
-<script src="{{ asset('/js/create-animal-mt.js') }}"></script> 
+ 
 
 
-<script src="{{ asset('/js/create-badamecum.js') }}"></script>
+
 
 
 

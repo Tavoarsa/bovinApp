@@ -22,7 +22,7 @@
             <div class="col-md-6">
                 <div class="panel">
                     <i class="fa fa-shopping-cart  icon-home"></i>
-                    <a href="{{route('farm-index') }}" class="btn btn-warning btn-block btn-home-admin">FINCA</a>
+                    <a href="{{route('farm-info') }}" class="btn btn-warning btn-block btn-home-admin">FINCA</a>
                 </div>
             </div>
 
@@ -67,12 +67,14 @@
                     <i class="fa fa-users  icon-home"></i>
                     <a href="{{url('calendar/') }}" class="btn btn-warning btn-block btn-home-admin">CALENDARIO</a>
                 </div>
-            </div>
-
-                    
+            </div> 
+            <p>
+                <a class="btn btn-primary" href="{{ route('farm-index') }}"><i class="fa fa-chevron-circle-left"></i>REGRESAR</a>   
+            </p>           
         
         
     </div>
+
     <hr>
 
 @stop

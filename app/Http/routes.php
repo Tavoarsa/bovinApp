@@ -26,24 +26,6 @@
 
 Route::group(['middleware' => ['web']], function () {
 
-
-	/*Route::get('mail/queue',function(){
-
-		  Mail::later(5,'email.queued_email',["name"=>"TAVO"],function ($m) {           
-
-            $m->to('tavo.cr23@gmail.com', 'TAVO')->subject('Good!');
-        });
-
-		  return "Email 5 seconds";
-
-
-
-	});*/
-
-
-
-
-
 Route::get('/',[
 
 	'as'=>'home',
@@ -90,26 +72,9 @@ Route::get('cotacto', 'FrontController@cotacto');
 
 
 
-//Inyeccion de dependencia
-//Vincula
-//FUNCIÓN ANONIMA:Busca el producto mediante el slug la URl queda vinculada a los metodos.
 
 
-Route::bind('product',function($slug){
 
-	 BovinApp\Product::where('slug',$slug)->first();
-});
-
-
-Route::bind('badamecum',function($slug){
-
-	 return BovinApp\Badamecum::where('slug',$slug)->first();
-});
-
-// Category dependency injection, function anonima
-Route::bind('category', function($category){
-    return BovinApp\Category::find($category);
-});
 
 
 //FUNCIÓN ANONIMA:Busca el producto mediante el slug la URl queda vinculada a los metodos.
@@ -211,17 +176,62 @@ Route::get('payment/status', array(
 
 //Admin
 //-----------------------------------------------------------------------------------------
-Route::get('admin',['middleware' => 'auth',function(){
-	return view('admin.home');
-}]);
+Route::group(['middleware' => 'auth'], function () {
 
 
-Route::group(['middleware' => ['auth']], function () {
-   
-  	Route::resource('admin/category','Admin\CategoryController');
+    Route::get('admin', function () {
+        return view('admin.home');
+    });
+
+    //Inyeccion de dependencia
+//Vincula
+//FUNCIÓN ANONIMA:Busca el producto mediante el slug la URl queda vinculada a los metodos.
+
+
+Route::bind('product',function($slug){
+
+	  return BovinApp\Product::where('slug',$slug)->first();
+});
+
+
+Route::bind('badamecum',function($slug){
+
+	 return BovinApp\Badamecum::where('slug',$slug)->first();
+});
+
+// Category dependency injection, function anonima
+Route::bind('category', function($category){
+    return BovinApp\Category::find($category);
+});
+
+
+
+    Route::resource('admin/category','Admin\CategoryController');
 	Route::resource('admin/product','Admin\ProductController');	
 	Route::resource('admin/user','Admin\UserController');
 	Route::resource('admin/badamecum','Admin\BadamecumController');
+
+	Route::get('orders',[
+
+	  'as'=>'admin.order.index',
+	  'uses'=>'Admin\OrderController@index'
+	]);
+Route::post('order/get-items', [
+	    'as' => 'admin.order.getItems',
+	    'uses' => 'Admin\OrderController@getItems'
+	]);
+	Route::get('order/{id}', [
+	    'as' => 'admin.order.destroy',
+	    'uses' => 'Admin\OrderController@destroy'
+	]);
+
+});
+
+
+
+
+
+Route::group(['middleware' => ['auth']], function () { 	
 	
 	
 
@@ -475,19 +485,6 @@ Route::group(['middleware' => ['auth']], function () {
 
 
 
-Route::get('orders',[
-
-	  'as'=>'admin.order.index',
-	  'uses'=>'Admin\OrderController@index'
-	]);
-Route::post('order/get-items', [
-	    'as' => 'admin.order.getItems',
-	    'uses' => 'Admin\OrderController@getItems'
-	]);
-	Route::get('order/{id}', [
-	    'as' => 'admin.order.destroy',
-	    'uses' => 'Admin\OrderController@destroy'
-	]);
 
 
 

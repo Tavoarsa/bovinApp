@@ -69,11 +69,11 @@ class FarmCOntroller extends Controller
 
         $message = $farm ? 'Finca agregada correctamente!' : 'La finca NO pudo agregarse!'; 
 
-        if(Input::hasFile('patent')){    
+        if(Input::hasFile('image')){    
 
-            $file = Input::file('patent');//Creamos una instancia de la libreria instalada
+            $file = Input::file('image');//Creamos una instancia de la libreria instalada
 
-            $patent = \Image::make(\Input::file('patent'));//Ruta donde queremos guardar las imagenes
+            $patent = \Image::make(\Input::file('image'));//Ruta donde queremos guardar las imagenes
             $path = 'img/farm/';          
                 // Cambiar de tamaño
             $patent -> resize(358, 141);
@@ -112,9 +112,9 @@ class FarmCOntroller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($slug)
     {
-        $farm = Farm::findOrFail($id);        
+        $farm = Farm::where('slug',$slug)->first();   
         return view('farm.edit', compact('farm'));       
     }
 
@@ -125,17 +125,43 @@ class FarmCOntroller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(SaveFarmRequest $request, Farm $farm)
+    public function update(Request $request, Farm $farm)
     {
         
 
         $farm->fill($request->all());
-        $farm->slug = str_slug($request->get('name'));        
+        $farm->slug = str_slug($request->get('name'));
+
+       
+        if(Input::hasFile('image')){    
+
+            $file = Input::file('image');//Creamos una instancia de la libreria instalada
+
+            $patent = \Image::make(\Input::file('image'));//Ruta donde queremos guardar las imagenes
+            $path = 'img/farm/';          
+                // Cambiar de tamaño
+            $patent -> resize(358, 141);
+            $patent -> save($path . $file -> getClientOriginalName());  
+            $farm->patent = $file -> getClientOriginalName();;
+            $farm->save();
+
+
+           // return redirect() -> route('farm-index')->with('message', $message);
+        }
+
+        $default =$farm->patent;
+        $farm->patent = $default;
+       
+        
+        $farm->save();
+        
+      
+                
         $updated = $farm->save();
         
         $message = $updated ? 'Finca actualizado correctamente!' : 'La fincaNO pudo actualizarse!';
         
-        return redirect()->route('farm-index')->with('message', $message);
+        return redirect()->route('dashboard-farm',$farm->slug)->with('message', $message);
     }
 
     /**
@@ -149,6 +175,6 @@ class FarmCOntroller extends Controller
         $farm=Farm::find($id);
         $farm->delete();       
         $message = 'Producto eliminado correctamente!';        
-        return redirect()->route('farm-index')->with('message', $message);
+        return redirect()->route('farm-info')->with('message', $message);
     }
 }

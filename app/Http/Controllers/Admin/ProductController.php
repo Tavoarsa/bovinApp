@@ -10,6 +10,7 @@ use BovinApp\Http\Controllers\Controller;
 
 use BovinApp\Product;
 use BovinApp\Category;
+use Input;
 
 class ProductCOntroller extends Controller
 {
@@ -40,19 +41,54 @@ class ProductCOntroller extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function store(SaveProductRequest $request)
+    public function store(Request $request)
     {
-        $data = [
-            'name'          => $request->get('name'),
-            'slug'          => str_slug($request->get('name')),
-            'description'   => $request->get('description'),
-            'extract'       => $request->get('extract'),
-            'price'         => $request->get('price'),
-            'image'         => $request->get('image'),
-            'visible'       => $request->has('visible') ? 1 : 0,
-            'category_id'   => $request->get('category_id')
-        ];
-        $product = Product::create($data);
+
+              //Validaciones
+        $rules =array(              
+                        'name'          => 'required',
+                        'description'   => 'required',
+                        'extract'       => 'required',
+                        'price'         => 'required|integer',                        
+                        'category_id'   => 'required' 
+                      );
+        $this->validate($request,$rules);
+
+        $product= new Product();
+
+        $product->name = $request->get('name');
+        $product->slug = str_slug($request->get('name'));
+        $product->description=$request->get('description');
+        $product->extract=$request->get('extract');
+        $product->price=$request->get('price');
+        $product->visible=$request->has('visible') ? 1 : 0;
+        $product->category_id= $request->category_id;
+        
+
+            //Validacion de imagen 
+        if (Input::hasFile('image')) 
+        {   
+            $file = Input::file('image');//Creamos una instancia de la libreria instalada
+            $image = \Image::make(\Input::file('image'));//Ruta donde queremos guardar las imagenes
+
+            $path = 'img/product/';
+
+            // Cambiar de tamaño
+            $image -> resize(331, 152);
+            $image -> save($path . $file -> getClientOriginalName());   
+            $product->image = $file -> getClientOriginalName();
+            //$animal->save(); 
+            //return redirect() -> route('animal.index');
+         }else
+         {
+            //Si no hay imagen, se guarda una por defecto
+            $image='product';  
+            $default = 'product.jpg';
+            $product->image = $default;              
+            //$animal->save();
+         }
+
+        $product = $product->save();
         $message = $product ? 'Producto agregado correctamente!' : 'El producto NO pudo agregarse!';
         
         return redirect()->route('admin.product.index')->with('message', $message);
@@ -65,6 +101,7 @@ class ProductCOntroller extends Controller
      */
     public function show(Product $product)
     {
+
         return $product;
     }
     /**
@@ -75,7 +112,9 @@ class ProductCOntroller extends Controller
      */
     public function edit(Product $product)
     {
+
         $categories = Category::orderBy('id', 'desc')->lists('name', 'id');
+
         return view('admin.product.edit', compact('categories', 'product'));
     }
     /**
@@ -88,8 +127,37 @@ class ProductCOntroller extends Controller
     public function update(SaveProductRequest $request, Product $product)
     {
         $product->fill($request->all());
+
         $product->slug = str_slug($request->get('name'));
+
         $product->visible = $request->has('visible') ? 1 : 0;
+
+
+           //Validacion de imagen 
+        if (Input::hasFile('image')) 
+        {   
+            $file = Input::file('image');//Creamos una instancia de la libreria instalada
+            $image = \Image::make(\Input::file('image'));//Ruta donde queremos guardar las imagenes
+
+            $path = 'img/product/';
+
+            // Cambiar de tamaño
+            $image -> resize(331, 152);
+            $image -> save($path . $file -> getClientOriginalName());   
+            $product->image = $file -> getClientOriginalName();
+            //$animal->save(); 
+            //return redirect() -> route('animal.index');
+         }else
+         {
+            //Si no hay imagen, se guarda una por defecto
+            $image='product';  
+            $default = 'product.jpg';
+            $product->image = $default;              
+            //$animal->save();
+         }
+
+
+
         
         $updated = $product->save();
         

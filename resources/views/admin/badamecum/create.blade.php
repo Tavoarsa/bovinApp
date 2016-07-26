@@ -19,7 +19,7 @@
                         @include('admin.partials.errors')
                     @endif
                     
-                    {!! Form::open(['route'=>'admin.badamecum.store']) !!}
+                    {!! Form::open(['route'=>'admin.badamecum.store','files' => true]) !!}
                     
                         <div class="form-group">
                             <label class="control-label" for="category_id">Categoría</label>
@@ -144,18 +144,19 @@
                         
                         <div class="form-group">
                             <label for="price">Precio:</label>
+
                             <input type="number" name="price"  placeholder="Ingresa el precio..." required="required" >
                            
                         </div>
-                        
-                        <div class="controls">
+                       <div class="controls">
                                 {!!Form::label('image', 'Foto')!!}
                                 
-                                <input id="files_badamecum" type="file" name="image" />
+                                <input id="files" type="file" name="image" />
                                 <br />
-                                <output id="list_badamecum"></output> 
+                                <output  class="img-index" id="list"></output> 
                                                             
-                        </div>
+                             </div>
+                             <hr>
 
                              
 
@@ -188,5 +189,7 @@
         
 
     </div>
+
+    <script src="{{ asset('/js/create-badamecum.js') }}"></script>
 
 @stop

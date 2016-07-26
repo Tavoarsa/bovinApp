@@ -18,7 +18,7 @@
                         @include('admin.partials.errors')
                     @endif
                     
-                    {!! Form::model($badamecum, array('route' => array('admin.badamecum.update', $badamecum->slug))) !!}
+                    {!! Form::model($badamecum, array('route' => array('admin.badamecum.update', $badamecum->slug),'files' => true)) !!}
                     
                         <input type="hidden" name="_method" value="PUT">
                     
@@ -176,9 +176,9 @@
                                <br/>
                                 <img class="img-index" src="/img/badamecum/{{$badamecum->image}}"></td>
                                 
-                                <input id="files_badamecum" type="file" name="image" />
+                                <input id="files" type="file" name="image" />
                                 <br/>
-                                <output id="list_badamecum"></output> 
+                                <output class="img-index" id="list"></output> 
                                                             
                         </div> 
                         
@@ -192,9 +192,10 @@
                 </div>
                 
             </div>
-        </div>
-        
+        </div>   
 
 	</div>
+
+     <script src="{{ asset('/js/create-badamecum.js') }}"></script>
 
 @stop

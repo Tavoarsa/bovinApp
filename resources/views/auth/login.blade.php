@@ -33,6 +33,9 @@
 					        <button class="btn btn-primary btn-block" type="submit">Iniciar sesión</button>
 					    </div>
 					</form>
+					<div class="form-group">
+						<a   class="btn btn-primary btn-block" href="{{ route('register-get') }}">Registrarse</a>
+					</div>
 				</div>
 			</div>
 		</div>

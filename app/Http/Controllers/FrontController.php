@@ -25,7 +25,7 @@ class FrontController extends Controller
     public function admin()
     {
 
-    	return view('admin.index');
+    	return view('admin.home');
     }
     public function search(Request $request)
     {

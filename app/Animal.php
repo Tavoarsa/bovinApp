@@ -8,7 +8,7 @@ class Animal extends Model
 {
     protected $table ='animals';
 	protected $fillable=['idUser','idFarm','slug','animalNumber','registrationNumber','name',
-						'breed','gender','birthdate','deathdate','feature','image','status'];
+						'breed','gender','birthdate','deathdate','feature','image','status','status_deathDate'];
 	protected $guarded = ['id'];
 
 	/*Tipo de fecundación

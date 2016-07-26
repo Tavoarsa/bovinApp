@@ -31,7 +31,7 @@
 	    						<td>{{$farm->exploitation}}</td>	    						
 	    						<td>
 
-                                    <a href="{{ route('farm.edit', $farm->id) }}" class="btn btn-primary">
+                                    <a href="{{ route('farm.edit', $farm->slug) }}" class="btn btn-primary">
                                         <i class="fa fa-pencil-square-o"></i>
                                     </a>
                                 </td>   						
@@ -54,11 +54,7 @@
 	    	@endif
 	    	<hr>
 	    	<p>
-	    		<a class="btn btn-primary" href="{{route('farm-index')}}"><i class="fa fa-chevron-circle-left"></i>REGRESAR</a>
-	    		<a class="btn btn-primary" href="{{route('dashboard-farm',$farm->id)}}"><i class="fa fa-chevron-circle-right"></i>INGRESAR</a>
-
-
-	    		
+	    		<a class="btn btn-primary" href="{{ route('dashboard-farm',$farm->slug) }}"><i class="fa fa-chevron-circle-left"></i>REGRESAR</a>	
 	    	</p>
     	</div>
        

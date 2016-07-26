@@ -59,6 +59,9 @@
             <hr>
             
             <?php echo $users->render(); ?>
+             <div align="center">
+         <a class="btn btn-primary" href="{{url('admin')}}"><i class="fa fa-chevron-circle-left"></i>REGRESAR</a>      
+        </div>
             
         </div>
     </div>

@@ -18,7 +18,7 @@
                         @include('admin.partials.errors')
                     @endif
                     
-                    {!! Form::model($product, array('route' => array('admin.product.update', $product->slug))) !!}
+                    {!! Form::model($product, array('route' => array('admin.product.update', $product->slug),'files' => true)) !!}
                     
                         <input type="hidden" name="_method" value="PUT">
                     
@@ -87,20 +87,25 @@
                             !!}
                         </div>
                         
-                        <div class="form-group">
-                            <label for="image">Imagen:</label>
-                            
-                            {!! 
-                                Form::text(
-                                    'image', 
-                                    null, 
-                                    array(
-                                        'class'=>'form-control',
-                                        'placeholder' => 'Ingresa la url de la imagen...',
-                                    )
-                                ) 
-                            !!}
-                        </div>
+                          <div class="controls">
+                                {!!Form::label('image', 'Foto')!!}
+
+                                <hr>
+                                    <div class="col-sm-6 col-md-4">
+                                        <div class="thumbnail">                                      
+                                            <a >
+                                                <img src="/img/product/{{$product->image}}" >
+                                             </a>                               
+                                           
+                                        </div>
+                                    </div><hr>
+                                
+                                <input id="files" type="file" name="image" />
+                                <br />
+                                <output id="list"></output> 
+                                                            
+                             </div>
+                             <hr>
                         
                         <div class="form-group">
                             <label for="visible">Visible:</label>
@@ -124,5 +129,6 @@
         
 
 	</div>
+    <script src="{{ asset('/js/preview_createProduct.js') }}"></script>
 
 @stop

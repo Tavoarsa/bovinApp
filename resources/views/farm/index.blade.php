@@ -12,7 +12,7 @@
     				@foreach($farms as $farm)
                         <div class="col-sm-6 col-md-4">
                             <div class="thumbnail">                                      
-                                <a href="{{ route('farm-info') }}">
+                                <a href="{{ route('dashboard-farm',$farm->slug) }}">
                                     <img src="/img/farm/{{$farm->patent}}" alt="{{$farm->name}}">
                                 </a>                                
                             <div class="caption">                                        

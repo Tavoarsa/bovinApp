@@ -104,11 +104,16 @@
                                      )
                             !!}
                         </div>
+                         <div class="controls">
+                                {!!Form::label('patent', 'Foto')!!}
+                                
+                                <input id="files" type="file" name="image" />
+                                <br />
+                                <output id="list"></output>                                                             
+                             </div>
+                             <hr>
 
-                        <div class="controls">
-                                {!!Form::label('patent', 'Fierro')!!}
-                                 <input type="file" name="patent" >                             
-                        </div>
+                        
                        
                         
                         <div class="form-group">
@@ -125,5 +130,7 @@
         
 
 	</div>
+
+    <script src="{{ asset('/js/preview_editFarm.js') }}"></script>
 
 @stop

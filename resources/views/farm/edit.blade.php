@@ -17,7 +17,7 @@
                         @include('admin.partials.errors')
                     @endif
                     
-                    {!! Form::model($farm, array('route' => array('farm.update', $farm->id))) !!}
+                    {!! Form::model($farm, array('route' => array('farm.update', $farm->id),'files' => true)) !!}
                     
                         <input type="hidden" name="_method" value="PUT">                    
                         
@@ -36,7 +36,7 @@
                                     )
                                 ) 
                             !!}
-                        </div>agent
+                        </div>
 
                         <div class="form-group">
                             <label for="extract">Representante:</label>
@@ -67,18 +67,16 @@
                             !!}
                         </div>
                         
-                        <div class="form-group">
-                            <label for="description">Explotación:</label>
+                          <div class="form-group">
+                            <label for="exploitation">Tipo Explotación:</label>
                             
-                            {!! 
-                                Form::text(
-                                    'exploitation', 
-                                    null, 
-                                    array(
-                                        'class'=>'form-control',
-                                         'placeholder' => 'Ingresa el tipo de explotación de la finca ..',
-                                    )
-                                ) 
+                            {!! Form::select('exploitation',array(
+                                        'carne' => 'Carne', 
+                                        'leche' => 'Leche',
+                                        'doblePrposito' => 'Doble Proposito'
+                                        ), 
+                                     $farm->exploitation
+                                     )
                             !!}
                         </div>
                         
@@ -96,28 +94,34 @@
                                 ) 
                             !!}
                         </div>
+
+
+                         <div class="controls">
+                                {!!Form::label('patent', 'Foto')!!}
+                                <hr>
+                                    <div class="col-sm-6 col-md-4">
+                                        <div class="thumbnail">                                      
+                                            <a >
+                                                <img src="/img/farm/{{$farm->patent}}" alt="{{$farm->name}}">
+                                             </a>                               
+                                           
+                                        </div>
+                                    </div><hr>                             
+                                
+                                <input id="files" type="file" name="image" />
+                                <br>
+                                <output id="list"></output> 
+                                                            
+                             </div>
+                            <hr>
                         
-                        <div class="form-group">
-                            <label for="image">Imagen:</label>
-                            
-                            {!! 
-                                Form::text(
-                                    'patent', 
-                                    null, 
-                                    array(
-                                        'class'=>'form-control',
-                                        'placeholder' => 'Ingresa la url de la imagen...',
-                                    )
-                                ) 
-                            !!}
-                        </div>               
-                
+                     
                         
                         
                         
                         <div class="form-group">
                             {!! Form::submit('Actualizar', array('class'=>'btn btn-primary')) !!}
-                            <a href="{{ route('farm-index') }}" class="btn btn-warning">Cancelar</a>
+                            <a href="{{ route('farm-info') }}" class="btn btn-warning">Cancelar</a>
                         </div>
                     
                     {!! Form::close() !!}
@@ -127,6 +131,8 @@
             </div>
         </div>
 </div>
+
+<script src="{{ asset('/js/preview_editFarm.js') }}"></script>
 
 
 @stop

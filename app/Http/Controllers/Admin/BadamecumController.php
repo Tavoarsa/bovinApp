@@ -75,11 +75,13 @@ class BadamecumController extends Controller
         $badamecum->visible= $request->has('visible') ? 1 : 0;
         $badamecum->category_id=$request->category_id;
 
+       
+
             //Validacion de imagen 
-        if (Input::hasFile('imagen')) 
+        if (Input::hasFile('image')) 
         {   
-            $file = Input::file('imagen');//Creamos una instancia de la libreria instalada
-            $image = \Image::make(\Input::file('imagen'));//Ruta donde queremos guardar las imagenes
+            $file = Input::file('image');//Creamos una instancia de la libreria instalada
+            $image = \Image::make(\Input::file('image'));//Ruta donde queremos guardar las imagenes
 
             $path = 'img/badamecum/';
 
@@ -164,10 +166,11 @@ class BadamecumController extends Controller
 	
         
             //Validacion de imagen 
-        if (Input::hasFile('imagen')) 
+        if (Input::hasFile('image')) 
+
         {   
-            $file = Input::file('imagen');//Creamos una instancia de la libreria instalada
-            $image = \Image::make(\Input::file('imagen'));//Ruta donde queremos guardar las imagenes
+            $file = Input::file('image');//Creamos una instancia de la libreria instalada
+            $image = \Image::make(\Input::file('image'));//Ruta donde queremos guardar las imagenes
 
             $path = 'img/badamecum/';
 

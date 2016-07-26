@@ -26,9 +26,10 @@ class AnimalController extends Controller
      */
     public function index()
     {
-       $animals= Animal::where('idUser',Auth::id())
-                -> paginate(8);
-        return view('animal.index',compact('animals'));    
+       $animals= Animal::where('idFarm',Session::get('idfarm'))
+                          -> paginate(8);
+       $farm= Session::get('farm');
+        return view('animal.index',compact('animals','farm'));    
        
     }
 
@@ -62,7 +63,7 @@ class AnimalController extends Controller
 
         $animal = new Animal();
         $animal->idUser = Auth::id();
-        $animal->idFarm=Session::get('farm');
+        $animal->idFarm=Session::get('idfarm');
         $animal->name=$request->name;
         $animal->slug=str_slug($request->get('name'));
         $animal->breed=$request->breed;
@@ -170,9 +171,36 @@ class AnimalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Animal $animal)
     {
-        //
+
+         $animal = Animal::findOrFail($animal->id); 
+
+        $animal->name=$request->name;
+        $animal->animalNumber=$request->animalNumber;
+        $animal->registrationNumber=$request->registrationNumber;
+        $animal->slug=str_slug($request->get('name'));
+        $animal->breed=$request->breed;
+        $animal->gender=$request->gender;
+        $animal->feature=$request->feature;
+        $animal->birthdate=$request->birthdate;
+        $animal->deathDate=$request->deathdate;      
+      
+
+        if($request->has('deathdate')){
+        $animal->status_deathDate= 1;
+
+        }
+       
+     
+       
+      
+                     
+        $updated = $animal->save();
+        
+        $message = $updated ? 'Animal actualizado correctamente!' : ' La animal NO pudo actualizarse!';
+        
+        return redirect()->route('animal-index')->with('message', $message);
     }
 
     /**

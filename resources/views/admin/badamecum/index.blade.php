@@ -60,9 +60,14 @@
             
             <?php echo $badamecums->render(); ?>
 
+
              @else
              <h3><span class="label label-warning">Noy hay productos</span></h3>
             @endif
+
+             <div align="center">
+         <a class="btn btn-primary" href="{{url('admin')}}"><i class="fa fa-chevron-circle-left"></i>REGRESAR</a>      
+        </div>
             
         </div>
 
