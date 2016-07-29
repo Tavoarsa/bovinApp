@@ -172,13 +172,16 @@
                         @endforeach
                     </tbody>                    
                     </table><hr> 
-                      <a type="button"  href="{{ route('report-production') }}"  class="btn btn-secondary"><i class="fa fa-thumbs-down" aria-hidden="true"></i>REPORTE MASTITIS</a>               
+                      <a type="button"  href="{{ route('report-production_mastitis') }}"  class="btn btn-secondary"><i class="fa fa-thumbs-down" aria-hidden="true"></i>REPORTE MASTITIS</a>               
                 </div>
+                 <p>
+                <a class="btn btn-primary" href="{{route('dashboard-animal',$slug)}}"><i class="fa fa-chevron-circle-left"></i>REGRESAR</a>          
+            </p>
                 
             </div>
-        </div>
-        
+        </div>    
 
     </div>
+    <script src="{{ asset('/js/create-animal.js') }}"></script>
 
 @stop

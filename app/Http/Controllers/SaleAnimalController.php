@@ -44,7 +44,7 @@ class SaleAnimalController extends Controller
         $animal=Animal::where('id',$request->id)->first(); 
         //$status_animal= Animal::findOrFail($animal->id);       
         $user= User::where('id',Auth::id())->first();
-        $farm= Farm::where('id',Session::get('farm'))->first();
+        $farm= Farm::where('id',Session::get('idfarm'))->first();
 
                 
                    //Validaciones
@@ -60,15 +60,16 @@ class SaleAnimalController extends Controller
            
            
             //Divide date de acuerdo al limitador -
-            $date= explode('-', $animal->birthdate);
-            //get date and get age.
-            $date= Carbon::createFromDate($date[0],$date[1],$date[2])->age;
+            $date= explode('/', $animal->birthdate);
            
-
+            //get date and get age.
+            $date= Carbon::createFromDate($date[2],$date[1],$date[0])->age;
+           
+ 
 
             $sale_animal= new SaleAnimal();
             $sale_animal->idUser=Auth::id(); 
-            $sale_animal->idFarm=Session::get('farm');       
+            $sale_animal->idFarm=Session::get('idfarm');       
             $sale_animal->image=$animal->image;
             $sale_animal->name=$animal->name;
             $sale_animal->slug=$animal->slug;
@@ -128,9 +129,8 @@ class SaleAnimalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
+    public function edit($id){    
+        
     }
 
     /**
@@ -140,9 +140,21 @@ class SaleAnimalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($slug)
     {
-        //
+        $status_animal =Animal::where('idUser',Auth::id())
+                            ->where('slug',$slug)
+                            ->orWhere('idFarm',Session::get('idfarm'))
+                            ->first();
+        $status_animal->status=0;
+
+      
+                     
+        $updated = $status_animal->save();
+        
+        $message = $updated ? 'El proseso  de venta del animal '.$status_animal->name . ' ha finalizado ' : ' Proceso no completado!';
+        
+        return redirect()->route('dashboard-animal',$status_animal->slug)->with('message', $message);
     }
 
     /**

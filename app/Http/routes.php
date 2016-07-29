@@ -316,6 +316,13 @@ Route::group(['middleware' => ['auth']], function () {
 	'uses'=>'SaleAnimalController@index'
 	]);
 
+	Route::get('sale/end/{slug}',[
+	'as'=>'end-sale',
+	'uses'=>'SaleAnimalController@update'
+	]);
+
+
+
 //Reproduction
 
 	Route::resource('reproduction','ReproductionController');

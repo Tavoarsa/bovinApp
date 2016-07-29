@@ -60,7 +60,7 @@ class InjecctionController extends Controller
 
         $injecction= new Injecction();
         $injecction->idUser= Auth::id();
-        $injecction->idFarm=Session::get('farm');
+        $injecction->idFarm=Session::get('idfarm');
         $injecction->idAnimal=Session::get('idAnimal');
         $injecction->diseaseName=$request->diseaseName;
         $injecction->injecctionName=$request->injecctionName;

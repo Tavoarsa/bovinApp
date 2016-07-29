@@ -50,6 +50,7 @@ class price_MilkController extends Controller
         $milk_price= new Price_milk();
         $milk_price->idUser=Auth::id();
         $milk_price->date=Carbon::today();
+        $milk_price->idFarm= Session::get('idfarm');
         $milk_price->price=$request->price;
         $milk_price->details=$request->details;
         $milk_price->save();              //operador ternario

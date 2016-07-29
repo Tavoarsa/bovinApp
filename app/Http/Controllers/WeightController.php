@@ -26,10 +26,14 @@ class WeightController extends Controller
         $price_weight= Price_weight::where('idUser', Auth::id())->pluck('price');
         $price_weight= $price_weight->last();//dd($price_weight);
         //ultimo valor de la collection
-        Session::put('price_weight',$price_weight);     
+        Session::put('price_weight',$price_weight);
+        $slug=Animal::where('id',Session::get('idAnimal'))->pluck('slug');
+        $slug= array_pull($slug,0);        
+
+    
 
         $weights= Weight::where('idAnimal',$animals->id)->get();//dd($weights);
-        return view('weight.index',compact('weights','animals','price_weight'));
+        return view('weight.index',compact('weights','animals','price_weight','slug'));
         
     }  
 
@@ -53,7 +57,7 @@ class WeightController extends Controller
         
         $weight= new Weight();
         $weight->idUser= Auth::id();
-        $weight->idFarm= Session::get('farm');
+        $weight->idFarm= Session::get('idfarm');
         $weight->idAnimal=Session::get('idAnimal');
         $weight->date=$request->date;
         $weight->weight=$request->weight;

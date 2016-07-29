@@ -26,8 +26,9 @@ class ReportController extends Controller
 
   public function index()
   {
-
-        return view('report.dashboard');
+    $slug_animal= Animal::where('id',Session::get('idAnimal'))->pluck('slug');
+    $slug_animal= array_pull($slug_animal,0); 
+    return view('report.dashboard',compact('slug_animal'));
   }
 
   public function report_vaccine()
@@ -70,13 +71,12 @@ class ReportController extends Controller
     public function mastitis_milk()
     {  
  
-                    
+                   //dd(Session::get('idAnimal'));
 
        $productions= Production::where('productions.idAnimal',Session::get('idAnimal'))
-                                ->Where('mastitis_morning',true)  
-                                ->orWhere('mastitis_later',true)                         
+                                                   
                                 ->get();
-                                
+                               //dd($productions);
 
        $morning_production= Production::where('productions.idAnimal',Session::get('idAnimal'))
                                 ->where('mastitis_morning',true)                                
@@ -101,12 +101,16 @@ class ReportController extends Controller
        return $pdf->stream();
     }
 
+
+
     public function animals_mastitis()
     {
-       $animals_mastitis= Animal::where('animals.idUser',Auth::id())                              
-                              ->join('productions','productions.idUser','=','animals.idUser')
+
+       $animals_mastitis= Animal::where('animals.idFarm',Session::get('idfarm')) 
+                              ->join('productions','productions.idAnimal','=','animals.id')
                               ->where('mastitis_morning',true)
-                              ->orWhere('mastitis_later',true) 
+                              ->orWhere('mastitis_later',true)                                           
+                              
                               ->select('animals.name','productions.date','productions.mastitis_morning','productions.mastitis_later')                            
                                  
                                  ->get(); 

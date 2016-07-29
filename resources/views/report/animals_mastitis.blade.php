@@ -6,7 +6,7 @@
   <link rel="stylesheet" type="text/css" href="css/report/table.css">
 </head>
 <body>
-  <h1>Registro De Vacas con mastitis</h1>
+  <h1>Registro De Vacas con Mastitis</h1>
   
   <h3>Fecha de Emisión: </h3>
 

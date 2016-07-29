@@ -25,7 +25,7 @@
                         
                 
             </div>
-            <div class="col-md-6">
+            <div align="center" class="col-md-6">
                 <div class="product-block">
                     <h3>Precio: ${{$sale->price}}</h3>
                 <div class="table-responsive">
@@ -45,10 +45,10 @@
                             
                         </tbody>
                     </table>
-                </div>
-                                    
-                            
+                </div>                                    
+                        <p>
                             <a class="btn btn-primary" href="{{route('animal-index')}}"><i class="fa fa-chevron-circle-left"></i> Regresar</a>
+                            <a class="btn btn-warning" href="{{route('end-sale',$sale->slug)}}"><i class="fa fa-chevron-circle-left"></i> Terminar Venta</a>
                         </p>
                     </div>
                 </div>                

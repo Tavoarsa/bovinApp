@@ -58,7 +58,7 @@ class AlimentController extends Controller
 
         $aliment= new Aliment();
         $aliment->idUser= Auth::id();
-        $aliment->idFarm=Session::get('farm');
+        $aliment->idFarm=Session::get('idfarm');
         $aliment->idAnimal=Session::get('idAnimal');      
         $aliment->alimentName=$request->alimentName;
         $aliment->dateApplication=$request->dateApplication;        

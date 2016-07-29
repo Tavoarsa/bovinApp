@@ -146,6 +146,7 @@ class AnimalController extends Controller
         $animal=Animal::where('slug',$slug)->first();
         Session::put('animal',$slug); 
         Session::put('idAnimal',$animal->id);//get idAnimal for store new production register 
+       
         return view('animal.show',compact('animal'));
         
     }

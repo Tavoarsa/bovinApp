@@ -150,11 +150,16 @@
                     </tbody>                    
                     </table><hr>                
                 </div>
+                <hr>
+            <p>
+                <a class="btn btn-primary" href="{{route('dashboard-animal',$slug)}}"><i class="fa fa-chevron-circle-left"></i>REGRESAR</a>          
+            </p>
                 
             </div>
         </div>
         
 
     </div>
+    <script src="{{ asset('/js/create-animal.js') }}"></script>
 
 @stop

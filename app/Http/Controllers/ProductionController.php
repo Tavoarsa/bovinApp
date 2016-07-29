@@ -27,12 +27,14 @@ class ProductionController extends Controller
         $price_milk= Price_milk::where('idUser', Auth::id())->pluck('price');
         $price_milk= $price_milk->last();//dd($price_milk);
         //ultimo valor de la collection
-        Session::put('price_milk',$price_milk);     
+        Session::put('price_milk',$price_milk);
+        $slug=Animal::where('id',Session::get('idAnimal'))->pluck('slug');
+        $slug= array_pull($slug,0);            
 
         $productions= Production::where('idAnimal',$animals->id)->get();//dd($productions);          
 
 
-        return view('production.index',compact('productions','animals','price_milk'));
+        return view('production.index',compact('productions','animals','price_milk','slug'));
         
     }  
 
@@ -55,7 +57,7 @@ class ProductionController extends Controller
         
         $production= new Production();
         $production->idUser= Auth::id();
-        $production->idFarm= Session::get('farm');
+        $production->idFarm= Session::get('idfarm');
         $production->idAnimal=Session::get('idAnimal');
         $production->mastitis_morning=$request->has('mastitis_morning') ? 1 : 0;
         $production->mastitis_later=$request->has('mastitis_later') ? 1 : 0;

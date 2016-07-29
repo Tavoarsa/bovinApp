@@ -60,7 +60,7 @@ class VaccineController extends Controller
 
         $vaccine= new Vaccine();
         $vaccine->idUser= Auth::id();
-        $vaccine->idFarm=Session::get('farm');
+        $vaccine->idFarm=Session::get('idfarm');
         $vaccine->idAnimal=Session::get('idAnimal');
         $vaccine->diseaseName=$request->diseaseName;
         $vaccine->vaccineName=$request->vaccineName;

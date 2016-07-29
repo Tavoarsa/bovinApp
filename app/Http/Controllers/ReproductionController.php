@@ -21,7 +21,7 @@ class ReproductionController extends Controller
     public function index()
     {
           
-        $animals= Animal::where('slug',Session::get('animal'))->first();              
+        $animals= Animal::where('slug',Session::get('animal'))->first();  
         $reproductions= Reproduction::where('idAnimal',$animals->id)->get();
         return view('reproduction.index',compact('reproductions','animals'));
         

@@ -78,8 +78,15 @@
                 
             </div>
         </div>
-        
+        <p>
+                <a class="btn btn-primary" href="{{route('dashboard-animal',$animals->slug)}}"><i class="fa fa-chevron-circle-left"></i>REGRESAR</a>          
+          </p>
 
+                
+          
+        
+dashboard-animal
     </div>
+     <script src="{{ asset('/js/create-animal.js') }}"></script>
 
 @stop

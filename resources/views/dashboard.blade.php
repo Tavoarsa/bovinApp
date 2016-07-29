@@ -7,7 +7,7 @@
             <h1><i class="fa fa-rocket"></i>MI FINCA- DASHBOARD</h1>
         </div>
         
-        <h2>Bienvenido(a) {{ Auth::user()->user }} al Panel Principal.</h2><hr>
+        <h2>Bienvenido(a) {{ Auth::user()->user }} </h2><hr>
      
         
         <div class="row">
@@ -26,12 +26,7 @@
                 </div>
             </div>
 
-            <div class="col-md-6">
-                <div class="panel">
-                    <i class="fa fa-shopping-cart  icon-home"></i>
-                    <a href="{{ route('admin.product.index') }}" class="btn btn-warning btn-block btn-home-admin">VENTA DE ANIMALES</a>
-                </div>
-            </div>
+          
 
             <div class="col-md-6">
                 <div class="panel">
@@ -48,17 +43,11 @@
                     <a href="{{ route('badamecum-farm') }}" class="btn btn-warning btn-block btn-home-admin">BADAMECUM</a>
                 </div>
             </div>
-                    
-        </div>
-       
-        
-        
-           
-            
-            <div class="col-md-6">
+
+             <div class="col-md-6">
                 <div class="panel">
                     <i class="fa fa-users  icon-home"></i>
-                    <a href="{{ route('admin.user.index') }}" class="btn btn-warning btn-block btn-home-admin">ESTADISTICAS</a>
+                    <a href="#" class="btn btn-warning btn-block btn-home-admin">ESTADISTICAS</a>
                 </div>
             </div>
 
@@ -68,6 +57,14 @@
                     <a href="{{url('calendar/') }}" class="btn btn-warning btn-block btn-home-admin">CALENDARIO</a>
                 </div>
             </div> 
+                    
+        </div>
+       
+        
+        
+           
+            
+           
             <p>
                 <a class="btn btn-primary" href="{{ route('farm-index') }}"><i class="fa fa-chevron-circle-left"></i>REGRESAR</a>   
             </p>           

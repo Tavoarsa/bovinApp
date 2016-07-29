@@ -66,7 +66,7 @@
         </div>
         <hr>
          <p>
-         <a class="btn btn-primary"  href="{{url('animal/') }}"<i class="fa fa-chevron-circle-left"></i>REGRESAR</a>          
+         <a class="btn btn-primary"  href="{{route('dashboard-animal',$slug_animal) }}"<i class="fa fa-chevron-circle-left"></i>REGRESAR</a>          
     </p>
                   
     </div>
