@@ -33,14 +33,15 @@ class ReportController extends Controller
 
   public function report_vaccine()
   {
-    $pdf= PDF::loadView('report.vaccine',['vaccines'=>$this->get_vaccines(),'animals'=>$this->get_animals()]);
+    $pdf= PDF::loadView('report.vaccine',['vaccines'=>$this->get_vaccines(),'animals'=>$this->get_animals()]);               
     return $pdf->stream();
+     
   }
 
   public function report_injecction()
   {
    $pdf= PDF::loadView('report.injecction',['injecctions'=>$this->get_injecctions(),'animals'=>$this->get_animals()]);
-    return $pdf->stream();
+   return $pdf->stream();
   }  
   
 
@@ -70,15 +71,14 @@ class ReportController extends Controller
 
     public function mastitis_milk()
     {  
- 
-                   //dd(Session::get('idAnimal'));
+              //dd(Session::get('idAnimal'));
 
        $productions= Production::where('productions.idAnimal',Session::get('idAnimal'))
                                                    
                                 ->get();
-                               //dd($productions);
-
-       $morning_production= Production::where('productions.idAnimal',Session::get('idAnimal'))
+        if(count($productions))
+        {
+           $morning_production= Production::where('productions.idAnimal',Session::get('idAnimal'))
                                 ->where('mastitis_morning',true)                                
                                 ->select('productions.morning_production')                                
                                 ->get();
@@ -99,6 +99,14 @@ class ReportController extends Controller
 
        $pdf= PDF::loadView('report.mastitis_milk',['productions'=>$productions,'animals'=>$this->get_animals() ],['value'=>$value,'quantity'=>$quantity]);
        return $pdf->stream();
+
+
+        }else
+        {
+            $message = 'No hay nada que mostrar';
+            return redirect() -> route('dashboard-farm')->with('message', $message);
+        }
+
     }
 
 

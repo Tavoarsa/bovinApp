@@ -45,40 +45,29 @@ class Email_list extends Command
     public function handle()  {
 
 
-        
-          
          $users = \DB::table('users')
             ->join('events', 'idUser', '=', 'users.id')          
-            ->select('users.id')
-            ->get();//dd($users);
+            ->select('users.id','users.name','users.email','events.end_time','events.title')
+            ->get();dd($users);
 
-          $date=Carbon::today();
+        foreach ($users as  $user) 
+        {               
+                                          
+               
 
-          $date=explode(' ', $date);
+                Mail::send('email.user', ['user' => $user->name], function ($m) use ($user) {
+                    
+                    $events=\DB::table('events')
+                                ->where('idUser',$user->id)                            
+                                ->get();
+                     $pdf= PDF::loadView('report.event',['events'=>$events]);
+                    $m->from('notificaciones@bovinapp.com', 'BovinApp.com');
+                    $m->to($user->email, $user->name)->subject('Eventos Pendientes');                                       
+                    $m->attach($pdf);
+                });
 
-          //$date= $date->toDateTimeString();
-
-         // dd($date);
-
-           
-          foreach ($users as  $user) {
-       
-
-          $events=\DB::table('events')
-                            ->where('idUser',$user->id)                            
-                            ->get();
-
-                     // dd($events);
-
-                              
-
-
-
-          $pdf= PDF::loadView('report.event',['events'=>$events]);
-          $path ='public/pdf/';            
-          $pdf->save($path.$user->id.'.pdf');
-              
-          }
+          
+        }
         
                      
     }

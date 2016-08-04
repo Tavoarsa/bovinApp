@@ -6,7 +6,7 @@
         <div class="page-header">           
             <h1>
                 <a  value="Mostrar" onclick="add()" class="btn btn-warning"> <i class="fa fa-plus-circle"></i> Agregar</a>
-                <a href="{{ route('report-reproduction') }}" class="btn btn-warning"><i class="fa fa-list-alt"></i>Reporte</a>
+                <a href="{{ route('report-reproduction') }}" class="btn btn-warning" download ><i class="fa fa-list-alt"></i>Reporte</a>
             </h1>        
         </div>
 

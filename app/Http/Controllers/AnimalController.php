@@ -33,6 +33,41 @@ class AnimalController extends Controller
        
     }
 
+    public function search(Request $request)
+    {
+        $farm= Session::get('farm');
+
+      if($request->number=="on"){
+        $animals=\DB::table('animals')->where('idFarm',Session::get('idfarm'))                                      
+                                       ->where('animalNumber', 'ILIKE', '%' . trim($request -> get(trim('name'))) . '%')
+                                       
+                                        -> paginate(8);
+
+      }else{
+        $animals=\DB::table('animals')->where('idFarm',Session::get('idfarm'))
+                                       ->where('name', 'ILIKE', '%' . trim($request -> get(trim('name'))) . '%')                                     
+                                       
+                                        -> paginate(8);//dd($animals);    
+
+
+      }
+
+      if(count($animals)){
+
+        return view('animal.index',compact('animals','farm'));   
+      }else{
+       $message = 'No hay concidencias';
+            return redirect() -> route('animal-index')->with('message', $message);
+      }
+
+        
+
+        
+         
+
+        
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -61,76 +96,90 @@ class AnimalController extends Controller
                       );
         $this->validate($request,$rules);
 
-        $animal = new Animal();
-        $animal->idUser = Auth::id();
-        $animal->idFarm=Session::get('idfarm');
-        $animal->name=$request->name;
-        $animal->slug=str_slug($request->get('name'));
-        $animal->breed=$request->breed;
-        $animal->gender=$request->gender;
-        $animal->feature=$request->feature;
-        $animal->birthdate=$request->date; 
-        $animal->status=$request->status;
+        
+          if(Session::get('idfarm'))
+          {
+
+                $animal = new Animal();
+                $animal->idUser = Auth::id();
+                $animal->idFarm=Session::get('idfarm');
+                $animal->name=$request->name;
+                $animal->slug=str_slug($request->get('name'));
+                $animal->breed=$request->breed;
+                $animal->gender=$request->gender;
+                $animal->feature=$request->feature;
+                $animal->birthdate=$request->date; 
+                $animal->status=$request->status;
+                $animal->status_deathDate=0;
 
 
-            //Validacion de imagen 
-        if (Input::hasFile('image')) 
-        {   
-            $file = Input::file('image');//Creamos una instancia de la libreria instalada
-            $image = \Image::make(\Input::file('image'));//Ruta donde queremos guardar las imagenes
+                    //Validacion de imagen 
+                if (Input::hasFile('image')) 
+                {   
+                    $file = Input::file('image');//Creamos una instancia de la libreria instalada
+                    $image = \Image::make(\Input::file('image'));//Ruta donde queremos guardar las imagenes
 
-            $path = 'img/animal/';
+                    $path = 'img/animal/';
 
-            // Cambiar de tamaño
-            $image -> resize(331, 152);
-            $image -> save($path . $file -> getClientOriginalName());   
-            $animal->image = $file -> getClientOriginalName();
-            //$animal->save(); 
-            //return redirect() -> route('animal.index');
-         }else
-         {
-            //Si no hay imagen, se guarda una por defecto
-            $image='animal';  
-            $default = 'animal.jpg';
-            $animal->image = $default;              
-            //$animal->save();
-         }
+                    // Cambiar de tamaño
+                    $image -> resize(331, 152);
+                    $image -> save($path . $file -> getClientOriginalName());   
+                    $animal->image = $file -> getClientOriginalName();
+                    //$animal->save(); 
+                    //return redirect() -> route('animal.index');
+                 }else
+                 {
+                    //Si no hay imagen, se guarda una por defecto
+                    $image='animal';  
+                    $default = 'animal.jpg';
+                    $animal->image = $default;              
+                    //$animal->save();
+                 }
 
-         $animal->save();
+                 $animal->save();
 
 
-         if($request->fi=="fi"){
+                 if($request->fi=="fi"){
 
-            $invitro_fertilizations= new Invitro_fertilization();
-            $invitro_fertilizations->father=$request->father;
-            $invitro_fertilizations->donorMother=$request->donorMother;
-            $invitro_fertilizations->receivingMother=$request->receivingMother;
-            $animal->origin()->save($invitro_fertilizations);
-         }
+                    $invitro_fertilizations= new Invitro_fertilization();
+                    $invitro_fertilizations->father=$request->father;
+                    $invitro_fertilizations->donorMother=$request->donorMother;
+                    $invitro_fertilizations->receivingMother=$request->receivingMother;
+                    $animal->origin()->save($invitro_fertilizations);
+                 }
 
-         if($request->ia=='ia'){
+                 if($request->ia=='ia'){
 
-            $artificial_inseminations= new Artificial_insemination();
-            $artificial_inseminations->father=$request->father;
-            $artificial_inseminations->mother=$request->mother;
-            $animal->origin()->save($artificial_inseminations);
-         }
-         if($request->mt=='mt'){
+                    $artificial_inseminations= new Artificial_insemination();
+                    $artificial_inseminations->father=$request->father;
+                    $artificial_inseminations->mother=$request->mother;
+                    $animal->origin()->save($artificial_inseminations);
+                 }
+                 if($request->mt=='mt'){
 
-            $natural_matings= new Natural_mating();
-            $natural_matings->father=$request->father;
-            $natural_matings->mother=$request->mother;
-            $animal->origin()->save($natural_matings);
-         }
-         if($request->te=='te'){
+                    $natural_matings= new Natural_mating();
+                    $natural_matings->father=$request->father;
+                    $natural_matings->mother=$request->mother;
+                    $animal->origin()->save($natural_matings);
+                 }
+                 if($request->te=='te'){
 
-            $embryo_transfers= new Embryo_transfer();
-            $embryo_transfers->father=$request->father;
-            $embryo_transfers->donorMother=$request->donorMother;
-            $embryo_transfers->receivingMother=$request->receivingMother;
-            $animal->origin()->save($embryo_transfers);
-         }
-    return redirect() -> route('animal-index');
+                    $embryo_transfers= new Embryo_transfer();
+                    $embryo_transfers->father=$request->father;
+                    $embryo_transfers->donorMother=$request->donorMother;
+                    $embryo_transfers->receivingMother=$request->receivingMother;
+                    $animal->origin()->save($embryo_transfers);
+                 }
+            return redirect() -> route('animal-index');
+          
+            
+        }else
+        {
+            $message = 'Debes Seleccionar una Finca';
+            return redirect() -> route('farm-index')->with('message', $message);
+
+        }
+
 
 
     }
@@ -174,27 +223,86 @@ class AnimalController extends Controller
      */
     public function update(Request $request, Animal $animal)
     {
+        if($request->animalNumber==$animal->animalNumber && $request->registrationNumber==$animal->registrationNumber){
+
+                      //Validaciones
+            $rules =array(              
+                        'name'               => 'required',                       
+                        'breed'              => 'required',                      
+                        'gender'             => 'required',                        
+                        'feature'            => 'required',
+                        'animalNumber'       => 'exists:animals',
+                        'registrationNumber' => 'exists:animals'
+
+                        
+                      );
+        $this->validate($request,$rules);
+        }else{
+
+                       //Validaciones
+            $rules =array(              
+                        'name'               => 'required',                       
+                        'breed'              => 'required',                      
+                        'gender'             => 'required',                        
+                        'feature'            => 'required',
+                        'animalNumber'       => 'required|unique:animals',
+                        'registrationNumber' => 'required|unique:animals'
+
+                        
+                      );
+        $this->validate($request,$rules);
+        }
+         
+        
+
+     
 
          $animal = Animal::findOrFail($animal->id); 
 
         $animal->name=$request->name;
+       
+
         $animal->animalNumber=$request->animalNumber;
+
         $animal->registrationNumber=$request->registrationNumber;
         $animal->slug=str_slug($request->get('name'));
         $animal->breed=$request->breed;
         $animal->gender=$request->gender;
         $animal->feature=$request->feature;
         $animal->birthdate=$request->birthdate;
-        $animal->deathDate=$request->deathdate;      
+        $animal->deathDate=$request->deathdate;
+
+
+
+
+            //Validacion de imagen 
+        if (Input::hasFile('image')) 
+        {   
+            $file = Input::file('image');//Creamos una instancia de la libreria instalada
+            $image = \Image::make(\Input::file('image'));//Ruta donde queremos guardar las imagenes
+
+            $path = 'img/animal/';
+
+            // Cambiar de tamaño
+            $image -> resize(331, 152);
+            $image -> save($path . $file -> getClientOriginalName());   
+            $animal->image = $file -> getClientOriginalName();
+            //$animal->save(); 
+            //return redirect() -> route('animal.index');
+         }else
+         {
+            //Si no hay imagen, se guarda la misma imagen original antes de actualizar
+           
+            
+            $animal->image = $animal->image;              
+            //$animal->save();
+         }     
       
 
         if($request->has('deathdate')){
         $animal->status_deathDate= 1;
 
-        }
-       
-     
-       
+        }   
       
                      
         $updated = $animal->save();

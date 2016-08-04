@@ -15,8 +15,10 @@ class Kernel extends ConsoleKernel
     protected $commands = [
 
         Commands\Inspire::class,
-        Commands\SendEmail::class,
+        Commands\Event_list::class,
         Commands\Email_list::class,
+        
+       
 
        
        
@@ -30,8 +32,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {  
-      $schedule->command('send:email')->daily();
-      $schedule->command('create:email_list')->everyMinute();
+      
     }
 }
 //dailyAt('13:00');

@@ -6,7 +6,7 @@
         <div class="page-header">           
             <h1>
                 <a  value="Mostrar" onclick="add()" class="btn btn-warning"> <i class="fa fa-plus-circle"></i> Agregar</a>
-                <a href="{{ route('report-production') }}" class="btn btn-warning"><i class="fa fa-list-alt"></i>  Reporte Productivo</a>
+                <a href="{{ route('report-production') }}" class="btn btn-warning" download><i class="fa fa-list-alt"></i>  Reporte Productivo</a>
             </h1>        
             <h3>
                 Precio por kilo: {{$price_milk}}

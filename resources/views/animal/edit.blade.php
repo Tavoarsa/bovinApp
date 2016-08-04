@@ -16,7 +16,7 @@
                         @include('admin.partials.errors')
                     @endif
                     
-                    {!! Form::model($animal, array('route' => array('animal.update', $animal))) !!}
+                    {!! Form::model($animal, array('route' => array('animal.update', $animal),'files' => true)) !!}
 
                     
                         <input type="hidden" name="_method" value="PUT">                    

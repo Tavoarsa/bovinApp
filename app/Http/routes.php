@@ -267,6 +267,11 @@ Route::group(['middleware' => ['auth']], function () {
 
 	Route::get('animal','AnimalController@index');
 
+	Route::get('searchAnimal',[
+	'as'=>'search-animal',
+	'uses'=>'AnimalController@search'
+	]);
+
 	Route::get('animal/{slug}',[
 		'as'=>'dashboard-animal',
 		'uses'=>'AnimalController@show'
