@@ -27,10 +27,7 @@
                                 {!!Form::text('name', null, ["class" => "form-control"]) !!}
                             </div>
                             
-                            <div  id="animalNumber" class="form-group">
-                                {!!Form::label('animalNumber', 'Numero Animal')!!}
-                                {!!Form::text('animalNumber', null, ["class" => "form-control"]) !!}
-                            </div>
+                         
 
                             <div  id="registrationNumber" class="form-group">
                                 {!!Form::label('registrationNumber', 'Número Registro')!!}

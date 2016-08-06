@@ -22,7 +22,7 @@
             <div class="col-md-6">
                 <div class="panel">
                     <i class="fa fa-shopping-cart  icon-home"></i>
-                    <a href="{{route('farm-info') }}" class="btn btn-warning btn-block btn-home-admin">FINCA</a>
+                    <a href="{{route('farm-info') }}" class="btn btn-warning btn-block btn-home-admin">FINCAS</a>
                 </div>
             </div>
 
@@ -31,7 +31,7 @@
             <div class="col-md-6">
                 <div class="panel">
                     <i class="fa fa-users  icon-home"></i>
-                    <a href="{{ route('report-animals_mastitis') }}" class="btn btn-warning btn-block btn-home-admin">MASTITIS</a>
+                    <a href="{{ route('report-animals_mastitis') }}" class="btn btn-warning btn-block btn-home-admin" download>MASTITIS</a>
                 </div>
             </div>
 
@@ -40,20 +40,20 @@
             <div class="col-md-6">
                 <div class="panel">
                     <i class="fa fa-shopping-cart  icon-home"></i>
-                    <a href="{{ route('badamecum-farm') }}" class="btn btn-warning btn-block btn-home-admin">BADAMECUM</a>
+                    <a href="{{ route('badamecum-farm') }}" class="btn btn-warning btn-block btn-home-admin">VADAMECUM</a>
                 </div>
             </div>
 
              <div class="col-md-6">
                 <div class="panel">
-                    <i class="fa fa-users  icon-home"></i>
+                    <i class="fa fa-bar-chart" aria-hidden="true"></i>
                     <a href="#" class="btn btn-warning btn-block btn-home-admin">ESTADISTICAS</a>
                 </div>
             </div>
 
             <div class="col-md-6">
                 <div class="panel">
-                    <i class="fa fa-users  icon-home"></i>
+                    <i class="fa fa-calendar" aria-hidden="true"></i>
                     <a href="{{url('calendar/') }}" class="btn btn-warning btn-block btn-home-admin">CALENDARIO</a>
                 </div>
             </div> 

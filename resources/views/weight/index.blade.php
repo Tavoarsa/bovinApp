@@ -8,10 +8,13 @@
                 <a  value="Mostrar" onclick="add()" class="btn btn-warning"> <i class="fa fa-plus-circle"></i> Agregar</a>
                 <a href="{{ route('report-weight') }}" class="btn btn-warning" download><i class="fa fa-list-alt"></i>  Reporte</a>
             </h1>        
-            <h3>
+            <h3>   
+            @if ($price_weight=="")
+                        <h1 style="background-color:orange">PRIMERO DEBES DE FIJAR EL PRECIO</h1>
+            @endif
                 Precio por kilo: {{$price_weight}}
                 <br>
-                    <a type="button" value="Cambiar" onclick="price()"   class="btn btn-secondary"><i class="fa fa-undo"></i>  Cambiar</a>
+                    <a type="button" value="Cambiar" onclick="price()"   class="btn btn-secondary"><i class="fa fa-undo"></i>  Fijar Precio</a>
             </h3>
         </div>
 

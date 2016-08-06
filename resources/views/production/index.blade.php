@@ -9,9 +9,12 @@
                 <a href="{{ route('report-production') }}" class="btn btn-warning" download><i class="fa fa-list-alt"></i>  Reporte Productivo</a>
             </h1>        
             <h3>
+             @if ($price_milk=="")
+                        <h1 style="background-color:orange">PRIMERO DEBES DE FIJAR EL PRECIO</h1>
+            @endif
                 Precio por kilo: {{$price_milk}}
                 <br>
-                    <a type="button" value="Cambiar" onclick="price()"   class="btn btn-secondary"><i class="fa fa-undo"></i>  Cambiar</a>
+                    <a type="button" value="Cambiar" onclick="price()"   class="btn btn-secondary"><i class="fa fa-undo"></i>  Fijar Precio</a>
             </h3>
         </div>
 

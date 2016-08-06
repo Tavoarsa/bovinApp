@@ -8,7 +8,7 @@
         </div>
         
        
-     
+     @foreach($animals as $animal)
         <div class="row">
             
             <div class="col-md-6">
@@ -32,6 +32,8 @@
                 </div>
             </div>
 
+             @if($animal->gender=='hembra')
+
              <div class="col-md-6">
                 <div class="panel">
                     <i class="fa fa-shopping-cart  icon-home"></i>
@@ -39,36 +41,34 @@
                 </div>
             </div>
 
-              <div class="col-md-6">
-                <div class="panel">
-                    <i class="fa fa-users  icon-home"></i>
-                    <a href="{{route('report-weight')}}" class="btn btn-warning btn-block btn-home-admin" download>PESO</a>
-                </div>
-            </div>
-
-          
+                   
 
             <div class="col-md-6">
                 <div class="panel">
                     <i class="fa fa-users  icon-home"></i>
                     <a href="{{route('report-reproduction')}}" class="btn btn-warning btn-block btn-home-admin" download>REPRODUCCIÓN</a>
                 </div>
-            </div>
-
-          
+            </div>          
 
             <div class="col-md-6">
                 <div class="panel">
                     <i class="fa fa-users  icon-home"></i>
                     <a href="{{route('report-production_mastitis')}}" class="btn btn-warning btn-block btn-home-admin"download>MASTITIS</a>
                 </div>
+            </div>
+            @endif
+               <div class="col-md-6">
+                <div class="panel">
+                    <i class="fa fa-users  icon-home"></i>
+                    <a href="{{route('report-weight')}}" class="btn btn-warning btn-block btn-home-admin" download>PESO</a>
+                </div>
             </div>                     
         </div>
         <hr>
          <p>
-         <a class="btn btn-primary"  href="{{route('dashboard-animal',$slug_animal) }}"<i class="fa fa-chevron-circle-left" download></i>REGRESAR</a>          
+         <a class="btn btn-primary"  href="{{route('dashboard-animal',$animal->slug) }}"<i class="fa fa-chevron-circle-left" ></i>REGRESAR</a>          
     </p>
-                  
+    @endforeach              
     </div>
     <hr>
 

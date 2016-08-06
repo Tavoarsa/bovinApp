@@ -20,7 +20,10 @@ class BadamecumController extends Controller
     public function index()
     {
         $farm= Session::get('farm');
-        $badamecums = Badamecum::orderBy('id', 'desc')->paginate(6);
+        $badamecums = \DB::table('categories')
+                                ->join('badamecums','badamecums.category_id','=','categories.id')
+                                ->select('categories.name','badamecums.name')      
+                                ->paginate(6);dd($badamecums);
         return view('veterinary.badamecum.index', compact('badamecums','farm'));
     }
 

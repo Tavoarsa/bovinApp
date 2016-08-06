@@ -10,6 +10,7 @@ use BovinApp\Natural_mating;
 use BovinApp\Invitro_fertilization;
 use BovinApp\Embryo_transfer;
 use BovinApp\Artificial_insemination;
+use BovinApp\Farm;
 use Auth;
 use Session;
 use Input;
@@ -96,13 +97,15 @@ class AnimalController extends Controller
                       );
         $this->validate($request,$rules);
 
+   
+
         
           if(Session::get('idfarm'))
           {
 
                 $animal = new Animal();
                 $animal->idUser = Auth::id();
-                $animal->idFarm=Session::get('idfarm');
+                $animal->idFarm=Session::get('idfarm');                
                 $animal->name=$request->name;
                 $animal->slug=str_slug($request->get('name'));
                 $animal->breed=$request->breed;
@@ -193,8 +196,8 @@ class AnimalController extends Controller
     public function show($slug)
     {
         $animal=Animal::where('slug',$slug)->first();
-        Session::put('animal',$slug); 
-        Session::put('idAnimal',$animal->id);//get idAnimal for store new production register 
+        //Session::put('animal',$slug); 
+        //Session::put('idAnimal',$animal->id);//get idAnimal for store new production register 
        
         return view('animal.show',compact('animal'));
         
@@ -206,11 +209,14 @@ class AnimalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($slug)
+    public function edit($slug, Request $request)
     {
-        
-        $animal=Animal::where('slug',$slug)->first();
-        //dd($animal);
+        //$animal=Animal::findOrFail(Session::get('idAnimal'));dd($animal);
+
+        $animal=Animal::where('idUser',Auth::id())
+                        ->where('slug',$slug)
+                        ->first();
+       
         return view('animal.edit', compact('animal'));
     }
 
@@ -223,59 +229,29 @@ class AnimalController extends Controller
      */
     public function update(Request $request, Animal $animal)
     {
-        if($request->animalNumber==$animal->animalNumber && $request->registrationNumber==$animal->registrationNumber){
-
-                      //Validaciones
-            $rules =array(              
+        $animal = Animal::findOrFail($animal->id); 
+                              //Validaciones
+        $rules =array(              
                         'name'               => 'required',                       
                         'breed'              => 'required',                      
                         'gender'             => 'required',                        
-                        'feature'            => 'required',
-                        'animalNumber'       => 'exists:animals',
-                        'registrationNumber' => 'exists:animals'
-
-                        
+                        'feature'            => 'required',                 
                       );
-        $this->validate($request,$rules);
-        }else{
-
-                       //Validaciones
-            $rules =array(              
-                        'name'               => 'required',                       
-                        'breed'              => 'required',                      
-                        'gender'             => 'required',                        
-                        'feature'            => 'required',
-                        'animalNumber'       => 'required|unique:animals',
-                        'registrationNumber' => 'required|unique:animals'
-
-                        
-                      );
-        $this->validate($request,$rules);
-        }
-         
+        $this->validate($request,$rules);   
         
 
-     
-
-         $animal = Animal::findOrFail($animal->id); 
-
-        $animal->name=$request->name;
-       
-
-        $animal->animalNumber=$request->animalNumber;
-
-        $animal->registrationNumber=$request->registrationNumber;
+        $animal->registrationNumber=$animal->idFarm.'-'.$animal->id.'-'.$request->registrationNumber;       
+            //Divide date de acuerdo al limitador -
+        $date= explode('/', $animal->birthdate);
+        $animal->animalNumber=$animal->idFarm.'-'.$animal->id.'-'.$date[0].$date[2];
+        $animal->name=$request->name;   
         $animal->slug=str_slug($request->get('name'));
         $animal->breed=$request->breed;
         $animal->gender=$request->gender;
         $animal->feature=$request->feature;
         $animal->birthdate=$request->birthdate;
         $animal->deathDate=$request->deathdate;
-
-
-
-
-            //Validacion de imagen 
+                    //Validacion de imagen 
         if (Input::hasFile('image')) 
         {   
             $file = Input::file('image');//Creamos una instancia de la libreria instalada
@@ -287,23 +263,17 @@ class AnimalController extends Controller
             $image -> resize(331, 152);
             $image -> save($path . $file -> getClientOriginalName());   
             $animal->image = $file -> getClientOriginalName();
-            //$animal->save(); 
-            //return redirect() -> route('animal.index');
+           
          }else
          {
-            //Si no hay imagen, se guarda la misma imagen original antes de actualizar
-           
-            
-            $animal->image = $animal->image;              
-            //$animal->save();
-         }     
-      
+            //Si no hay imagen, se guarda la misma imagen original antes de actualizar           
+            $animal->image = $animal->image;         
+         }  
 
-        if($request->has('deathdate')){
-        $animal->status_deathDate= 1;
-
-        }   
-      
+        if($request->has('deathdate'))
+        {
+            $animal->status_deathDate= 1;
+        }    
                      
         $updated = $animal->save();
         

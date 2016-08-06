@@ -11,18 +11,7 @@
                         <li>
                             <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-facebook"></i></a>
                         </li>
-                        <li>
-                            <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-google-plus"></i></a>
-                        </li>
-                        <li>
-                            <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-twitter"></i></a>
-                        </li>
-                        <li>
-                            <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-linkedin"></i></a>
-                        </li>
-                        <li>
-                            <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-dribbble"></i></a>
-                        </li>
+                       
                     </ul>
                 </div>
                 
@@ -33,7 +22,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <p>© 2016 BobinApp.</p>
+                    <p>© 2016 BovinApp.</p>
                 </div>
             </div>
         </div>

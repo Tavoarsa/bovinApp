@@ -96,9 +96,9 @@
                             {!! Form::select(
                                     'exploitation', 
                                      array(
-                                        'carne' => 'Carne', 
-                                        'leche' => 'Leche',
-                                        'doblePrposito' => 'Doble Proposito'
+                                        'Carne' => 'Carne', 
+                                        'Leche' => 'Leche',
+                                        'Doble Proposito' => 'Doble Proposito'
                                         ), 
                                      'Leche'
                                      )

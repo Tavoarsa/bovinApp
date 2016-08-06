@@ -66,8 +66,29 @@
 
                             <div class="form-group">
                                 {!!Form::label('breed', 'Raza')!!}
-                                {!! Form::select('breed', array('holsten' => 'Holsten', 'yersey' => 'Yersey','guir' => 'Guir'), 'Holtein',["class" => "form-control"])!!}
+                                {!! Form::select('breed', array('Lecheras'=> array('Holstein Rojo' => 'Holstein Rojo',
+                                
+                                'Holstein Friesian' => ' Holstein Friesian',
+                                'Jersey'            => 'Jersey',
+                                'Ayrshire'          => 'Ayrshire',
+                                'Guernsey '         => 'Guernsey ',
+                                'Normando'          => 'Normando',
+                                'Gyr lechero'       => 'Gyr lechero'),'Doble Proposito'=>array(
+                                'Simmental '        => 'Simmental ',
+                                'Girolando'         => 'Girolando',
+                                'Chumeca'           => 'Chumeca'),'Carne'=>array(
+                                'Brahman '          => 'Brahman ',
+                                'Nelore '           => 'Nelore ',
+                                'Indo Brasil'       => 'Indo Brasil',
+                                'Limousin'          => 'Limousin',
+                                'Chianina'          => 'Chianina',
+                                'Angus Negro'       => 'Angus Negro',
+                                'Angus Rojo'        => 'Angus Rojo',
+                                'Charolais'         => 'Charolais'),
+                                
+                                ), 'Holstein',["class" => "form-control"])!!}
                             </div>
+
 
                             <div class="form-group">
                                 {!!Form::label('gender', 'Genero')!!}
@@ -102,7 +123,7 @@
                             
                             <div class="form-group">
 
-                                <a href="{{url('animal/') }}" class="btn btn-primary"><i class="fa fa-chevron-circle-left"></i>Regresar</a>                    
+                                                   
                                 <a href="javascript:location.reload()" class="btn btn-primary" >Cambiar</a>                     
                                 {!! Form::submit('Guardar', array('class'=>'btn btn-primary')) !!}
 
@@ -156,9 +177,29 @@
                                 {!!Form::text('receivingMother', null, ["class" => "form-control"]) !!}
                             </div>
 
-                            <div class="form-group">
+                           <div class="form-group">
                                 {!!Form::label('breed', 'Raza')!!}
-                                {!! Form::select('breed', array('holsten' => 'Holsten', 'yersey' => 'Yersey','guir' => 'Guir','braman' => 'Braman','pardo' => 'Pardo','lenor' => 'Lenor','guense' => 'Guense'), 'Holstein',["class" => "form-control"])!!}
+                                {!! Form::select('breed', array('Lecheras'=> array('Holstein Rojo' => 'Holstein Rojo',
+                                
+                                'Holstein Friesian' => ' Holstein Friesian',
+                                'Jersey'            => 'Jersey',
+                                'Ayrshire'          => 'Ayrshire',
+                                'Guernsey '         => 'Guernsey ',
+                                'Normando'          => 'Normando',
+                                'Gyr lechero'       => 'Gyr lechero'),'Doble Proposito'=>array(
+                                'Simmental '        => 'Simmental ',
+                                'Girolando'         => 'Girolando',
+                                'Chumeca'           => 'Chumeca'),'Carne'=>array(
+                                'Brahman '          => 'Brahman ',
+                                'Nelore '           => 'Nelore ',
+                                'Indo Brasil'       => 'Indo Brasil',
+                                'Limousin'          => 'Limousin',
+                                'Chianina'          => 'Chianina',
+                                'Angus Negro'       => 'Angus Negro',
+                                'Angus Rojo'        => 'Angus Rojo',
+                                'Charolais'         => 'Charolais'),
+                                
+                                ), 'Holstein',["class" => "form-control"])!!}
                             </div>
 
                             <div class="form-group">
@@ -192,7 +233,7 @@
                              <hr>
                             
                             <div class="form-group">
-                                <a href="{{url('animal/') }}" class="btn btn-primary"><i class="fa fa-chevron-circle-left"></i>Regresar</a>                    
+                                                    
                                 <a href="javascript:location.reload()" class="btn btn-primary" >Cambiar</a>                     
                                 {!! Form::submit('Guardar', array('class'=>'btn btn-primary')) !!}
                             </div>
@@ -243,9 +284,29 @@
                                 {!!Form::text('receivingMother', null, ["class" => "form-control"]) !!}
                             </div>
 
-                            <div class="form-group">
+                           <div class="form-group">
                                 {!!Form::label('breed', 'Raza')!!}
-                                {!! Form::select('breed', array('holsten' => 'Holsten', 'yersey' => 'Yersey','guir' => 'Guir'), 'Holtein',["class" => "form-control"])!!}
+                                {!! Form::select('breed', array('Lecheras'=> array('Holstein Rojo' => 'Holstein Rojo',
+                                
+                                'Holstein Friesian' => ' Holstein Friesian',
+                                'Jersey'            => 'Jersey',
+                                'Ayrshire'          => 'Ayrshire',
+                                'Guernsey '         => 'Guernsey ',
+                                'Normando'          => 'Normando',
+                                'Gyr lechero'       => 'Gyr lechero'),'Doble Proposito'=>array(
+                                'Simmental '        => 'Simmental ',
+                                'Girolando'         => 'Girolando',
+                                'Chumeca'           => 'Chumeca'),'Carne'=>array(
+                                'Brahman '          => 'Brahman ',
+                                'Nelore '           => 'Nelore ',
+                                'Indo Brasil'       => 'Indo Brasil',
+                                'Limousin'          => 'Limousin',
+                                'Chianina'          => 'Chianina',
+                                'Angus Negro'       => 'Angus Negro',
+                                'Angus Rojo'        => 'Angus Rojo',
+                                'Charolais'         => 'Charolais'),
+                                
+                                ), 'Holstein',["class" => "form-control"])!!}
                             </div>
 
                             <div class="form-group">
@@ -278,7 +339,7 @@
                              </div>
                              <hr>             
                             <div class="form-group">
-                                <a href="{{url('animal/') }}" class="btn btn-primary"><i class="fa fa-chevron-circle-left"></i>Regresar</a>                    
+                                                
                                 <a href="javascript:location.reload()" class="btn btn-primary" >Cambiar</a>                     
                                 {!! Form::submit('Guardar', array('class'=>'btn btn-primary')) !!}
                             </div>
@@ -326,7 +387,27 @@
 
                             <div class="form-group">
                                 {!!Form::label('breed', 'Raza')!!}
-                                {!! Form::select('breed', array('holsten' => 'Holsten', 'yersey' => 'Yersey','guir' => 'Guir'), 'Holtein',["class" => "form-control"])!!}
+                                {!! Form::select('breed', array('Lecheras'=> array('Holstein Rojo' => 'Holstein Rojo',
+                                
+                                'Holstein Friesian' => ' Holstein Friesian',
+                                'Jersey'            => 'Jersey',
+                                'Ayrshire'          => 'Ayrshire',
+                                'Guernsey '         => 'Guernsey ',
+                                'Normando'          => 'Normando',
+                                'Gyr lechero'       => 'Gyr lechero'),'Doble Proposito'=>array(
+                                'Simmental '        => 'Simmental ',
+                                'Girolando'         => 'Girolando',
+                                'Chumeca'           => 'Chumeca'),'Carne'=>array(
+                                'Brahman '          => 'Brahman ',
+                                'Nelore '           => 'Nelore ',
+                                'Indo Brasil'       => 'Indo Brasil',
+                                'Limousin'          => 'Limousin',
+                                'Chianina'          => 'Chianina',
+                                'Angus Negro'       => 'Angus Negro',
+                                'Angus Rojo'        => 'Angus Rojo',
+                                'Charolais'         => 'Charolais'),
+                                
+                                ), 'Holstein',["class" => "form-control"])!!}
                             </div>
 
                             <div class="form-group">
@@ -359,7 +440,7 @@
                              <hr> 
                             
                             <div class="form-group">
-                                <a href="{{url('animal/') }}" class="btn btn-primary"><i class="fa fa-chevron-circle-left"></i>Regresar</a>                    
+                                                    
                                 <a href="javascript:location.reload()" class="btn btn-primary" >Cambiar</a>                     
                                 {!! Form::submit('Guardar', array('class'=>'btn btn-primary')) !!}
                             </div>                          
@@ -369,9 +450,11 @@
                         </div>                 
                     </div>
             </div>
-        </div>       
+        </div> 
+
 
 	</div>
+     <a class="btn btn-primary" href="{{route('animal-index')}}"><i class="fa fa-chevron-circle-left"></i> Regresar</a>
 </div>
 
 

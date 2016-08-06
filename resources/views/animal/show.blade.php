@@ -9,19 +9,27 @@
         
         <h2> {{ $animal->name}}</h2><a href="{{ route('animal.edit', $animal->slug) }}" class="btn btn-primary">
                                         <i class="fa fa-pencil-square-o"></i> Editar</a> <hr>
+        <div>
+         <div hidden class="form-group">
+                              {!!Form::text('fiv',"fiv") !!}
+                                
+        </div>
+            
+        </div>
+        <input type="hidden" name="_method" value="$animal->id">   
      
         <div class="row">
             
             <div class="col-md-6">
                 <div class="panel">
-                    <i class="fa fa-user icon-home"></i>
+                    <i class="fa fa-ambulance" aria-hidden="true"></i>
                      <a href="{{url('vaccine') }}"  class="btn btn-warning btn-block btn-home-admin">VACUNAS</a> 
                 </div>
             </div>
             
             <div class="col-md-6">
                 <div class="panel">
-                    <i class="fa fa-shopping-cart  icon-home"></i>
+                    <i class="fa fa-ambulance" aria-hidden="true"></i>
                     <a href="{{url('injecction') }}" class="btn btn-warning btn-block btn-home-admin">INYECCIONES</a>
                 </div>
             </div>

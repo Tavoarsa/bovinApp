@@ -112,10 +112,13 @@ class FarmCOntroller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($slug)
+    public function edit(Request $request, $slug)
     {
-        $farm = Farm::where('slug',$slug)->first();   
-        return view('farm.edit', compact('farm'));       
+     
+        $farm = Farm::where('idUser',Auth::id())
+                        ->where('slug',$slug)
+                        ->first();
+        return view('farm.edit', compact('farm'));  
     }
 
     /**

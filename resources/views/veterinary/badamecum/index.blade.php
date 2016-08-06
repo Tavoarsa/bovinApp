@@ -15,6 +15,7 @@
                         <img src="/img/badamecum/{{$badamecum->image}}" alt="{{$badamecum->name}}">    
                         <div class="caption">                                        
                             <h3 >{{$badamecum->name}}</h3>
+                       
 
                         </div>
                         <p>

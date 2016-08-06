@@ -26,9 +26,10 @@ class ReportController extends Controller
 
   public function index()
   {
-    $slug_animal= Animal::where('id',Session::get('idAnimal'))->pluck('slug');
-    $slug_animal= array_pull($slug_animal,0); 
-    return view('report.dashboard',compact('slug_animal'));
+    $animals= Animal::where('id',Session::get('idAnimal'))->get();
+
+    
+    return view('report.dashboard',compact('animals'));
   }
 
   public function report_vaccine()
@@ -122,7 +123,7 @@ class ReportController extends Controller
                               ->select('animals.name','productions.date','productions.mastitis_morning','productions.mastitis_later')                            
                                  
                                  ->get(); 
-     //dd($animals_mastitis);
+     
           $pdf= PDF::loadView('report.animals_mastitis',['animals_mastitis'=>$animals_mastitis]);
        return $pdf->stream();                          
     }
