@@ -46,7 +46,7 @@
             <div class="col-md-6">
                 <div class="panel">
                     <i class="fa fa-users  icon-home"></i>
-                    <a href="{{ route('admin.badamecum.index') }}" class="btn btn-warning btn-block btn-home-admin">BADAMECUM</a>
+                    <a href="{{ route('admin.badamecum.index') }}" class="btn btn-warning btn-block btn-home-admin">VADAMECUM</a>
                 </div>
             </div>
                     

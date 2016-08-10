@@ -25,14 +25,15 @@
 					        <input class="form-control" type="password" name="password" id="password">
 					    </div>
 
-					    <div class="form-group">
-					        <input type="checkbox" name="remember"> Recordar Datos
-					    </div>
+					    
 
 					    <div class="form-group">
 					        <button class="btn btn-primary btn-block" type="submit">Iniciar sesión</button>
 					    </div>
 					</form>
+
+					{!!link_to('password/email',$title='Olvido su contraseña?', $attributes=null,$secure=null)!!}
+					
 					<div class="form-group">
 						<a   class="btn btn-primary btn-block" href="{{ route('register-get') }}">Registrarse</a>
 					</div>

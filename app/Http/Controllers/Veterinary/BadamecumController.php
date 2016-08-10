@@ -23,7 +23,7 @@ class BadamecumController extends Controller
         $badamecums = \DB::table('categories')
                                 ->join('badamecums','badamecums.category_id','=','categories.id')
                                 ->select('categories.name','badamecums.name')      
-                                ->paginate(6);dd($badamecums);
+                                ->paginate(6);
         return view('veterinary.badamecum.index', compact('badamecums','farm'));
     }
 

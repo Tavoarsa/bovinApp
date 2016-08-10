@@ -23,9 +23,10 @@ class SaleAnimalController extends Controller
      */
     public function index($slug)
     {
+        //dd($slug);
        $sale = SaleAnimal::where('idUser',Auth::id())
                             ->where('slug',$slug)
-                ->first();//dd($sale);
+                ->first();dd($sale);
 
         return view('animal.sale',compact('sale'));
     }

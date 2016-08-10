@@ -34,9 +34,29 @@
                                 {!!Form::text('registrationNumber', null, ["class" => "form-control"]) !!}
                             </div>
 
-                            <div align="center" class="form-group">
+                                <div class="form-group">
                                 {!!Form::label('breed', 'Raza')!!}
-                                {!! Form::select('breed', array('holsten' => 'Holsten', 'yersey' => 'Yersey','guir' => 'Guir'))!!}
+                                {!! Form::select('breed', array('Lecheras'=> array('Holstein Rojo' => 'Holstein Rojo',
+                                
+                                'Holstein Friesian' => ' Holstein Friesian',
+                                'Jersey'            => 'Jersey',
+                                'Ayrshire'          => 'Ayrshire',
+                                'Guernsey '         => 'Guernsey ',
+                                'Normando'          => 'Normando',
+                                'Gyr lechero'       => 'Gyr lechero'),'Doble Proposito'=>array(
+                                'Simmental '        => 'Simmental ',
+                                'Girolando'         => 'Girolando',
+                                'Chumeca'           => 'Chumeca'),'Carne'=>array(
+                                'Brahman '          => 'Brahman ',
+                                'Nelore '           => 'Nelore ',
+                                'Indo Brasil'       => 'Indo Brasil',
+                                'Limousin'          => 'Limousin',
+                                'Chianina'          => 'Chianina',
+                                'Angus Negro'       => 'Angus Negro',
+                                'Angus Rojo'        => 'Angus Rojo',
+                                'Charolais'         => 'Charolais'),
+                                
+                                ), 'Holstein',["class" => "form-control"])!!}
                             </div>
 
                             <div align="center" class="form-group">

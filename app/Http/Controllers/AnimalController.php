@@ -27,10 +27,22 @@ class AnimalController extends Controller
      */
     public function index()
     {
-       $animals= Animal::where('idFarm',Session::get('idfarm'))
+         if(Session::get('idfarm'))
+          {
+
+            $animals= Animal::where('idFarm',Session::get('idfarm'))
                           -> paginate(8);
-       $farm= Session::get('farm');
-        return view('animal.index',compact('animals','farm'));    
+             $farm= Session::get('farm');
+            return view('animal.index',compact('animals','farm')); 
+          
+            
+        }else
+        {
+            $message = 'Debes Seleccionar una Finca';
+            return redirect() -> route('farm-index')->with('message', $message);
+
+        }
+          
        
     }
 
@@ -112,7 +124,7 @@ class AnimalController extends Controller
                 $animal->gender=$request->gender;
                 $animal->feature=$request->feature;
                 $animal->birthdate=$request->date; 
-                $animal->status=$request->status;
+                $animal->status=0;
                 $animal->status_deathDate=0;
 
 
@@ -196,8 +208,8 @@ class AnimalController extends Controller
     public function show($slug)
     {
         $animal=Animal::where('slug',$slug)->first();
-        //Session::put('animal',$slug); 
-        //Session::put('idAnimal',$animal->id);//get idAnimal for store new production register 
+        Session::put('animal',$slug); 
+        Session::put('idAnimal',$animal->id);//get idAnimal for store new production register 
        
         return view('animal.show',compact('animal'));
         

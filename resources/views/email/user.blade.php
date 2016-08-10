@@ -24,20 +24,13 @@
 	    					</tr>
 	    				@endforeach
 	    			</tbody>	    			
-	    		</table><hr>
-	    		
-	    	</div>
-	
+	    		</table><hr>	    		
+	    </div>	
 </div>
 
 <h2>Si los eventos ya se ejecutaron, se debe eliminar de la lista de eventos pendientes.</h2>
 
 <h4>http://bovinapp.herokuapp.com/</h4> 
-
-
-
-
-
 
 </body>
 </html>

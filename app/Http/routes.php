@@ -162,6 +162,28 @@ Route::post('auth/register', [
 	'uses' => 'Auth\AuthController@postRegister'
 ]);
 
+// Restaurar contraseña...
+Route::get('password/email', [
+	'as' => 'get-email',
+	'uses' => 'Auth\PasswordController@getEmail'
+]);
+
+// Restaurar contraseña...
+Route::post('password/email', [
+	'as' => 'post-email',
+	'uses' => 'Auth\PasswordController@postEmail'
+]);
+// Restaurar contraseña...
+Route::get('password/reset/{token}', [
+	'as' => 'reset-password',
+	'uses' => 'Auth\PasswordController@getReset'
+]);
+// Restaurar contraseña...
+Route::post('password/reset/', [
+	'as' => 'reset-password',
+	'uses' => 'Auth\PasswordController@postReset'
+]);
+
 // Paypal
 // Enviamos nuestro pedido a PayPal
 Route::get('payment', array(
