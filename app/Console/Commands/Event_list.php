@@ -53,9 +53,7 @@ class Event_list extends Command
 
            $events=\DB::table('events')
                                 ->where('idUser',$user->id)                            
-                                ->get();   
-
-                                         
+                                ->get();                                           
                
 
                 Mail::send('email.user',['events'=>$events] , function ($m)  {

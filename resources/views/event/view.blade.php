@@ -1,43 +1,35 @@
-@extends('layouts.event')
+@extends('layouts.calendar')
 
 @section('content')
 
-<div class="row">
-	<div clss="col-lg-12">
-		<ol class="breadcrumb">
-			<li>You are here: <a href="{{ url('/') }}">Home</a></li>
-			<li><a href="{{ url('/events') }}">Events</a></li>
-			<li class="active">{{ $event->title }}</li>
-		</ol>
-	</div>
-</div>
+ @include('event.partials.menu_calendar') 
 
 <div class="row">
-	<div class="col-lg-12">
-		<h2>{{ $event->title }} <small>booked by {{ $event->name }}</small></h2>
+	<div class="col-md-offset-3 col-md-6">
+		<h2>{{ $event->name }} <small>Realizado por {{ Auth::user()->user }}</small></h2>
 		<hr>
 	</div>
 </div>
 
 <div class="row">
-	<div class="col-lg-6">
-		
-		<p>Time: <br>
+	<div class="col-md-offset-3 col-md-6">
+
+		<h2>{{ $event->title }}</h2>
+		<hr>
+		<p>Fecha de ejecución <br>
 		{{ date("g:ia\, jS M Y", strtotime($event->start_time)) . ' until ' . date("g:ia\, jS M Y", strtotime($event->end_time)) }}
 		</p>
 		
-		<p>Duration: <br>
-		{{ $duration }}
-		</p>
+		
 		
 		<p>
 			<form action="{{ url('events/' . $event->id) }}" style="display:inline;" method="POST">
 				<input type="hidden" name="_method" value="DELETE" />
 				{{ csrf_field() }}
-				<button class="btn btn-danger" type="submit"><span class="glyphicon glyphicon-trash"></span> Delete</button>
+				<button class="btn btn-danger" type="submit"><span class="glyphicon glyphicon-trash"></span> Eliminar</button>
 			</form>
 			<a class="btn btn-primary" href="{{ url('events/' . $event->id . '/edit')}}">
-				<span class="glyphicon glyphicon-edit"></span> Edit</a> 
+				<span class="glyphicon glyphicon-edit"></span> Editar</a> 
 			
 		</p>
 		

@@ -7,6 +7,7 @@
 <meta name="keywords" content="BovinApp,agropecuaria,trazabilidad,san carlos, dos pinos, rastreabilidad" />
 <!-- css links -->
  <link href="{{ asset('/css/catalago.css') }}" rel="stylesheet">
+ <link href="css/error/404.css" rel="stylesheet" type="text/css" media="all">
 
 <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.6/lumen/bootstrap.min.css" rel="stylesheet">
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">

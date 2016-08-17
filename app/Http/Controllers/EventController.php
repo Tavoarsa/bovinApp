@@ -8,6 +8,7 @@ use BovinApp\Http\Requests;
 
 use BovinApp\Event;
 use Auth;
+
 use DateTime;
 
 class EventController extends Controller
@@ -21,9 +22,11 @@ class EventController extends Controller
     {
         $data = [
             'page_title' => 'Eventos',
-            'events'     => Event::orderBy('start_time')->get(),
+            'events'     => Event::orderBy('start_time')
+                                  ->where('idUser',Auth::id())
+                                  ->get(),
         ];
-       
+
         
         return view('event/list', $data);
     }
@@ -53,8 +56,8 @@ class EventController extends Controller
 
         $rules= array(
 
-            'name'  => 'required|min:5|max:15',
-            'title' => 'required|min:5|max:100',
+            'name'  => 'required',
+            'title' => 'required',
             'time'  => 'required'
 
 
@@ -80,9 +83,11 @@ class EventController extends Controller
         $event->start_time      = $this->change_date_format($time[0]);
         $event->end_time        = $this->change_date_format($time[1]);
         $event->save();
-       
-        $request->session()->flash('Bien!!', 'El evento se guardo existosamente');
-        return redirect('events/create');
+
+        $message ='Evento Creado Correctamente!' ; 
+        
+        
+        return redirect('events')->with('message', $message);
     }
     /**
      * Display the specified resource.
@@ -90,9 +95,11 @@ class EventController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id, Request $request)
     {
+        
         $event = Event::findOrFail($id);
+        
 
         
         $first_date = new DateTime($event->start_time);
@@ -102,6 +109,7 @@ class EventController extends Controller
             'page_title'    => $event->title,
             'event'         => $event,
             'duration'      => $this->format_interval($difference)
+            
         ];
         
         return view('event/view', $data);
@@ -116,14 +124,10 @@ class EventController extends Controller
     {
         $event = Event::findOrFail($id);
         $event->start_time =  $this->change_date_format_fullcalendar($event->start_time);
-        $event->end_time =  $this->change_date_format_fullcalendar($event->end_time);
-        
-        $data = [
-            'page_title'    => 'Edit '.$event->title,
-            'event'         => $event,
-        ];
-        
-        return view('event/edit', $data);
+        $event->end_time =  $this->change_date_format_fullcalendar($event->end_time);       
+       
+      
+        return view('event/edit',compact('event'));
     }
     /**
      * Update the specified resource in storage.
@@ -135,8 +139,8 @@ class EventController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'name'  => 'required|min:5|max:15',
-            'title' => 'required|min:5|max:100',
+            'name'  => 'required',
+            'title' => 'required',
             'time'  => 'required'
         ]);
 
@@ -150,8 +154,11 @@ class EventController extends Controller
         $event->start_time      = $this->change_date_format($time[0]);
         $event->end_time        = $this->change_date_format($time[1]);
         $event->save();
+
+        $message ='Evento Actualizado Correctamente!' ; 
+        return redirect('events')->with('message', $message);
         
-        return redirect('events');
+
     }
     /**
      * Remove the specified resource from storage.
@@ -163,8 +170,10 @@ class EventController extends Controller
     {
         $event = Event::find($id);
         $event->delete();
+
+        $message ='Evento Eliminado!' ; 
+        return redirect('events')->with('message', $message);
         
-        return redirect('events');
     }
     
     public function change_date_format($date)
@@ -175,8 +184,8 @@ class EventController extends Controller
     
     public function change_date_format_fullcalendar($date)
     {
-        $time = DateTime::createFromFormat('Y-m-d H:i:s', $date);
-        return $time->format('d/m/Y H:i:s');
+        $time = DateTime::createFromFormat('Y-m-d', $date);
+        return $time->format('d/m/Y');
     }
     
     public function format_interval(\DateInterval $interval)
@@ -191,4 +200,6 @@ class EventController extends Controller
         
         return $result;
     }
+
+  
 }

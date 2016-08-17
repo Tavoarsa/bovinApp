@@ -1,31 +1,23 @@
-<!--Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
 <!DOCTYPE html>
 <html>
 <head>
-<title>Mi Finca</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="BovinApp,agropecuaria,trazabilidad,san carlos, dos pinos, rastreabilidad" />
-<!-- css links -->
-<link href="{{ asset('/css/catalago.css') }}" rel="stylesheet">
-<link href="{{ asset('/css/create-animal.css') }}" rel="stylesheet">
-<!--Search Animals-->
-<link href="{{ asset('/css/search.css') }}" rel="stylesheet">
- <!--Datepicker Files -->
-<link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
-<link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.6/lumen/bootstrap.min.css" rel="stylesheet">
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
-<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Roboto+Slab' rel='stylesheet' type='text/css'>
-<link href="css/error/404.css" rel="stylesheet" type="text/css" media="all">
+	<title>Calendario</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="keywords" content="BovinApp,agropecuaria,trazabilidad,san carlos, dos pinos, rastreabilidad" />
 
+	<!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+
+	
+	
+    <link href="{{ asset('/css/fullcalendar/fullcalendar.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/event/daterangepicker.css') }}" rel="stylesheet">
 </head>
-
-<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
-@if(\Session::has('message'))
+<body>
+	@if(\Session::has('message'))
         @include('admin.partials.message')
  @endif
 <!-- Fixed navbar -->
@@ -63,32 +55,27 @@ License URL: http://creativecommons.org/licenses/by/3.0/
       </div>
     </nav>
 
+    <div class="container">
 
-@yield('content')
-
-
-</body>
-<!-- /Contact-Form -->
-<!-- Footer -->
+    @yield('content')
+    
+    </div> <!-- /container -->
 <footer class="text-center slideanim slide">
   @include('layouts.partials.footer') 
 </footer>
-<!-- js files -->
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-<script src="{{ asset('/js/detalle-pedido.js') }}"></script>
-<!--Datepicker Files -->
-<script src="//code.jquery.com/jquery-1.10.2.js"></script>
-<script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
-<script>
-  $(function() {
-    $( ".date" ).datepicker();
-  });
- </script>
-<script src="/js/bootstrap.min.js"></script>
 
 
+  
+  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+    <script src="{{ asset('/js/fullcalendar/moment.min.js') }}"></script>
+    <script src="{{ asset('/js/fullcalendar/daterangepicker.js') }}"></script>
+     <script src="{{ asset('/js/fullcalendar/fullcalendar.min.js') }}"></script>
+  
+  
+  @yield('js')
 
 </body>
 </html>
-

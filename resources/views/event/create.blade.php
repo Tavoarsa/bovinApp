@@ -1,28 +1,20 @@
-@extends('layouts.event')
+@extends('layouts.calendar')
 
 @section('content')
 
-<div class="row">
-	<div clss="col-lg-12">
-		<ol class="breadcrumb">
-			<li>You are here: <a href="{{ url('/calendar') }}">Home</a></li>
-			<li><a href="{{ url('/events') }}">Events</a></li>
-			<li class="active">Add new event</li>
-		</ol>
-	</div>
-</div>
+@include('event.partials.menu_calendar') 
 
 @include('event.message')
 
 <div class="row">
-	<div class="col-lg-6">
+	<div class="col-md-offset-3 col-md-6">
 		
 		<form action="{{ url('events') }}" method="POST">
 			{{ csrf_field() }}
 
 			<div class="form-group @if($errors->has('name')) has-error has-feedback @endif">
-				<label for="name">Your Name</label>
-				<input type="text" class="form-control" name="name" placeholder="Ej: Gustavo" value="{{ old('name') }}">
+				<label for="name">Nombre del Evento</label>
+				<input type="text" class="form-control" name="name" placeholder="Ej:Vacunación" value="{{ old('name') }}">
 				@if ($errors->has('name'))
 					<p class="help-block"><span class="glyphicon glyphicon-exclamation-sign"></span> 
 					{{ $errors->first('name') }}
@@ -30,8 +22,8 @@
 				@endif
 			</div>
 			<div class="form-group @if($errors->has('title')) has-error has-feedback @endif">
-				<label for="title">Title</label>
-				<input type="text" class="form-control" name="title" placeholder="Ej: Vacunación" value="{{ old('title') }}">
+				<label for="title">Detalle del Evento</label>
+				<input type="text" class="form-control" name="title" placeholder="Ej: Vacunación preventivo Pierna Negra" value="{{ old('title') }}">
 				@if ($errors->has('title'))
 					<p class="help-block"><span class="glyphicon glyphicon-exclamation-sign"></span> 
 					{{ $errors->first('title') }}
@@ -39,7 +31,7 @@
 				@endif
 			</div>
 			<div class="form-group @if($errors->has('time')) has-error @endif">
-				<label for="time">Time</label>
+				<label for="time">Fecha</label>
 				<div class="input-group">
 					<input type="text" class="form-control" name="time" placeholder="Select your time" value="{{ old('time') }}">
 					<span class="input-group-addon">

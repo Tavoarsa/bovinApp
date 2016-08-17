@@ -13,6 +13,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!-- css links -->
 <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.6/lumen/bootstrap.min.css" rel="stylesheet">
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="css/error/404.css" rel="stylesheet" type="text/css" media="all">
 
 <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all">
 <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" media="all" />
@@ -20,6 +21,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <link rel="stylesheet" type="text/css" href="css/circle-hover.css" />
 <link href="css/slider.css" rel="stylesheet" type="text/css" media="all">
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all">
+
+
+<link href="css/error/404.css" rel="stylesheet" type="text/css" media="all">
 <!-- /css links -->
 <link href='//fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700,800,900' rel='stylesheet' type='text/css'>
 <link href='//fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>

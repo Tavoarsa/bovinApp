@@ -1,26 +1,19 @@
-@extends('layouts.event')
+@extends('layouts.calendar')
 
 @section('content')
 
-<div class="row">
-	<div clss="col-lg-12">
-		<ol class="breadcrumb">
-			<li>You are here: <a href="#">Home</a></li>
-			<li class="active"><a href="{{ url('/events') }}">Events</a></li>
-		</ol>
-	</div>
-</div>
+@include('event.partials.menu_calendar') 
 
 <div class="row">
-	<div class="col-lg-12">
+	<div class="col-md-offset-3 col-md-6">
 		@if($events->count() > 0)
 		<table class="table table-striped">
 			<thead>
 				<tr>
 					<th>#</th>
-					<th>Event's Title</th>
-					<th>Start</th>
-					<th>End</th>
+					<th>Detalle del Evento</th>
+					<th>Inicio</th>
+					<th>Fin</th>
 					<th></th>
 				</tr>
 			</thead>
@@ -34,20 +27,24 @@
 					<td>{{date("g:ia\, jS M Y", strtotime($event->end_time)) }}</td>
 					<td>
 						<a class="btn btn-primary btn-xs" href="{{ url('events/' . $event->id . '/edit')}}">
-							<span class="glyphicon glyphicon-edit"></span> Edit</a> 
+							<span class="glyphicon glyphicon-edit"></span> Editar</a>
+					</td>
+					<td>
+
 						<form action="{{ url('events/' . $event->id) }}" style="display:inline" method="POST">
 							<input type="hidden" name="_method" value="DELETE" />
 							{{ csrf_field() }}
-							<button class="btn btn-danger btn-xs" type="submit"><span class="glyphicon glyphicon-trash"></span> Delete</button>
+							<button class="btn btn-danger btn-xs" type="submit"><span class="glyphicon glyphicon-trash"></span> Eliminar</button>
 						</form>
+					</td> 
 						
-					</td>
+					
 				</tr>
 			@endforeach
 			</tbody>
 		</table>
 		@else
-			<h2>No event yet!</h2>
+			<h2>Aún no hay eventos Registrados</h2>
 		@endif
 	</div>
 </div>

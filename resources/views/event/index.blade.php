@@ -1,14 +1,8 @@
-@extends('layouts.event')
+@extends('layouts.calendar')
 
 @section('content')
 
-<div class="row">
-	<div clss="col-lg-12">
-		<ol class="breadcrumb">
-			<li class="active">You are here: Home</li>
-		</ol>
-	</div>
-</div>
+	 @include('event.partials.menu_calendar') 
 
 <div class="row">
 	<div class="col-lg-12">

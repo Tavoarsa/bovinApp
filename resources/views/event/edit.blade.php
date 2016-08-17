@@ -1,19 +1,11 @@
-@extends('layouts.event')
+@extends('layouts.calendar')
 
 @section('content')
 
-<div class="row">
-	<div clss="col-lg-12">
-		<ol class="breadcrumb">
-			<li>You are here: <a href="{{ url('/') }}">Home</a></li>
-			<li><a href="{{ url('/events') }}">Events</a></li>
-			<li class="active">Edit - {{ $event->title }}</li>
-		</ol>
-	</div>
-</div>
+@include('event.partials.menu_calendar') 
 
 <div class="row">
-	<div class="col-lg-6">
+	<div class="col-md-offset-3 col-md-6">
 		
 		@if($errors)
 			@foreach($errors->all() as $error)
@@ -25,8 +17,8 @@
 			{{ csrf_field() }}
 			<input type="hidden" name="_method" value="PUT" />
 			<div class="form-group @if($errors->has('name')) has-error has-feedback @endif">
-				<label for="name">Your Name</label>
-				<input type="text" class="form-control" name="name" value="{{ $event->name }}" placeholder="E.g. Pisyek">
+				<label for="name">Nombre del Evento</label>
+				<input type="text" class="form-control" name="name" value="{{ $event->name }}" placeholder="Ej:Vacunación">
 				@if ($errors->has('name'))
 					<p class="help-block"><span class="glyphicon glyphicon-exclamation-sign"></span> 
 					{{ $errors->first('name') }}
@@ -34,8 +26,8 @@
 				@endif
 			</div>
 			<div class="form-group @if($errors->has('title')) has-error has-feedback @endif">
-				<label for="title">Title</label>
-				<input type="text" class="form-control" name="title" value="{{ $event->title }}" placeholder="E.g. My event's title">
+				<label for="title">Detalle del Evento</label>
+				<input type="text" class="form-control" name="title" value="{{ $event->title }}" placeholder="Ej: Vacunación preventivo Pierna Negra">
 				@if ($errors->has('title'))
 					<p class="help-block"><span class="glyphicon glyphicon-exclamation-sign"></span> 
 					{{ $errors->first('title') }}
@@ -43,7 +35,7 @@
 				@endif
 			</div>
 			<div class="form-group @if($errors->has('time')) has-error @endif">
-				<label for="time">Time</label>
+				<label for="time">Fecha</label>
 				<div class="input-group">
 					<input type="text" class="form-control" name="time" value="{{ $event->start_time . ' - ' . $event->end_time }}" placeholder="Select your time">
 					<span class="input-group-addon">
@@ -56,7 +48,7 @@
 					</p>
 				@endif
 			</div>
-			<button type="submit" class="btn btn-primary">Submit</button>
+			<button type="submit" class="btn btn-primary">Actualizar</button>
 		</form>		
 	</div>
 </div>

@@ -4,10 +4,12 @@ namespace BovinApp\Http\Middleware;
 
 use Closure;
 use Illuminate\Contracts\Auth\Guard;
+use Session;
 
 
 class Admin
 {
+    protected $auth;
     /**
      * Handle an incoming request.
      *
@@ -23,10 +25,17 @@ class Admin
 
     public function handle($request, Closure $next)
     {
-        
+        if($this->auth->user()->type !='admin')
+        {
+             $message = 'No tienes priveligios de administrador!';  
+             
+          
+            return redirect()->to('admin')->with('message', $message);;
+        }
                
 
      
         return $next($request);
-    }
+        }
+    
 }

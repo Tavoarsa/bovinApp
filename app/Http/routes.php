@@ -25,8 +25,15 @@
 */
 
 Route::group(['middleware' => ['web']], function () {
+	
+
 
 Route::get('/',[
+
+	'as'=>'home',
+	'uses'=>'FrontController@index'
+	]);
+Route::get('/home',[
 
 	'as'=>'home',
 	'uses'=>'FrontController@index'
@@ -66,10 +73,6 @@ Route::get('sale_animal/{slug}',[
 
 Route::resource('user','UserController');
 Route::get('cotacto', 'FrontController@cotacto');
-
-
-
-
 
 
 
@@ -198,12 +201,8 @@ Route::get('payment/status', array(
 
 //Admin
 //-----------------------------------------------------------------------------------------
-Route::group(['middleware' => 'auth'], function () {
+Route::group(['middleware' => 'admin'], function () {
 
-
-    Route::get('admin', function () {
-        return view('admin.home');
-    });
 
     //Inyeccion de dependencia
 //Vincula
@@ -254,6 +253,11 @@ Route::post('order/get-items', [
 
 
 Route::group(['middleware' => ['auth']], function () { 	
+
+    Route::get('admin', function () {
+        return view('admin.home');
+    });
+
 	
 	
 
@@ -486,16 +490,15 @@ Route::group(['middleware' => ['auth']], function () {
 //Calendar Event
 	Route::get('/calendar', function () {
 
-	$data = [
-		'page_title' => 'Home',
-	];
-	    return view('event/index', $data);
+	    return view('event/index');
 	});
 
 	Route::resource('events', 'EventController');
 	
 	Route::get('calendar/api', function () {
-		$events = DB::table('events')->select('id', 'name', 'title', 'start_time as start', 'end_time as end')->get();
+		$events = DB::table('events')->select('id', 'name', 'title', 'start_time as start', 'end_time as end')
+									 ->where('idUser',Auth::id())
+									->get();
 		foreach($events as $event)
 		{
 			$event->title = $event->title . ' - ' .$event->name;
