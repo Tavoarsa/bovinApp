@@ -31,7 +31,7 @@
                 </div>
                 <?php echo $sales->render(); ?>
             @else
-            <h3><span class="label label-warning">Noy hay Ningún animal registrado para su Finca</span></h3>
+            <h3><span class="label label-warning">Noy hay Ningún animal en venta</span></h3>
             @endif
             <hr>
             <p>

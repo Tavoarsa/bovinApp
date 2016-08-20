@@ -41,14 +41,14 @@
                     <div class="ch-info">
                         <div class="ch-info-front ch-img-2"></div>
                         <div class="ch-info-back">
-                            <h5>Badamecum</h5>
+                            <h5>Vadamecum</h5>
                             <a href="{{ route('badamecum-index') }}" >Catalago de Productos veterinarios</a>
                         </div>
                     </div>
                 </div>
             </div>
             <h4 class="slideanim">Productos Veterinarios</h4>
-            <p class="slideanim">Badamecum</p>
+            <p class="slideanim">Vadamecum</p>
         </li>
         <li>
             <div class="ch-item ch-img-3 slideanim">

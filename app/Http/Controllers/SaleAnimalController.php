@@ -23,10 +23,10 @@ class SaleAnimalController extends Controller
      */
     public function index($slug)
     {
-        //dd($slug);
+        
        $sale = SaleAnimal::where('idUser',Auth::id())
-                            ->where('slug',$slug)
-                ->first();dd($sale);
+                            ->orWhere('slug',$slug)
+                ->first();
 
         return view('animal.sale',compact('sale'));
     }
@@ -42,7 +42,7 @@ class SaleAnimalController extends Controller
     public function store(Request $request)
     {
           //get animal and user
-        $animal=Animal::where('id',$request->id)->first(); 
+        $animal=Animal::where('id',$request->id)->first(); //dd($animal);
         //$status_animal= Animal::findOrFail($animal->id);       
         $user= User::where('id',Auth::id())->first();
         $farm= Farm::where('id',Session::get('idfarm'))->first();
@@ -111,15 +111,20 @@ class SaleAnimalController extends Controller
        $animal=Animal::where('slug',$slug)->first();
        $user= User::where('id',Auth::id())->first();
 
-       if($animal->status==0)
+       if($animal->status ==2)
        {
+
         return view('animal.create_sale',compact('animal','user'));
-       }
+       }else{
 
         $message = 'Animal ya esta en  venta!';
             
         return redirect()->route('animal-index')->with('message', $message);      
 
+
+       }
+
+        
         
         
     }
@@ -142,20 +147,20 @@ class SaleAnimalController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update($slug)
-    {
-        $status_animal =Animal::where('idUser',Auth::id())
-                            ->where('slug',$slug)
-                            ->orWhere('idFarm',Session::get('idfarm'))
-                            ->first();
-        $status_animal->status=0;
+    {//dd($slug);
+        $animal =Animal::where('slug',$slug)                            
+                            ->first();//dd($animal);
 
-      
+        //$animal=Animal::where('id',$animal->id)->first();  
+                            
+        $animal->status=2;
+        $animal->save();  
                      
-        $updated = $status_animal->save();
         
-        $message = $updated ? 'El proseso  de venta del animal '.$status_animal->name . ' ha finalizado ' : ' Proceso no completado!';
         
-        return redirect()->route('dashboard-animal',$status_animal->slug)->with('message', $message);
+        $message = 'El proseso  de venta del animal '.$animal->name . ' ha finalizado ';
+        
+        return redirect()->route('animal-index')->with('message', $message);
     }
 
     /**
@@ -164,8 +169,14 @@ class SaleAnimalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($slug)
     {
-        //
+        $sale = SaleAnimal::where('idUser',Auth::id())
+                            ->where('slug',$slug)
+                            ->first();
+        $sale->delete();      
+
+             
+        return redirect()->route('end-sale',$sale->slug);
     }
 }

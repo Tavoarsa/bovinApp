@@ -21,6 +21,7 @@ class PasswordController extends Controller
     */
 
     use ResetsPasswords;
+   
 
 
     /**
@@ -28,12 +29,14 @@ class PasswordController extends Controller
      *
      * @return void
      */
-   
+    
     public function __construct(Guard $auth, PasswordBroker $passwords)
     {
 
         $this->auth=$auth;
         $this->passwords=$passwords;
         $this->middleware('guest');
+        
+        
     }
 }

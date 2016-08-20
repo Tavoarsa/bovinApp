@@ -56,8 +56,8 @@ class EventController extends Controller
 
         $rules= array(
 
-            'name'  => 'required',
-            'title' => 'required',
+            'name'  => 'required|max:15',
+            'title' => 'required|max:100',
             'time'  => 'required'
 
 
@@ -139,8 +139,8 @@ class EventController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'name'  => 'required',
-            'title' => 'required',
+            'name'  => 'required|max:15',
+            'title' => 'required|max:100',
             'time'  => 'required'
         ]);
 

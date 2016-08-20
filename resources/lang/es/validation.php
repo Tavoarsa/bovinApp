@@ -140,6 +140,27 @@ return [
         'time'                  => 'hora',
         'subject'               => 'asunto',
         'message'               => 'mensaje',
+        'vaccineName'           => 'Nombre de Vacuna',
+        'diseaseName'           => 'Nombre de Enfermedad', 
+        'dateApplication'       => 'Fecha de Aplicación',
+        'dose'                  => 'Dosis',
+        'alimentName'           => 'Nombre de Alimento',
+        'breed'                 => 'Raza',
+        'feacture'              => 'Caracteristica',
+        'gender'                => 'Genero',
+        'agent'                 => 'Representante',
+        'operationCertificate'  => 'Certidficado de Operaciones',
+        'price'                 => 'Precio',
+        'details'               => 'Detalle',
+        'morning_production'    => 'Poducción Mañana',
+        'heat_date'             => 'Fecha de Celo',
+        'registrationNumber'    => 'Número de Registro',
+        'weight'                => 'Peso',
+        'injecctionName'        => 'Nombre Vacuna',
+        
+
+      
+
     ],
 
 ];

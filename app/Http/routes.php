@@ -352,6 +352,11 @@ Route::group(['middleware' => ['auth']], function () {
 	'uses'=>'SaleAnimalController@update'
 	]);
 
+	Route::get('sale/delete/{slug}',[
+	'as'=>'destroy-sale',
+	'uses'=>'SaleAnimalController@destroy'
+	]);
+
 
 
 //Reproduction
@@ -505,25 +510,8 @@ Route::group(['middleware' => ['auth']], function () {
 			$event->url = url('events/' . $event->id);
 		}
 		return $events;
-	});
-
-	
-
-
-	
-
-	
-
-	
+	});	
 
 });
-
-	
-
-
-
-
-
-
     
 });

@@ -19,6 +19,7 @@
 	    					<th>Editar</th>	    					
 	    					<th>Enfermedad</th>	    					
 	    					<th>Vacuna</th>
+	    					<th>Dosis</th>
 	    					<th>Fecha<br>Aplicada</th>
 	    					<th>Proxima<br>Aplicación</th>
 	    					<th>Responsable</th>
@@ -36,6 +37,7 @@
                                 </td>	    						
 	    						<td>{{$vaccine->diseaseName}}</td>	    						
 	    						<td>{{$vaccine->vaccineName}}</td>
+	    						<td>{{$vaccine->dose}}</td>
 	    						<td>{{$vaccine->dateApplication}}</td>
 	    						<td>{{$vaccine->boosterInjection}}</td>
 	    						<td>{{$vaccine->responsible}}</td>   						

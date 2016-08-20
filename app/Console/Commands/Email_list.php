@@ -10,6 +10,7 @@ use App;
 use Auth;
 use PDF;
 use Carbon\Carbon;
+use Schema;
 
 class Email_list extends Command
 {
@@ -45,39 +46,21 @@ class Email_list extends Command
     public function handle()  {
 
 
-         $users = \DB::table('users')
-            ->join('events', 'idUser', '=', 'users.id')          
-            ->select('users.id','users.name','users.email','events.end_time','events.title')
-            ->get();dd($users);
+       /* Schema::table('badamecums', function ($table) {
+         $table->dropColumn('price');
+     });*/
 
-        foreach ($users as  $user) 
-        {               
-                                          
-               
+     Schema::table('badamecums', function ($table) {
+        $table->double('price')->nullable();;
+        });
 
-                Mail::send('email.user', ['user' => $user->name], function ($m) use ($user) {
-                    
-                    $events=\DB::table('events')
-                                ->where('idUser',$user->id)                            
-                                ->get();
-                     $pdf= PDF::loadView('report.event',['events'=>$events]);
-                    $m->from('notificaciones@bovinapp.com', 'BovinApp.com');
-                    $m->to($user->email, $user->name)->subject('Eventos Pendientes');                                       
-                    $m->attach($pdf);
-                });
-
-          
-        }
         
                      
     }
 }
 
 
-
-                                    
-                       
-                     
+           
          
                         
                         

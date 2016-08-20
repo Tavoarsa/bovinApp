@@ -119,6 +119,7 @@ class AnimalController extends Controller
                 $animal->idUser = Auth::id();
                 $animal->idFarm=Session::get('idfarm');                
                 $animal->name=$request->name;
+                $animal->animalNumber=$this->get_animal_number();
                 $animal->slug=str_slug($request->get('name'));
                 $animal->breed=$request->breed;
                 $animal->gender=$request->gender;
@@ -252,13 +253,11 @@ class AnimalController extends Controller
         $this->validate($request,$rules);   
         
 
-        $animal->registrationNumber=$animal->idFarm.'-'.$animal->id.'-'.$request->registrationNumber;       
-            //Divide date de acuerdo al limitador -
-        $date= explode('/', $animal->birthdate);
-        $animal->animalNumber=$animal->idFarm.'-'.$animal->id.'-'.$date[0].$date[2];
+        $animal->registrationNumber=$request->registrationNumber;       
+        
         $animal->name=$request->name;   
         $animal->slug=str_slug($request->get('name'));
-        $animal->breed=$request->breed;
+        $animal->breed=$request->breed;       
         $animal->gender=$request->gender;
         $animal->feature=$request->feature;
         $animal->birthdate=$request->birthdate;
@@ -303,5 +302,19 @@ class AnimalController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+     public function get_animal_number()
+    {
+        $farms=Farm::where('id',Session::get('idfarm'))->get();
+
+
+        foreach ($farms as $farm) {
+
+            $operationCertificate=$farm->operationCertificate;
+            
+        }
+        $count=\DB::table('animals')->count().'-'.$operationCertificate;
+        return $count;
     }
 }

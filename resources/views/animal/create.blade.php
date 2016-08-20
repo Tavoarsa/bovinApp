@@ -11,6 +11,9 @@
                 ANIMALES<small>[ Agregar Animal]</small>
             </h1>        
 		</div>
+         @if (count($errors) > 0)
+            @include('admin.partials.errors')
+        @endif
 
 		<div class="row">
             <div class="col-md-offset-3 col-md-6">
@@ -25,9 +28,7 @@
                       <a type="button" value="Mostrar" onclick="ia()" class="btn btn-primary">Artificial</a>
                     </div><hr>
                     
-                    @if (count($errors) > 0)
-                        @include('admin.partials.errors')
-                    @endif
+                   
 
                     <div id="hidden-mt">
 

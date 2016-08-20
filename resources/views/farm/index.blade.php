@@ -28,7 +28,7 @@
             @endif
             <hr>
             <p>
-                <a class="btn btn-primary" href="{{route('home')}}"><i class="fa fa-chevron-circle-left"></i>HOME</a>          
+                <a class="btn btn-primary" href="{{route('home')}}"><i class="glyphicon glyphicon-home"></i>HOME</a>          
             </p>
                    
 	   </div>

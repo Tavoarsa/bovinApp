@@ -13,7 +13,6 @@ use Input;
 
 class BadamecumController extends Controller
 {
-    
     /**
      * Display a listing of the resource.
      *

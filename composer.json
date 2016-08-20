@@ -12,6 +12,7 @@
         "laravelcollective/html": "^5.2",
         "paypal/rest-api-sdk-php": "^1.7",        
         "nesbot/carbon": "~1.21",
+        "ext-gd": "*",
         "barryvdh/laravel-dompdf": "^0.6.1"
            
 

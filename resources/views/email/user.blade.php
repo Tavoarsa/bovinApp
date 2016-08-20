@@ -30,7 +30,7 @@
 
 <h2>Si los eventos ya se ejecutaron, se debe eliminar de la lista de eventos pendientes.</h2>
 
-<h4>http://bovinapp.herokuapp.com/</h4> 
+<h4>http://bovinapp.herokuapp.com/events</h4> 
 
 </body>
 </html>
