@@ -177,7 +177,7 @@
                         
                         <div class="form-group">
                             {!! Form::submit('Guardar', array('class'=>'btn btn-primary')) !!}
-                            <a href="{{ route('admin.product.index') }}" class="btn btn-warning">Cancelar</a>
+                            <a href="{{ route('admin.badamecum.index') }}" class="btn btn-warning">Cancelar</a>
                         </div>
                     
                     {!! Form::close() !!}

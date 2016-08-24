@@ -19,7 +19,8 @@
 	    					<th>Editar</th>
 	    					<th>Alimento</th>	    					
 	    					<th>Fecha<br>Aplicada</th>
-	    					<th>Dosis</th>	    					
+	    					<th>Dosis</th>
+	    					<th>Valor</th>	    					
 	    					<th>Responsable</th>
 	    					
 	    					
@@ -36,7 +37,8 @@
 	    						    						
 	    						<td>{{$aliment->alimentName}}</td>
 	    						<td>{{$aliment->dateApplication}}</td>
-	    						<td>{{$aliment->dose}}</td>	    						
+	    						<td>{{$aliment->dose}}</td>
+	    						<td>{{$aliment->value}}</td>	    						
 	    						<td>{{$aliment->responsible}}</td>   						
 	    						   						
 	    						

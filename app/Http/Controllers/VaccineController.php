@@ -9,8 +9,10 @@ use BovinApp\Http\Requests;
 use BovinApp\Vaccine;
 use BovinApp\Animal;
 use BovinApp\Badamecum;
+use BovinApp\Event;
 use Session;
 use Auth;
+
 
 class VaccineController extends Controller
 {
@@ -37,6 +39,7 @@ class VaccineController extends Controller
     public function create()
     {
         $badamecums = Badamecum::all()->lists('name','name'); 
+
         return view('vaccine.create',compact('badamecums'));
     }
 
@@ -47,14 +50,20 @@ class VaccineController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {  
+
+        Session::put('vaccineName',$request->vaccineName);
+        Session::put('dose',$request->dose);
+        
              //Validaciones
         $rules =array(              
                         'diseaseName'              => 'required',                       
                         'vaccineName'              => 'required',                      
                         'dateApplication'          => 'required',
                         'dose'                     => 'required',
-                        'responsible'              => 'required'  
+                        'responsible'              => 'required',
+                        'boosterInjection'         => 'required'
+
                       );
         $this->validate($request,$rules);
 
@@ -67,10 +76,21 @@ class VaccineController extends Controller
         $vaccine->dateApplication=$request->dateApplication;
         $vaccine->boosterInjection=$request->boosterInjection;
         $vaccine->dose=$request->dose;
-        $vaccine->value=$request->value;
+        $vaccine->value=$this->cost_vaccine();
         $vaccine->responsible=$request->responsible;
 
         $vaccine->save();
+       // $time = explode(" - ", $request->input('time'));
+
+        $event                  = new Event;
+        $event->idUser =        Auth::id();
+        //$event->allDay =    $request->has('visible') ? 1 : 0,
+        $event->name            ='Vacunación'; 
+        $event->title           ='Vacunar al Animal:'.' '.  Session::get('animal');
+        $event->properties      = '';
+        $event->start_time      = $request->boosterInjection;
+        $event->end_time        = $request->boosterInjection;
+        $event->save();
 
 
         $message = $vaccine ? 'Vacuna aplicada correctamente!' : 'La vacuna  NO pudo agregarse!'; 
@@ -124,5 +144,24 @@ class VaccineController extends Controller
         
         return redirect()->route('vaccine-index')->with('message', $message);
     }
+
+    public function cost_vaccine()
+    {
+         $badamecums = Badamecum::where('name', Session::get('vaccineName'))
+                                            ->get();
+
+         foreach ($badamecums as $badamecum ) {
+             
+             $cost_vaccine=$badamecum->price / Session::get('dose');
+
+             return $cost_vaccine;
+         }
+ 
+         
+
+
+    }
+
+    
     
 }

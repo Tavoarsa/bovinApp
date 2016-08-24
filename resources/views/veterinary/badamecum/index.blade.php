@@ -1,11 +1,22 @@
 @extends('layouts.farm')
 @section('content')
 <div class="container text-center">
-        <div class="page-header">
-            <h1>                
-                       
-            </h1>
-        </div>
+        
+      <div class="container">
+        {!!Form::open(['route'=>'search_badamecum-farm','method'=>'GET'])!!}
+            <div class="row">                 
+                <div class="col-md-12">
+                    <div class="input-group" id="adv-search">                    
+                        <input type="text" name="name" class="form-control" placeholder="Buscar Productos Veterinarios" />           
+                             <div class="input-group-btn">                       
+                                <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>                          
+                            </div>
+                    </div>            
+                </div>                     
+            </div>
+         {!! Form::close() !!}
+        </div><hr>
+        
         <div class="page">
             @if(count($badamecums))
             <div class="row">

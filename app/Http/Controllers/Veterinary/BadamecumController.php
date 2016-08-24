@@ -20,12 +20,25 @@ class BadamecumController extends Controller
     public function index()
     {
         $farm= Session::get('farm');
-        $badamecums = \DB::table('categories')
-                                ->join('badamecums','badamecums.category_id','=','categories.id')
-                                ->select('categories.name','badamecums.name')      
-                                ->paginate(6);
+        $badamecums = Badamecum::orderBy('id', 'desc')->paginate(6);       
         return view('veterinary.badamecum.index', compact('badamecums','farm'));
     }
+
+
+     public function search_badamecum(Request $request)
+    {   
+        $farm= Session::get('farm');
+        $badamecums=\DB::table('badamecums')->where('name', 'ILIKE', '%' . trim($request -> get(trim('name'))) . '%')        
+                                            -> paginate(8);
+        if(count($badamecums))
+        {
+            return view('veterinary.badamecum.index', compact('badamecums','farm'));  
+       }else
+       {
+       $message = 'No hay concidencias';
+            return redirect() -> route('badamecum-farm')->with('message', $message);
+       }
+    } 
 
 
     /**

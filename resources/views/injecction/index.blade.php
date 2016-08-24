@@ -21,6 +21,7 @@
 	    					<th>Vacuna</th>
 	    					<th>Fecha<br>Aplicada</th>
 	    					<th>Proxima<br>Aplicación</th>
+	    					<th>Valor</th>
 	    					<th>Responsable</th>
 	    					
 	    					
@@ -38,6 +39,7 @@
 	    						<td>{{$injecction->injecctionName}}</td>
 	    						<td>{{$injecction->dateApplication}}</td>
 	    						<td>{{$injecction->boosterInjection}}</td>
+	    						<td> ¢ {{$injecction->value}}</td>
 	    						<td>{{$injecction->responsible}}</td>   						
 	    						   						
 	    						

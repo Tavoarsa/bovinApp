@@ -77,8 +77,7 @@ class ReportController extends Controller
        $productions= Production::where('productions.idAnimal',Session::get('idAnimal'))
                                                    
                                 ->get();
-        if(count($productions))
-        {
+        
            $morning_production= Production::where('productions.idAnimal',Session::get('idAnimal'))
                                 ->where('mastitis_morning',true)                                
                                 ->select('productions.morning_production')                                
@@ -102,11 +101,6 @@ class ReportController extends Controller
        return $pdf->stream();
 
 
-        }else
-        {
-            $message = 'No hay nada que mostrar';
-            return redirect() -> route('dashboard-farm')->with('message', $message);
-        }
 
     }
 

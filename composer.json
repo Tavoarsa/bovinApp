@@ -13,6 +13,7 @@
         "paypal/rest-api-sdk-php": "^1.7",        
         "nesbot/carbon": "~1.21",
         "ext-gd": "*",
+        "khill/lavacharts" : "^3.0",
         "barryvdh/laravel-dompdf": "^0.6.1"
            
 

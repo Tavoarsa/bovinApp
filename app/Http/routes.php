@@ -49,6 +49,11 @@ Route::get('badamecumm',[
 	'uses'=>'FrontController@show_bademecum'
 	]);
 
+Route::get('search_badamecum',[
+	'as'=>'search_badamecum',
+	'uses'=>'FrontController@search_badamecum'
+	]);
+
 Route::get('badamecumm/{slug}',[
 	'as'=>'detail-badamecum',
 	'uses'=>'FrontController@detail_badamecum'
@@ -312,10 +317,26 @@ Route::group(['middleware' => ['auth']], function () {
 	  'as'=>'animal-create',
 	  'uses'=>'AnimalController@create'
 	]);
+
+//Profibility
+
+	Route::resource('profitability','ProfitabilityController');
+
+	Route::get('profitability/{slug}',[
+	  'as'=>'profitability',
+	  'uses'=>'ProfitabilityController@show'
+	]);
+
+
 //Bademecum
 
 	/*-------------------------------------------*/
 	Route::resource('badamecum','Veterinary\BadamecumController');
+
+	Route::get('search_badamecum',[
+	'as'=>'search_badamecum-farm',
+	'uses'=>'Veterinary\BadamecumController@search_badamecum'
+	]);
 
 
 	Route::get('badamecum',[

@@ -17,6 +17,7 @@
                 <div class="product-block">
                     <h3>{{$badamecum->name}}</h3><hr>
                     <div class="product-info">
+                        <h3>Descripción</h3><hr>
                         <p>{{$badamecum->description}}</p>
                         <p>Precio: ${{number_format($badamecum->price,2)}}</p>
                         <p>                   

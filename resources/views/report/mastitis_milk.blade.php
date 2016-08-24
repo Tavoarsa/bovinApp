@@ -12,7 +12,7 @@
 
    
       <div class="table-cart">
-        @if(count($productions))
+       
         
         <div class="table-responsive">
              <table >
@@ -46,9 +46,7 @@
 
         <h2>Cantidad de leche con mastitis: {{$quantity}}</h2>
         <h2>Valor de la cantidad de leche con mastitis: {{$value}}</h2>
-        @else
-          <h3><span class="label label-warning">Noy hay nada que mostrar</span></h3>
-        @endif
+        
              
       </div>        
 

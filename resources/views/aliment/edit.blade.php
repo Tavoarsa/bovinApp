@@ -27,7 +27,7 @@
                         <div class="form-group">
                             <label for="alimentName">Alimento:</label>
                             
-                             {!! Form::select('alimentName', array('Concetrado' => 'Concetrado', 'Silo' => 'Silo','Sal' => 'Sal'), 'Sal',["class" => "form-control"])!!}
+                             {!! Form::select('alimentName',$products,$aliment->name,["class" => "form-control"])!!}
                         </div>
                         
                        
@@ -49,6 +49,22 @@
                             {!! 
                                 Form::text(
                                     'dose', 
+                                    null, 
+                                    array(
+                                        'class'=>'form-control',
+                                        'placeholder' => 'Ingresa la dosis aplicada...',
+                                        'autofocus' => 'autofocus',
+                                        'required' => 'required'
+                                    )
+                                ) 
+                            !!}
+                        </div>
+                         <div class="form-group">
+                            <label for="dose">Precio:</label>
+                            
+                            ¢{!! 
+                                Form::number(
+                                    'value', 
                                     null, 
                                     array(
                                         'class'=>'form-control',

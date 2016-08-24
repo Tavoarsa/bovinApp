@@ -9,6 +9,7 @@ use BovinApp\Http\Requests;
 use BovinApp\Injecction;
 use BovinApp\Badamecum;
 use BovinApp\Animal;
+use BovinApp\Event;
 use Session;
 use Auth;
 
@@ -47,7 +48,9 @@ class InjecctionController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {//dd($request);
+        Session::put('injecctionName',$request->injecctionName);
+        Session::put('dose',$request->dose);
              //Validaciones
         $rules =array(              
                         'diseaseName'              => 'required',                       
@@ -67,10 +70,20 @@ class InjecctionController extends Controller
         $injecction->dateApplication=$request->dateApplication;
         $injecction->boosterInjection=$request->boosterInjection;
         $injecction->dose=$request->dose;
-        $injecction->value=$request->value;
+        $injecction->value=$this->cost_injecction();
         $injecction->responsible=$request->responsible;
 
         $injecction->save();
+
+         $event                  = new Event;
+        $event->idUser =        Auth::id();
+        //$event->allDay =    $request->has('visible') ? 1 : 0,
+        $event->name            ='Injectar'; 
+        $event->title           ='Vacunar al Animal:'.' '.  Session::get('animal');
+        $event->properties      = '';
+        $event->start_time      = $request->boosterInjection;
+        $event->end_time        = $request->boosterInjection;
+        $event->save();
 
 
         $message = $injecction ? 'Inyección aplicada correctamente!' : 'La Inyección  NO pudo agregarse!'; 
@@ -116,5 +129,23 @@ class InjecctionController extends Controller
         $message = $updated ? 'Inyección actualizada correctamente!' : ' La Inyección NO pudo actualizarse!';
         
         return redirect()->route('injecction-index')->with('message', $message);
+    }
+
+    public function cost_injecction()
+    {
+         $badamecums = Badamecum::where('name', Session::get('injecctionName'))
+                                            ->get();
+        
+
+         foreach ($badamecums as $badamecum ) {
+             
+             $cost_injecction=$badamecum->price / Session::get('dose');
+
+             return $cost_injecction;
+         }
+ 
+         
+
+
     }
 }

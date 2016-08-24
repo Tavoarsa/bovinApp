@@ -111,7 +111,7 @@ class SaleAnimalController extends Controller
        $animal=Animal::where('slug',$slug)->first();
        $user= User::where('id',Auth::id())->first();
 
-       if($animal->status ==2)
+       if($animal->status ==0)
        {
 
         return view('animal.create_sale',compact('animal','user'));
@@ -152,9 +152,12 @@ class SaleAnimalController extends Controller
                             ->first();//dd($animal);
 
         //$animal=Animal::where('id',$animal->id)->first();  
-                            
-        $animal->status=2;
-        $animal->save();  
+                          
+        $animal->status=0;
+        $animal->save(); 
+
+         
+ 
                      
         
         

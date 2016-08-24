@@ -50,9 +50,17 @@ class Email_list extends Command
          $table->dropColumn('price');
      });*/
 
-     Schema::table('badamecums', function ($table) {
-        $table->double('price')->nullable();;
+     Schema::table('vaccines', function ($table) {
+        $table->double('cost')->nullable();
         });
+     Schema::table('injecctions', function ($table) {
+        $table->double('cost')->nullable();
+        });
+
+    Schema::table('aliments', function ($table) {
+        $table->double('cost')->nullable();
+        });
+
 
         
                      

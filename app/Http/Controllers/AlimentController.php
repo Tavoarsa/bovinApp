@@ -8,6 +8,7 @@ use BovinApp\Http\Requests;
 
 use BovinApp\Aliment;
 use BovinApp\Animal;
+use BovinApp\Product;
 use Session;
 use Auth;
 
@@ -35,8 +36,9 @@ class AlimentController extends Controller
      */
     public function create()
     {
+         $products = Product::all()->lists('name','name');
         
-        return view('aliment.create');
+        return view('aliment.create',compact('products'));
     }
 
     /**
@@ -47,6 +49,9 @@ class AlimentController extends Controller
      */
     public function store(Request $request)
     {
+
+        Session::put('alimentName',$request->alimentName);
+        Session::put('dose',$request->dose);
              //Validaciones
         $rules =array(                                        
                         'alimentName'              => 'required',                      
@@ -63,7 +68,7 @@ class AlimentController extends Controller
         $aliment->alimentName=$request->alimentName;
         $aliment->dateApplication=$request->dateApplication;        
         $aliment->dose=$request->dose;
-        $aliment->value=$request->value;
+        $aliment->value=$this->cost_aliment();
         $aliment->responsible=$request->responsible;
 
         $aliment->save();
@@ -82,8 +87,9 @@ class AlimentController extends Controller
      */
     public function edit($id)
     {
-        $aliment = Aliment::findOrFail($id);        
-        return view('aliment.edit', compact('aliment'));
+        $aliment = Aliment::findOrFail($id);
+        $products = Product::all()->lists('name','name');        
+        return view('aliment.edit', compact('aliment','products'));
     }
 
     /**
@@ -102,5 +108,22 @@ class AlimentController extends Controller
         $message = $updated ? 'Alimento actualizado correctamente!' : 'El Alimento NO pudo actualizarse!';
         
         return redirect()->route('aliment-index')->with('message', $message);
+    }
+
+      public function cost_aliment()
+    {
+         $products = Product::where('name', Session::get('alimentName'))
+                                            ->get();
+
+         foreach ($products as $product ) {
+             
+             $cost_aliment=$product->price / Session::get('dose');
+
+             return $cost_aliment;
+         }
+ 
+         
+
+
     }
 }

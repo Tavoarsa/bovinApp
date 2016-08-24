@@ -42,6 +42,21 @@ class FrontController extends Controller
         //dd($farms);
 
         return view('main.info_farm',compact('farms'));   
+    }
+
+
+    public function search_badamecum(Request $request)
+    {
+        $badamecums=\DB::table('badamecums')->where('name', 'ILIKE', '%' . trim($request -> get(trim('name'))) . '%')        
+                                            -> paginate(8);
+        if(count($badamecums))
+        {
+            return view('main.show_badamecum', compact('badamecums'));  
+       }else
+       {
+       $message = 'No hay concidencias';
+            return redirect() -> route('badamecum-index')->with('message', $message);
+       }
     } 
 
     public function show_bademecum()
@@ -59,13 +74,23 @@ class FrontController extends Controller
 
      public function sale_animal()
     {
-       $sales = SaleAnimal::orderBy('id','desc')->paginate(6);//dd($sales);
+       $sales = SaleAnimal::orderBy('id','desc')->paginate(6);
+
+      
+
+     
+
+       //dd($sales);
        return view('main.sale_animal',compact('sales'));
     }
       public function info_sale($slug)
     {
-       $sale = SaleAnimal::where('slug',$slug)->first();//dd($sale);
-       return view('main.info_sale',compact('sale'));
+       $sale = SaleAnimal::where('slug',$slug)->first();
+
+       $farms=Farm::where('id', $sale->idFarm)->lists('operationCertificate'); 
+     
+
+       return view('main.info_sale',compact('sale','farms'));
     }
 
 }

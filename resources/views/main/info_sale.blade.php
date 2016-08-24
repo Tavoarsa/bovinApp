@@ -12,6 +12,9 @@
                     <img src="/img/animal/{{$sale->image}}" alt="{{$sale->name}}"  width="300">  
                 </div>
                 <h3>{{$sale->name}}</h3><hr>
+
+                  <p>Finca de Procedencia: {!!$farms!!}</p><hr>
+
                  @if($sale->age==0)
                         <p>Edad:Menos de una año</p><hr>
                     @else

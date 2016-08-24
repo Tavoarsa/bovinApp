@@ -26,13 +26,17 @@ class AnimalController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    { 
+        
+     
+
          if(Session::get('idfarm'))
           {
 
             $animals= Animal::where('idFarm',Session::get('idfarm'))
-                          -> paginate(8);
-             $farm= Session::get('farm');
+                              ->where('idUser',Auth::id())  
+                            -> paginate(8);
+             $farm= Session::get('farm'); //dd($animals);
             return view('animal.index',compact('animals','farm')); 
           
             
@@ -50,14 +54,16 @@ class AnimalController extends Controller
     {
         $farm= Session::get('farm');
 
-      if($request->number=="on"){
-        $animals=\DB::table('animals')->where('idFarm',Session::get('idfarm'))                                      
+     if($request->number=="on"){
+        $animals=\DB::table('animals')->where('idFarm',Session::get('idfarm')) 
+                                        ->where('idUser',Auth::id())                                      
                                        ->where('animalNumber', 'ILIKE', '%' . trim($request -> get(trim('name'))) . '%')
                                        
                                         -> paginate(8);
 
       }else{
         $animals=\DB::table('animals')->where('idFarm',Session::get('idfarm'))
+                                      ->where('idUser',Auth::id()) 
                                        ->where('name', 'ILIKE', '%' . trim($request -> get(trim('name'))) . '%')                                     
                                        
                                         -> paginate(8);//dd($animals);    
@@ -250,8 +256,10 @@ class AnimalController extends Controller
                         'gender'             => 'required',                        
                         'feature'            => 'required',                 
                       );
-        $this->validate($request,$rules);   
+        $this->validate($request,$rules);
+
         
+       // dd($request->breed);
 
         $animal->registrationNumber=$request->registrationNumber;       
         
@@ -307,6 +315,9 @@ class AnimalController extends Controller
      public function get_animal_number()
     {
         $farms=Farm::where('id',Session::get('idfarm'))->get();
+        $count= Animal::where('idFarm',Session::get('idfarm'))
+                          -> count();        
+          $count++;
 
 
         foreach ($farms as $farm) {
@@ -314,7 +325,9 @@ class AnimalController extends Controller
             $operationCertificate=$farm->operationCertificate;
             
         }
-        $count=\DB::table('animals')->count().'-'.$operationCertificate;
-        return $count;
+
+        $animal_number=$count.'-'.$operationCertificate;
+
+        return $animal_number;
     }
 }

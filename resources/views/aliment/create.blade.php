@@ -29,7 +29,7 @@
                         <div class="form-group">
                             <label for="alimentName">Alimento:</label>
                             
-                             {!! Form::select('alimentName', array('Concetrado' => 'Concetrado', 'Silo' => 'Silo','Sal' => 'Sal'), 'Sal',["class" => "form-control"])!!}
+                             {!! Form::select('alimentName', $products ,["class" => "form-control"])!!}
                         </div>
                         
                        
@@ -49,13 +49,12 @@
                          <div class="form-group">
                             <label for="dose">Dosis:</label>
                             
-                            {!! 
-                                Form::text(
+                            {!!Form::text(
                                     'dose', 
                                     null, 
                                     array(
                                         'class'=>'form-control',
-                                        'placeholder' => 'Ingresa la dosis aplicada...',
+                                        'placeholder' => 'Ingresa la dosis aplicada en gramos...',
                                         'autofocus' => 'autofocus',
                                         'required' => 'required'
                                     )

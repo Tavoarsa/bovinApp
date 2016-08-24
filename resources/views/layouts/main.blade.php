@@ -22,6 +22,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <link href="css/slider.css" rel="stylesheet" type="text/css" media="all">
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all">
 
+<!--Search-->
+<link href="{{ asset('/css/search.css') }}" rel="stylesheet">
+
 
 <link href="css/error/404.css" rel="stylesheet" type="text/css" media="all">
 <!-- /css links -->
@@ -32,6 +35,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 </head>
 
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+@if(\Session::has('message'))
+        @include('admin.partials.message')
+ @endif
 <!-- Fixed navbar -->
     <nav class="navbar navbar-default">
       <div class="container-fluid">

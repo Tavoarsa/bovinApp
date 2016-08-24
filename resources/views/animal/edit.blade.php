@@ -56,7 +56,7 @@
                                 'Angus Rojo'        => 'Angus Rojo',
                                 'Charolais'         => 'Charolais'),
                                 
-                                ), 'Holstein',["class" => "form-control"])!!}
+                                ),$animal->breed,["class" => "form-control"])!!}
                             </div>
 
                             <div align="center" class="form-group">

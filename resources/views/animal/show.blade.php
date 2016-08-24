@@ -78,7 +78,21 @@
                     <i class="fa fa-cc-paypal  icon-home"></i>
                     <a <a href="{{route('dashboard-report')}}" class="btn btn-warning btn-block btn-home-admin">REPORTES</a>
                 </div>
-            </div>                      
+            </div>  
+
+             <div class="col-md-6">
+                <div class="panel">
+                    <i class="fa fa-cc-paypal  icon-home"></i>
+                    <a <a href="{{route('profitability',$animal->slug)}}" class="btn btn-warning btn-block btn-home-admin">RENTABILIDAD</a>
+                </div>
+            </div> 
+
+             <div class="col-md-6">
+                <div class="panel">
+                    <i class="fa fa-cc-paypal  icon-home"></i>
+                    <a <a href="" class="btn btn-warning btn-block btn-home-admin">EXPEDIENTE</a>
+                </div>
+            </div>                     
         </div>
         <hr>
          <p>
