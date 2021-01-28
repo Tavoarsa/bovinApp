@@ -4,7 +4,7 @@
 <div class="content-section-a">
     <div class="container" text-center>
         <div class="page-header">
-            <h1><i class="fa fa-info-circle"></i>Detalle del Animal</h1>            
+            <h1><i class="fa fa-info-circle"></i>Detalle  del Animal</h1>            
         </div>
        
 
